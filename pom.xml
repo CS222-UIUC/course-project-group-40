@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.team.universe</groupId>
-  <artifactId>Universal Recognition</artifactId>
+  <artifactId>UniversalRecognition</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>Universal Recognition</name>
@@ -16,9 +16,89 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+<!--    <exec.mainClass>ai.djl.examples.inference.ObjectDetection</exec.mainClass>-->
   </properties>
 
+  <!-- For experimental features of DJI -->
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>djl.ai</id>-->
+<!--      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--    </repository>-->
+<!--  </repositories>-->
+
   <dependencies>
+    <dependency>
+      <groupId>ai.djl</groupId>
+      <artifactId>api</artifactId>
+      <version>0.19.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-engine</artifactId>
+      <version>0.19.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-model-zoo</artifactId>
+      <version>0.19.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.32</version>
+    </dependency>
+
+
+    <!-- For Linux CPU-->
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-native-cpu</artifactId>
+      <classifier>linux-x86_64</classifier>
+      <scope>runtime</scope>
+      <version>1.12.1</version>
+    </dependency>
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-jni</artifactId>
+      <version>1.12.1-0.19.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- For MacOS CPU -->
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-native-cpu</artifactId>
+      <classifier>osx-x86_64</classifier>
+      <version>1.12.1</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-jni</artifactId>
+      <version>1.12.1-0.19.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- For Windows CPU -->
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-native-cpu</artifactId>
+      <classifier>win-x86_64</classifier>
+      <scope>runtime</scope>
+      <version>1.12.1</version>
+    </dependency>
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-jni</artifactId>
+      <version>1.12.1-0.19.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -50,7 +130,16 @@
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>3.1.0</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>lib/</classpathPrefix>
+                <mainClass>org.team.universe.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
