@@ -5,22 +5,26 @@ import os
 import numpy as np
 SEED = 17
 
+
+# SET UP RANDOM SEEDS
 def setup_seed(seed=SEED):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed) # if you are using multi-GPU.
+    torch.cuda.manual_seed_all(seed)  # if you are using multi-GPU.
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    # torch.backends.cudnn.enabled = False
 
+
+# SET UP ARGUMENTS PARSER
 def setup_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str,
                         default="./data/")
-    parser.add_argument('--device', default='cpu', help='device id (i.e. 0 or 0,1 or cpu)')
+    parser.add_argument('--device', default='cpu',
+                        help='device id (i.e. 0 or 0,1 or cpu)')
 
     parser.add_argument('--num_classes', type=int, default=5)
     parser.add_argument('--epochs', type=int, default=10)
@@ -30,17 +34,21 @@ def setup_args():
                         help='initial weights path')
     return parser.parse_args()
 
+
+# SET UP DEVICE
 def setup_device(args):
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     return device
 
+
+# TRAINING MAIN FUNCTION
 def main(args):
-    # Device configuration
+    # SET UP DEVICE
     device = setup_device(args)
-    
-    # Placeholder for the model
-    # model = nn.Sequential(
-    #
+    print("Device: ", device)
+
+    # SET UP RANDOM SEEDS
+    setup_seed()
 
 
 if __name__ == '__main__':
