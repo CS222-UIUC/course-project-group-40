@@ -16,45 +16,48 @@ import ai.djl.training.util.*;
 
 import static ai.djl.repository.zoo.ModelZoo.listModels;
 
-/**
- * Loader to load PyTorch TorchScript model
- *
- */
+/** Loader to load PyTorch TorchScript model */
 public class Loader {
-    public static ZooModel<Image, Classifications> loadFromAny( String input ) throws ModelNotFoundException, MalformedModelException, IOException {
-        // create Criteria
-        // offical Doc http://docs.djl.ai/docs/load_model.html
-        Criteria<Image, Classifications> criteria = Criteria.builder()
-                .setTypes(Image.class, Classifications.class) // defines input and output data type
-                .optModelUrls(input) // search models in specified path
-                .build();
+  public static ZooModel<Image, Classifications> loadFromAny(String input)
+      throws ModelNotFoundException, MalformedModelException, IOException {
+    // create Criteria
+    // offical Doc http://docs.djl.ai/docs/load_model.html
+    Criteria<Image, Classifications> criteria =
+        Criteria.builder()
+            .setTypes(Image.class, Classifications.class) // defines input and output data type
+            .optModelUrls(input) // search models in specified path
+            .build();
 
-        ZooModel<Image, Classifications> model = criteria.loadModel();
-        return model;
-    }
+    ZooModel<Image, Classifications> model = criteria.loadModel();
+    return model;
+  }
 
-    public static ZooModel<Image, Classifications> loadFromFile( String script_path ) throws ModelNotFoundException, MalformedModelException, IOException {
-        // create Criteria
-        // offical Doc http://docs.djl.ai/docs/load_model.html
-        Criteria<Image, Classifications> criteria = Criteria.builder()
-                .setTypes(Image.class, Classifications.class) // defines input and output data type
-                .optModelUrls("file://" + script_path) // search models in specified path
-                .build();
+  public static ZooModel<Image, Classifications> loadFromFile(String script_path)
+      throws ModelNotFoundException, MalformedModelException, IOException {
+    // create Criteria
+    // offical Doc http://docs.djl.ai/docs/load_model.html
+    Criteria<Image, Classifications> criteria =
+        Criteria.builder()
+            .setTypes(Image.class, Classifications.class) // defines input and output data type
+            .optModelUrls("file://" + script_path) // search models in specified path
+            .build();
 
-        System.out.println(listModels(criteria));
-        ZooModel<Image, Classifications> model = criteria.loadModel();
-        return model;
-    }
+    System.out.println(listModels(criteria));
+    ZooModel<Image, Classifications> model = criteria.loadModel();
+    return model;
+  }
 
-    public static ZooModel<Image, Classifications> loadFromHttp( String link ) throws ModelNotFoundException, MalformedModelException, IOException {
-        // create Criteria
-        // offical Doc http://docs.djl.ai/docs/load_model.html
-        Criteria<Image, Classifications> criteria = Criteria.builder()
-                .setTypes(Image.class, Classifications.class) // defines input and output data type
-                .optModelUrls(link) // search models in specified path
-                .build();
+  public static ZooModel<Image, Classifications> loadFromHttp(String link)
+      throws ModelNotFoundException, MalformedModelException, IOException {
+    // create Criteria
+    // offical Doc http://docs.djl.ai/docs/load_model.html
+    Criteria<Image, Classifications> criteria =
+        Criteria.builder()
+            .setTypes(Image.class, Classifications.class) // defines input and output data type
+            .optModelUrls(link) // search models in specified path
+            .build();
 
-        ZooModel<Image, Classifications> model = criteria.loadModel();
-        return model;
-    }
+    ZooModel<Image, Classifications> model = criteria.loadModel();
+    return model;
+  }
 }
