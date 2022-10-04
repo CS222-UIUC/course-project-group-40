@@ -17,8 +17,8 @@ public class App
 {
     public static void main( String[] args ) throws ModelNotFoundException, MalformedModelException, IOException {
         // load pre-trained PyTorch TorchScript model locally
-        String script_path = args[1];
-        ZooModel<Image, Classifications> model = new Loader().loadFromFile( script_path );
+
+//        ZooModel<Image, Classifications> model = new Loader().loadFromFile( script_path );
 
         // TODO: receive one image from Android devices
 
