@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8510110d-2da8-45c1-a6c3-4efd21fcb012" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cs222.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/LoaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="8510110d-2da8-45c1-a6c3-4efd21fcb012" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,6 +116,7 @@
       <workItem from="1664398334804" duration="335000" />
       <workItem from="1664398673655" duration="990000" />
       <workItem from="1664399792694" duration="11209000" />
+      <workItem from="1664420187271" duration="26000" />
     </task>
     <servers />
   </component>
