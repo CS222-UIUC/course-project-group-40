@@ -42,7 +42,8 @@ jobs:
       - name: Build coverage file
         working-directory: ./backend/vision-model/
         run: |
-          coverage run --source=./src -m pytest -v ./test/test.py && coverage report -m > ./test/pytest-coverage.log
+          coverage run --source=./src -m pytest -v ./test/test.py && coverage report -m
+          # coverage run --source=./src -m pytest -v ./test/test.py && coverage report -m > ./test/pytest-coverage.log
           # pytest --cache-clear --cov=src test/test.py > ./test/pytest-coverage.log
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
