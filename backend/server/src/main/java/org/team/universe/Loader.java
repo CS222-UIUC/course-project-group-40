@@ -1,5 +1,6 @@
 package org.team.universe;
 
+
 import ai.djl.MalformedModelException;
 import ai.djl.modality.Classifications;
 import ai.djl.modality.cv.Image;

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8510110d-2da8-45c1-a6c3-4efd21fcb012" name="Changes" comment="" />
+    <list default="true" id="8510110d-2da8-45c1-a6c3-4efd21fcb012" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/Android" afterDir="false" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,8 +33,10 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,7 +56,7 @@
       <recent name="org.team.universe" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoaderTest">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.team.universe.App" />
       <module name="Universal Recognition" />
@@ -116,7 +119,6 @@
       <workItem from="1664398334804" duration="335000" />
       <workItem from="1664398673655" duration="990000" />
       <workItem from="1664399792694" duration="11209000" />
-      <workItem from="1664420187271" duration="26000" />
     </task>
     <servers />
   </component>
