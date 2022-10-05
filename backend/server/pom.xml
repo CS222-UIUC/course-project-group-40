@@ -176,6 +176,24 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.5</version>
+                    <!-- your existing configuration -->
+                    <!-- merging related config START -->
+                    <configuration>
+                        <fileSets>
+                            <fileSet>
+                                <directory>${project.build.directory}</directory>
+                                <includes>
+                                    <include>*.exec</include>
+                                </includes>
+                            </fileSet>
+                        </fileSets>
+                    </configuration>
+                    <!-- merging related config END -->
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
