@@ -60,7 +60,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven and run tests
-      run: mvn --batch-mode clean verify
+      run: mvn clean jacoco:prepare-agent install jacoco:report
 
     - name: Generate JaCoCo Badge
       id: jacoco
