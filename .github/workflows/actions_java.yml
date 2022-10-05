@@ -56,6 +56,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven and run tests
+      working-directory: ./backend/server/ 
       run: mvn -B test
 
     - name: Generate JaCoCo Badge
