@@ -38,7 +38,7 @@ jobs:
       # Using Maven to build the program, RUN ALL TESTS, and pass all tests
       - name: Build with Maven
         working-directory: ./backend/server/ 
-        run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode clean verify
         
         
 #   # Test coverage      
