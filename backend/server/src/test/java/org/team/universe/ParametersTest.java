@@ -1,12 +1,11 @@
 package org.team.universe;
 
+import static org.junit.Assert.assertTrue;
+
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import org.junit.jupiter.api.Test;
-
 import java.util.Objects;
-
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /** Unit test for Parameters. */
 public class ParametersTest {

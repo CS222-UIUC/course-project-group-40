@@ -1,5 +1,6 @@
 package org.team.universe;
 
+import static ai.djl.repository.zoo.ModelZoo.listModels;
 
 import ai.djl.MalformedModelException;
 import ai.djl.modality.Classifications;
@@ -7,10 +8,7 @@ import ai.djl.modality.cv.Image;
 import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
-
 import java.io.IOException;
-
-import static ai.djl.repository.zoo.ModelZoo.listModels;
 
 /** Loader to load PyTorch TorchScript model */
 public class Loader {

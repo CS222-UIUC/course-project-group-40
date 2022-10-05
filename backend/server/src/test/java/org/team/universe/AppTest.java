@@ -1,12 +1,11 @@
 package org.team.universe;
 
+import static org.junit.Assert.assertTrue;
+
 import ai.djl.MalformedModelException;
 import ai.djl.repository.zoo.ModelNotFoundException;
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
-
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /** Unit test for simple App. */
 public class AppTest {
