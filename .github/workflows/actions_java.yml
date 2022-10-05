@@ -57,7 +57,7 @@ jobs:
 
     - name: Build with Maven and run tests
       working-directory: ./backend/server/ 
-      run: mvn -B test
+      run: mvn --batch-mode clean verify
 
     - name: Generate JaCoCo Badge
       id: jacoco
