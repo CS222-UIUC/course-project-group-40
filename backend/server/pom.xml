@@ -179,20 +179,22 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.5</version>
-                    <!-- your existing configuration -->
-                    <!-- merging related config START -->
-                    <configuration>
-                        <fileSets>
-                            <fileSet>
-                                <directory>${project.build.directory}</directory>
-                                <includes>
-                                    <include>*.exec</include>
-                                </includes>
-                            </fileSet>
-                        </fileSets>
-                    </configuration>
-                    <!-- merging related config END -->
+                    <version>0.8.6</version>
+                    <executions>
+                        <execution>
+                            <id>jacoco-initialize</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
