@@ -12,6 +12,8 @@ import java.io.IOException;
 
 /** Loader to load PyTorch TorchScript model. */
 public class Loader {
+
+  /** Loader from http link, local file path, and so on. */
   public static ZooModel<Image, Classifications> loadFromAny(String input)
       throws ModelNotFoundException, MalformedModelException, IOException {
     // create Criteria
@@ -26,6 +28,7 @@ public class Loader {
     return model;
   }
 
+  /** Loader from local file path. */
   public static ZooModel<Image, Classifications> loadFromFile(String script_path)
       throws ModelNotFoundException, MalformedModelException, IOException {
     // create Criteria
@@ -41,6 +44,7 @@ public class Loader {
     return model;
   }
 
+  /** Loader from http link. */
   public static ZooModel<Image, Classifications> loadFromHttp(String link)
       throws ModelNotFoundException, MalformedModelException, IOException {
     // create Criteria

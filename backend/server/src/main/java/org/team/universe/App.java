@@ -4,6 +4,7 @@ package org.team.universe;
 public class App {
   private static int currentVersion = 0;
 
+  /** Main program. */
   public static void main(String[] args) throws Exception {
     // Parser inputs
     Parser parser = new Parser(args);
