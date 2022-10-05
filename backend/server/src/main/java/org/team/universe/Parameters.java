@@ -38,23 +38,27 @@ public class Parameters {
       help = true)
   private boolean version = false;
 
-  // Public getter functions
+  /** Getter function for Modelpath. */
   public String getModelpath() {
     return modelpath;
   }
 
+  /** Getter function for Address. */
   public String getAddress() {
     return address;
   }
 
+  /** Getter function for Port. */
   public String getPort() {
     return port;
   }
 
+  /** Getter function for Help. */
   public boolean isHelp() {
     return help;
   }
 
+  /** Getter function for Version. */
   public boolean isVersion() {
     return version;
   }

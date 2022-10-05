@@ -11,6 +11,7 @@ public class Parser {
   private boolean version = false;
   private Parameters result;
 
+  /** Wrapper of Jcommander. */
   Parser(String[] args) {
     // Wrapper of parser
     this.result = new Parameters();
@@ -34,19 +35,22 @@ public class Parser {
     }
   }
 
-  // Public getter functions
+  /** Getter function for Help. */
   public boolean isHelp() {
     return help;
   }
 
+  /** Getter function for Version. */
   public boolean isVersion() {
     return version;
   }
 
+  /** Getter function for Error. */
   public boolean isError() {
     return result == null;
   }
 
+  /** Getter function for Modelpath. */
   public String getModelpath() {
     if (result != null) {
       return result.getModelpath();
@@ -55,6 +59,7 @@ public class Parser {
     }
   }
 
+  /** Getter function for Address. */
   public String getAddress() {
     if (result != null) {
       return result.getAddress();
@@ -63,6 +68,7 @@ public class Parser {
     }
   }
 
+  /** Getter function for Port. */
   public String getPort() {
     if (result != null) {
       return result.getPort();
