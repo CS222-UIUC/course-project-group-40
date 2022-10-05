@@ -1,192 +1,207 @@
 package org.team.universe;
 
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import org.junit.Test;
 
 import java.util.Objects;
 
 import static org.junit.Assert.assertTrue;
 
 public class ParametersTest {
-    public void getModelpathNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "-p", "1010" };
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+  @Test
+  public void getModelpathNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath"};
 
-        if (param.getModelpath() != null) {
-            assertTrue(false);
-        }
+    try {
+      Objects.requireNonNull(args, "Null parameter array");
+      JCommander jcommander = new JCommander(param);
+      jcommander.setProgramName("UniversialRecognition");
+      jcommander.parse(args);
+    } catch (ParameterException e) {
+      assertTrue(true);
     }
+  }
 
-    public void getModelpathNotNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-p", "1010" };
+  @Test
+  public void getModelpathNotNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.getModelpath() == null) {
-            assertTrue(false);
-        }
+    if (param.getModelpath() == null) {
+      assertTrue(false);
     }
+  }
 
-    public void getModelpathValueTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-p", "1010" };
+  @Test
+  public void getModelpathValueTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.getModelpath().equals("Documents/model.pt")) {
-            assertTrue(true);
-        }
+    if (param.getModelpath().equals("Documents/model.pt")) {
+      assertTrue(true);
     }
+  }
 
-    public void getAddressNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-p", "1010" };
+  @Test
+  public void getAddressNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.getAddress() == null) {
-            assertTrue(true);
-        }
+    if (param.getAddress() == null) {
+      assertTrue(true);
     }
+  }
 
-    public void getAddressNotNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010" };
+  @Test
+  public void getAddressNotNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.getAddress() == null) {
-            assertTrue(false);
-        }
+    if (param.getAddress() == null) {
+      assertTrue(false);
     }
+  }
 
-    public void getAddressValueTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010" };
+  @Test
+  public void getAddressValueTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (!param.getAddress().equals("127.0.0.1")) {
-            assertTrue(false);
-        }
+    if (!param.getAddress().equals("127.0.0.1")) {
+      assertTrue(false);
     }
+  }
 
-    public void getPortNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p" };
+  @Test
+  public void getPortNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
-
-        if (param.getPort() != null) {
-            assertTrue(false);
-        }
+    try {
+      Objects.requireNonNull(args, "Null parameter array");
+      JCommander jcommander = new JCommander(param);
+      jcommander.setProgramName("UniversialRecognition");
+      jcommander.parse(args);
+    } catch (ParameterException e) {
+      assertTrue(true);
     }
+  }
 
+  @Test
+  public void getPortNotNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
 
-    public void getPortNotNullTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p",  "1010"  };
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
-
-        if (param.getPort() == null) {
-            assertTrue(false);
-        }
+    if (param.getPort() == null) {
+      assertTrue(false);
     }
+  }
 
-    public void getPortValueTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p",  "1010"  };
+  @Test
+  public void getPortValueTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (!param.getPort().equals("1010")) {
-            assertTrue(false);
-        }
+    if (!param.getPort().equals("1010")) {
+      assertTrue(false);
     }
+  }
 
-    public void isHelpFalseTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--modelpath", "Documents/model.pt"  };
+  @Test
+  public void isHelpFalseTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--modelpath", "Documents/model.pt"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.isHelp()) {
-            assertTrue(false);
-        }
+    if (param.isHelp()) {
+      assertTrue(false);
     }
+  }
 
-    public void isHelpTrueTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--help"  };
+  @Test
+  public void isHelpTrueTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--help"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (!param.isHelp()) {
-            assertTrue(false);
-        }
+    if (!param.isHelp()) {
+      assertTrue(false);
     }
+  }
 
-    public void isVersionFalseTest() {
-        Parameters param = new Parameters();
-        String[] args = { "--help"  };
+  @Test
+  public void isVersionFalseTest() {
+    Parameters param = new Parameters();
+    String[] args = {"--help"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (param.isVersion()) {
-            assertTrue(false);
-        }
+    if (param.isVersion()) {
+      assertTrue(false);
     }
+  }
 
-    public void isVersionTrueTest() {
-        Parameters param = new Parameters();
-        String[] args = { "-v"  };
+  @Test
+  public void isVersionTrueTest() {
+    Parameters param = new Parameters();
+    String[] args = {"-v"};
 
-        Objects.requireNonNull(args, "Null parameter array");
-        JCommander jcommander = new JCommander(param);
-        jcommander.setProgramName("UniversialRecognition");
-        jcommander.parse(args);
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
 
-        if (!param.isVersion()) {
-            assertTrue(false);
-        }
+    if (!param.isVersion()) {
+      assertTrue(false);
     }
+  }
 }

@@ -9,16 +9,13 @@ import org.team.universe.Loader;
 
 import java.io.IOException;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args ) throws ModelNotFoundException, MalformedModelException, IOException {
-        // load pre-trained PyTorch TorchScript model locally
+/** Hello world! */
+public class App {
+  public static void main(String[] args)
+      throws ModelNotFoundException, MalformedModelException, IOException {
+    // load pre-trained PyTorch TorchScript model locally
 
-//        ZooModel<Image, Classifications> model = new Loader().loadFromFile( script_path );
+    //        ZooModel<Image, Classifications> model = new Loader().loadFromFile( script_path );
 
     // TODO: receive one image from Android devices
 
