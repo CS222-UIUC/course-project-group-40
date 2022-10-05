@@ -2,12 +2,13 @@ package org.team.universe;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
 import static org.junit.Assert.assertTrue;
 
+/** Unit test for Parameters. */
 public class ParametersTest {
 
   @Test

@@ -2,13 +2,13 @@ package org.team.universe;
 
 import ai.djl.MalformedModelException;
 import ai.djl.repository.zoo.ModelNotFoundException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
-/** Unit test for simple App. */
+/** Unit test for Loader. */
 public class LoaderTest {
   @Test
   public void testLoaderFromAnyBrokenFiles() {

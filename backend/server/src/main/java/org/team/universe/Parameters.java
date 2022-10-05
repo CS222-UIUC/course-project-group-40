@@ -5,6 +5,8 @@ import com.beust.jcommander.Parameter;
 /** GNU-Standard Command Line Options and Parameters */
 public class Parameters {
   // Official Doc: https://jcommander.org/#_overview
+
+  // Options and descriptions for inputs
   @Parameter(
       names = {"--modelpath", "-mp"},
       description =
@@ -36,6 +38,7 @@ public class Parameters {
       help = true)
   private boolean version = false;
 
+  // Public getter functions
   public String getModelpath() {
     return modelpath;
   }
