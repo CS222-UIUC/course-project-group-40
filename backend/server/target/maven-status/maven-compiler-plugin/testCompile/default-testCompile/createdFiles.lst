@@ -1,1 +1,4 @@
+org/team/universe/LoaderTest.class
 org/team/universe/AppTest.class
+org/team/universe/ParametersTest.class
+org/team/universe/ParserTest.class

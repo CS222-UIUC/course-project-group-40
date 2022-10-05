@@ -1,0 +1,6 @@
+# Created at 2022-10-04T22:29:48.464
+OpenJDK 64-Bit Server VM warning: You have loaded library /home/liam/.djl.ai/pytorch/1.12.1-20220818-cpu-linux-x86_64/libtorch_cpu.so which might have disabled stack guard. The VM will try to fix the stack guard now.
+
+# Created at 2022-10-04T22:29:48.465
+It's highly recommended that you fix the library with 'execstack -c <libfile>', or link it with '-z noexecstack'.
+

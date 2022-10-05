@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.team.universe.AppTest" time="0.03" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.team.universe.LoaderTest" time="0.604" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -58,6 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testMainBrokenPath" classname="org.team.universe.AppTest" time="0.025"/>
-  <testcase name="testMainBrokenPath2" classname="org.team.universe.AppTest" time="0"/>
+  <testcase name="testLoaderFromFile" classname="org.team.universe.LoaderTest" time="0.026"/>
+  <testcase name="testLoaderFromHttp" classname="org.team.universe.LoaderTest" time="0.577"/>
+  <testcase name="testLoaderFromAnyBrokenFiles" classname="org.team.universe.LoaderTest" time="0.001"/>
 </testsuite>

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: org.team.universe.AppTest
+Test set: org.team.universe.ParserTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 s - in org.team.universe.AppTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in org.team.universe.ParserTest
