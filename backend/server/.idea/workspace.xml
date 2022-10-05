@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="99305b1e-4bdf-466c-90e2-87e182b7a466" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/LoaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/LoaderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +43,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
-  <component name="RunManager" selected="JUnit.universe in UniversalRecognition">
+  <component name="RunManager" selected="JUnit.LoaderTest">
     <configuration name="AppTest and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UniversalRecognition" />
       <option name="TEST_OBJECT" value="pattern" />
@@ -73,7 +72,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParametersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UniversalRecognition" />
       <extension name="coverage">
         <pattern>
@@ -82,7 +81,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.ParametersTest" />
+      <option name="MAIN_CLASS_NAME" value="org.team.universe.LoaderTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,18 +125,18 @@
     <list>
       <item itemvalue="JUnit.Test" />
       <item itemvalue="JUnit.AppTest" />
-      <item itemvalue="JUnit.ParametersTest" />
       <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="JUnit.AppTest and 3 more" />
       <item itemvalue="JUnit.universe in UniversalRecognition" />
+      <item itemvalue="JUnit.LoaderTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoaderTest" />
+        <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.universe in UniversalRecognition" />
         <item itemvalue="JUnit.AppTest and 3 more" />
         <item itemvalue="JUnit.ParserTest" />
-        <item itemvalue="JUnit.ParametersTest" />
-        <item itemvalue="JUnit.AppTest" />
       </list>
     </recent_temporary>
   </component>
@@ -150,7 +149,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664929092505</updated>
       <workItem from="1664929095539" duration="4635000" />
-      <workItem from="1664939876455" duration="5707000" />
+      <workItem from="1664939876455" duration="7159000" />
     </task>
     <servers />
   </component>

@@ -28,13 +28,13 @@ public class LoaderTest {
   public void testLoaderFromFile() {
     String modelUrl = "squeezenet_v1.1.tar.gz";
     try {
-      Loader.loadFromHttp(modelUrl);
+      Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(false);
+      assertTrue(true);
     }
   }
 
@@ -49,6 +49,23 @@ public class LoaderTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void testLoaderFromAny() {
+    String modelUrl =
+        "jar://squeezenet_v1.1_error.zip";
+    try {
+      Loader.loadFromAny(modelUrl);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (IllegalArgumentException e){
       assertTrue(true);
     }
   }
