@@ -2,7 +2,7 @@ package org.team.universe;
 
 import com.beust.jcommander.Parameter;
 
-/** GNU-Standard Command Line Options and Parameters */
+/** GNU-Standard Command Line Options and Parameters. */
 public class Parameters {
   // Official Doc: https://jcommander.org/#_overview
 

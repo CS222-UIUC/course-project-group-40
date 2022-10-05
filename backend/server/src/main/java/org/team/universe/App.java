@@ -1,6 +1,6 @@
 package org.team.universe;
 
-/** Main program of the server project */
+/** Main program of the server project. */
 public class App {
   private static int currentVersion = 0;
 

@@ -10,7 +10,7 @@ import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
 import java.io.IOException;
 
-/** Loader to load PyTorch TorchScript model */
+/** Loader to load PyTorch TorchScript model. */
 public class Loader {
   public static ZooModel<Image, Classifications> loadFromAny(String input)
       throws ModelNotFoundException, MalformedModelException, IOException {

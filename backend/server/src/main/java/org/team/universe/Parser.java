@@ -4,7 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import java.util.Objects;
 
-/** Parser of parameter inputs of main program */
+/** Parser of parameter inputs of main program. */
 public class Parser {
 
   private boolean help = false;
