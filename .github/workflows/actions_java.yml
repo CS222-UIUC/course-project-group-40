@@ -46,7 +46,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - working-directory: ./backend/server/ 
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -63,6 +62,7 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
+      working-directory: ./backend/server/ 
       run: mvn -B package -Pcoverage
 
     - name: Generate JaCoCo badge
