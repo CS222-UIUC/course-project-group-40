@@ -6,20 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="99305b1e-4bdf-466c-90e2-87e182b7a466" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversalRecognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UniversalRecognition.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2022-10-04T22-29-47_519.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +148,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664929092505</updated>
       <workItem from="1664929095539" duration="4635000" />
-      <workItem from="1664939876455" duration="2707000" />
+      <workItem from="1664939876455" duration="3200000" />
     </task>
     <servers />
   </component>
