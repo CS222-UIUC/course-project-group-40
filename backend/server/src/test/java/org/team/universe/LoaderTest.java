@@ -55,8 +55,7 @@ public class LoaderTest {
 
   @Test
   public void testLoaderFromAny() {
-    String modelUrl =
-        "jar://squeezenet_v1.1_error.zip";
+    String modelUrl = "jar://squeezenet_v1.1_error.zip";
     try {
       Loader.loadFromAny(modelUrl);
     } catch (ModelNotFoundException e) {
@@ -65,7 +64,7 @@ public class LoaderTest {
       assertTrue(false);
     } catch (IOException e) {
       assertTrue(false);
-    } catch (IllegalArgumentException e){
+    } catch (IllegalArgumentException e) {
       assertTrue(true);
     }
   }
