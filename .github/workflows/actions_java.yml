@@ -82,6 +82,7 @@ jobs:
         add: '*.svg'
 
   comment_pr_with_coverage_badge:
+    needs: coverage
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
