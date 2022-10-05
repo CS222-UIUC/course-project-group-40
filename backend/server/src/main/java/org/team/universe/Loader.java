@@ -29,14 +29,14 @@ public class Loader {
   }
 
   /** Loader from local file path. */
-  public static ZooModel<Image, Classifications> loadFromFile(String script_path)
+  public static ZooModel<Image, Classifications> loadFromFile(String scriptPath)
       throws ModelNotFoundException, MalformedModelException, IOException {
     // create Criteria
     // offical Doc http://docs.djl.ai/docs/load_model.html
     Criteria<Image, Classifications> criteria =
         Criteria.builder()
             .setTypes(Image.class, Classifications.class) // defines input and output data type
-            .optModelUrls("file://" + script_path) // search models in specified path
+            .optModelUrls("file://" + scriptPath) // search models in specified path
             .build();
 
     System.out.println(listModels(criteria));
