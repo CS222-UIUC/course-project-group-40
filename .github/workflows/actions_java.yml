@@ -86,5 +86,12 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v1
         with:
-          message: "![JacocoBadge](.github/badges/jacoco.svg) :tada:"
+          message: "Test Coverage: ![JacocoBadge](.github/badges/jacoco.svg) :tada:"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Edit PR comment
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: "Updated Test Coverage: ![JacocoBadge](.github/badges/jacoco.svg) :tada:"
+          comment_includes: "![JacocoBadge](.github/badges/jacoco.svg) :tada:"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
