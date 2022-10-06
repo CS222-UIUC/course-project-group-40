@@ -3,7 +3,7 @@ import torch
 # import random # Curently not used
 import os
 import sys
-sys.path.append("./backend/vision-model/")
+sys.path.append(".")
 
 
 # TEST FOR SEED SETUP
