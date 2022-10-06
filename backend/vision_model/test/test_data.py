@@ -1,7 +1,4 @@
-import numpy as np
-from regex import D
 import torch
-import os
 import sys
 sys.path.append(".")
 
@@ -9,14 +6,14 @@ sys.path.append(".")
 # TEST FOR OcrRecDataSet
 def test_OcrRecDataSet():
     from torchvision import transforms
-    from torch.utils.data import Dataset, DataLoader
+    from torch.utils.data import DataLoader
     import PIL
     from src.data import OcrRecDataSet
     from src.train import setup_args
-    
+
     sys.argv = ['']
     args = setup_args()
-    
+
     # TEST OcrRecDataSet
     dataset = OcrRecDataSet(args.data_path, args.data_type)
 
@@ -25,10 +22,18 @@ def test_OcrRecDataSet():
     assert dataset.transform is None
     assert isinstance(dataset[0][0], PIL.Image.Image)
 
-
     # TEST OcrRecDataSet with transform
-    dataset = OcrRecDataSet(args.data_path, args.data_type, transform=transforms.ToTensor())
-    train_loader = DataLoader(dataset=dataset, batch_size=1, shuffle=False, num_workers=0)
+    dataset = OcrRecDataSet(
+        args.data_path,
+        args.data_type,
+        transform=transforms.ToTensor()
+    )
+    train_loader = DataLoader(
+        dataset=dataset,
+        batch_size=1,
+        shuffle=False,
+        num_workers=0
+    )
     for img, label in train_loader:
         break
 

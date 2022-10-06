@@ -1,6 +1,3 @@
-import json
-import os
-import glob
 import pathlib
 
 
@@ -12,8 +9,9 @@ def load(file_path: str):
     return func_dict[file_path.suffix](file_path)
 
 
-# LOAD DATA FOR TXT FORMAT  
+# LOAD DATA FOR TXT FORMAT
 def load_txt(file_path: str):
     with open(file_path, 'r', encoding='utf8') as f:
-        content = [x.strip().strip('\ufeff').strip('\xef\xbb\xbf') for x in f.readlines()]
+        content = [x.strip().strip('\ufeff').strip('\xef\xbb\xbf')
+                   for x in f.readlines()]
     return content

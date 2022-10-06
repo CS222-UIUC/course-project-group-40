@@ -54,7 +54,11 @@ def build_optimizer(model, args):
 
 # BUILD SCHDULER
 def build_scheduler(optimizer, args):
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.step_size, gamma=args.gamma)
+    scheduler = torch.optim.lr_scheduler.StepLR(
+        optimizer,
+        step_size=args.step_size,
+        gamma=args.gamma
+    )
     return scheduler
 
 
@@ -62,13 +66,20 @@ def build_scheduler(optimizer, args):
 def main(args):
     # ===> SET UP DEVICE
     device = setup_device(args)
+    assert device
 
     # ===> SET UP RANDOM SEEDS
     setup_seed()
 
     # ===> LOAD DATA
     from src.data import OcrRecDataSet
-    dataset = OcrRecDataSet(args.data_path, args.data_type, transform=transforms.ToTensor())
+    dataset = OcrRecDataSet(
+        args.data_path,
+        args.data_type,
+        transform=transforms.ToTensor()
+    )
+    assert dataset
+
 
 if __name__ == '__main__':
     setup_seed()

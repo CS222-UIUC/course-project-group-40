@@ -17,7 +17,8 @@ class MLP(nn.Module):
         X = F.relu(self.layer1(X))
         X = self.dropout(X)
         X = self.layer2(X)
-        return X.squeeze(-1) if self.output_dim == 1 else F.log_softmax(X, dim=-1)
+        return X.squeeze(-1) if self.output_dim == 1 else \
+            F.log_softmax(X, dim=-1)
 
     def save(self, name):
         torch.save(self, name)

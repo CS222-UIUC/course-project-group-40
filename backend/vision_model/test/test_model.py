@@ -1,5 +1,3 @@
-import numpy as np
-from regex import D
 import torch
 import os
 import sys
@@ -8,13 +6,7 @@ sys.path.append(".")
 
 # TEST FOR MLP
 def test_MLP():
-    from torch import nn
     from src.model import MLP
-    from src.train import setup_args
-    
-
-    sys.argv = ['']
-    args = setup_args()
     model = MLP()
 
     # TEST MLP

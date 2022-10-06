@@ -1,16 +1,14 @@
-import os
 import sys
 import numpy as np
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
-
 sys.path.append(".")
-from src.utils import load
 
 
 class OcrRecDataSet(Dataset):
     # INITIALIZATION
-    def __init__(self, txt_path, txt_type, transform=None, target_transform=None):
+    def __init__(self, txt_path, txt_type, transform=None):
+        from src.utils import load
         self.txt_path = txt_path
         self.txt_type = txt_type
         self.data_list = load(self.txt_path + self.txt_type)
@@ -27,7 +25,7 @@ class OcrRecDataSet(Dataset):
             if self.transform:
                 img = self.transform(img)
             return img, label
-        except:
+        except Exception:
             return self.__getitem__(np.random.randint(self.__len__()))
 
     # GET LENGTH
@@ -57,9 +55,18 @@ if __name__ == '__main__':
     json_type = "test.txt"
 
     # GENERATE DATASET
-    dataset = OcrRecDataSet(json_path, json_type, transform=transforms.ToTensor())
-    test_loader = DataLoader(dataset=dataset, batch_size=1, shuffle=True, num_workers=0)
-    
+    dataset = OcrRecDataSet(
+        json_path,
+        json_type,
+        transform=transforms.ToTensor()
+    )
+    test_loader = DataLoader(
+        dataset=dataset,
+        batch_size=1,
+        shuffle=True,
+        num_workers=0
+    )
+
     # SHOW SAMPLE
     pbar = tqdm(total=len(test_loader))
     for i, (img, label) in enumerate(test_loader):
