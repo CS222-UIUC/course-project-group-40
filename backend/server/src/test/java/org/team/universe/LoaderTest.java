@@ -26,7 +26,7 @@ public class LoaderTest {
 
   @Test
   public void testLoaderFromFile() {
-    String modelUrl = "squeezenet_v1.1.tar.gz";
+    String modelUrl = "build/src/mnet.tar.gz";
     try {
       Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {
@@ -41,8 +41,8 @@ public class LoaderTest {
 
 
   @Test
-  public void testLoaderFromAny() {
-    String modelUrl = "squeezenet_v1.1_error.zip";
+  public void testLoaderFromFileMoreException() {
+    String modelUrl = "build/src/mnet.tar.gz";
     try {
       Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {

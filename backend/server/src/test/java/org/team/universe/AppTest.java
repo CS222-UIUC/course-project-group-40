@@ -33,7 +33,7 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
       assertTrue(true);
     }
@@ -49,7 +49,7 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
       assertTrue(true);
     }
@@ -66,9 +66,9 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
-      assertTrue(true);
+      assertTrue(false);
     }
     Assert.assertEquals("Universal Recognition 0", outputStreamCaptor.toString().trim());
   }
@@ -85,9 +85,9 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
-      assertTrue(true);
+      assertTrue(false);
     }
   }
 
@@ -102,9 +102,9 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
-      assertTrue(true);
+      assertTrue(false);
     }
 
     Assert.assertEquals(
