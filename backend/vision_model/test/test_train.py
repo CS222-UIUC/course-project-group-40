@@ -25,13 +25,16 @@ def test_args():
     args = setup_args()
 
     # TESTS
-    assert args.data_path == "./data/"
+    assert args.data_path == "./datasets/icdar2015/recognition/test/"
+    assert args.data_type == "test.txt"
     assert args.device == "cpu"
     assert args.num_classes == 5
     assert args.epochs == 10
     assert args.batch_size == 8
     assert args.lr == 0.0002
     assert args.weights == "./vision.pt"
+    assert args.step_size == 5
+    assert args.gamma == 0.1
 
 
 # TEST FOR DEVICE SETUP
@@ -55,6 +58,37 @@ def test_main():
 
     # TESTS
     main(args)
+
+
+# TEST FOR BUILD OPTIMIZER
+def test_optimizer():
+    from src.train import build_optimizer
+    from src.train import setup_args
+    from src.model import MLP
+
+    sys.argv = ['']
+    args = setup_args()
+
+    # TESTS
+    net = MLP()
+    optimizer = build_optimizer(net, args)
+    assert isinstance(optimizer, torch.optim.Adam)
+
+
+# TEST FOR BUILD SCHEDULER
+def test_scheduler():
+    from src.train import build_optimizer
+    from src.train import build_scheduler
+    from src.model import MLP
+    from src.train import setup_args
+    sys.argv = ['']
+    args = setup_args()
+
+    # TESTS
+    net = MLP()
+    optimizer = build_optimizer(net, args)
+    scheduler = build_scheduler(optimizer, args)
+    assert isinstance(scheduler, torch.optim.lr_scheduler.StepLR)
 
 
 if __name__ == "__main__":
