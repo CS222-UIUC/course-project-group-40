@@ -74,6 +74,24 @@ public class AppTest {
   }
 
   @Test
+  public void normalTest() {
+    App main = new App();
+    String[] input =
+        new String[] {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
+    try {
+      main.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
   public void printUsageTest() {
     App main = new App();
     String[] input = new String[] {"-h"};

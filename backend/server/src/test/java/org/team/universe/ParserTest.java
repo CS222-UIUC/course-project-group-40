@@ -6,6 +6,14 @@ import org.junit.jupiter.api.Test;
 
 /** Unit test for Parser. */
 public class ParserTest {
+
+  @Test
+  public void nonPointerTest() {
+    String[] args = null;
+    Parser param = new Parser(args);
+    assertTrue(param.isError());
+  }
+
   @Test
   public void isErrorTrueTest() {
     String[] args = {"--modelpath"};
@@ -107,5 +115,14 @@ public class ParserTest {
     Parser param = new Parser(args);
 
     assertTrue(param.getPort().equals("1010"));
+  }
+
+  @Test
+  public void getResultTest() {
+    String[] args = {"--modelpath", "Documents/m.pt", "--address", "1010", "--port", "1010"};
+    Parser param = new Parser(args);
+    Parameters result = param.getResult();
+
+    assertTrue(result.getPort().equals("1010"));
   }
 }
