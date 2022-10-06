@@ -38,8 +38,6 @@ public class LoaderTest {
     }
   }
 
-
-
   @Test
   public void testLoaderFromFileMoreException() {
     String modelUrl = "build/src/mnet.tar.gz";
