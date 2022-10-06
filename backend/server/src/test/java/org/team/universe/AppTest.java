@@ -33,7 +33,7 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
       assertTrue(true);
     }
@@ -49,7 +49,7 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
       assertTrue(true);
     }
@@ -66,11 +66,29 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
-      assertTrue(true);
+      assertTrue(false);
     }
     Assert.assertEquals("Universal Recognition 0", outputStreamCaptor.toString().trim());
+  }
+
+  @Test
+  public void normalTest() {
+    App main = new App();
+    String[] input =
+        new String[] {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
+    try {
+      main.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(false);
+    }
   }
 
   @Test
@@ -84,9 +102,9 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     } catch (Exception e) {
-      assertTrue(true);
+      assertTrue(false);
     }
 
     Assert.assertEquals(

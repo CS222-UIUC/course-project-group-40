@@ -9,25 +9,10 @@ import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 /** Loader to load PyTorch TorchScript model. */
 public class Loader {
-
-  /** Loader from http link, local file path, and so on. */
-  public static ZooModel<Image, Classifications> loadFromAny(String input)
-      throws ModelNotFoundException, MalformedModelException, IOException {
-    // create Criteria
-    // offical Doc http://docs.djl.ai/docs/load_model.html
-    Criteria<Image, Classifications> criteria =
-        Criteria.builder()
-            .setTypes(Image.class, Classifications.class) // defines input and output data type
-            .optModelUrls(input) // search models in specified path
-            .build();
-
-    ZooModel<Image, Classifications> model = criteria.loadModel();
-    return model;
-  }
-
   /** Loader from local file path. */
   public static ZooModel<Image, Classifications> loadFromFile(String scriptPath)
       throws ModelNotFoundException, MalformedModelException, IOException {
@@ -36,25 +21,10 @@ public class Loader {
     Criteria<Image, Classifications> criteria =
         Criteria.builder()
             .setTypes(Image.class, Classifications.class) // defines input and output data type
-            .optModelUrls("file://" + scriptPath) // search models in specified path
+            .optModelPath(Paths.get(scriptPath)) // search models in specified path
             .build();
 
     System.out.println(listModels(criteria));
-    ZooModel<Image, Classifications> model = criteria.loadModel();
-    return model;
-  }
-
-  /** Loader from http link. */
-  public static ZooModel<Image, Classifications> loadFromHttp(String link)
-      throws ModelNotFoundException, MalformedModelException, IOException {
-    // create Criteria
-    // offical Doc http://docs.djl.ai/docs/load_model.html
-    Criteria<Image, Classifications> criteria =
-        Criteria.builder()
-            .setTypes(Image.class, Classifications.class) // defines input and output data type
-            .optModelUrls(link) // search models in specified path
-            .build();
-
     ZooModel<Image, Classifications> model = criteria.loadModel();
     return model;
   }

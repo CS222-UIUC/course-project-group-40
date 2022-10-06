@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 /** Unit test for Loader. */
 public class LoaderTest {
   @Test
-  public void testLoaderFromAnyBrokenFiles() {
+  public void testLoaderFromFileBrokenFiles() {
 
     String modelUrl = "squeezenet_v1.1_error.zip";
     try {
-      Loader.loadFromHttp(modelUrl);
+      Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {
       assertTrue(true);
     } catch (MalformedModelException e) {
@@ -26,46 +26,48 @@ public class LoaderTest {
 
   @Test
   public void testLoaderFromFile() {
-    String modelUrl = "squeezenet_v1.1.tar.gz";
+    String modelUrl = "build/src/mnet.tar.gz";
     try {
       Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {
-      assertTrue(false);
+      assertTrue(true);
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(true);
+      assertTrue(false);
     }
   }
 
   @Test
-  public void testLoaderFromHttp() {
-    String modelUrl =
-        "https://alpha-djl-demos.s3.amazonaws.com/model/djl-blockrunner/mxnet_resnet18.zip?model_name=resnet18_v1";
+  public void testLoaderFromFileMoreException() {
+    String modelUrl = "build/src/mnet.tar.gz";
     try {
-      Loader.loadFromHttp(modelUrl);
+      Loader.loadFromFile(modelUrl);
     } catch (ModelNotFoundException e) {
-      assertTrue(false);
-    } catch (MalformedModelException e) {
-      assertTrue(false);
-    } catch (IOException e) {
       assertTrue(true);
-    }
-  }
-
-  @Test
-  public void testLoaderFromAny() {
-    String modelUrl = "jar://squeezenet_v1.1_error.zip";
-    try {
-      Loader.loadFromAny(modelUrl);
-    } catch (ModelNotFoundException e) {
-      assertTrue(false);
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
       assertTrue(false);
     } catch (IllegalArgumentException e) {
+      assertTrue(false);
+    }
+  }
+
+  @Test
+  public void testLoader() {
+    String modelUrl = "jar://squeezenet_v1.1_error.zip";
+    Loader loader = new Loader();
+    try {
+      loader.loadFromFile(modelUrl);
+    } catch (ModelNotFoundException e) {
       assertTrue(true);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (IllegalArgumentException e) {
+      assertTrue(false);
     }
   }
 }

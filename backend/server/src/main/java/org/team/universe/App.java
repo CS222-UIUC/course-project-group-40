@@ -4,7 +4,7 @@ package org.team.universe;
 public class App {
   private static int currentVersion = 0;
 
-  // Main program.
+  /** Main program. */
   public static void main(String[] args) throws Exception {
     // Parser inputs
     Parser parser = new Parser(args);
@@ -22,8 +22,7 @@ public class App {
       return;
     }
 
-    // load pre-trained PyTorch TorchScript model locally
-    //     ZooModel<Image, Classifications> model = new Loader().loadFromFile( script_path );
+    // TODO: load pre-trained PyTorch TorchScript model locally
 
     // TODO: receive one image from Android devices
 
@@ -33,7 +32,7 @@ public class App {
 
   }
 
-  // Output sample usage
+  /** Output sample usage. */
   private static void printUsage() {
     System.out.println(
         "Usage: "
@@ -47,7 +46,7 @@ public class App {
             + "./universal --version\n");
   }
 
-  // Output current version
+  /** Output current version. */
   private static void printVersion() {
     System.out.println("Universal Recognition " + String.valueOf(currentVersion) + "\n");
   }
