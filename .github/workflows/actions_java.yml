@@ -2,8 +2,11 @@
 
 name: Actions for Java
 
-# Controls when the workflow will run
-on: pull_request
+# Controls when the workflow will run 
+on:
+  # Triggers the workflow on pull request events but only for the "main" branch
+  pull_request:
+    branches: [ "main" ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
