@@ -1,4 +1,4 @@
-package com.company.frontend.ui.home;
+package com.company.frontend.ui.search;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
