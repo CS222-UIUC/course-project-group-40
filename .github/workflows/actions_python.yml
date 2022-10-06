@@ -45,5 +45,3 @@ jobs:
           coverage run --source=./src -m pytest -v ./test/ && coverage report -m
           # coverage run --source=./src -m pytest -v ./test/ && coverage report -m > ./test/pytest-coverage.log
           # pytest --cache-clear --cov=src test/ > ./test/pytest-coverage.log
-      - name: Comment coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
