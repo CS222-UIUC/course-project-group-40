@@ -25,7 +25,7 @@ def test_args():
     args = setup_args()
 
     # TESTS
-    assert args.data_path == "./datasets/icdar2015/recognition/test/"
+    assert args.data_path == "./dataset/icdar2015/recognition/test/"
     assert args.data_type == "test.txt"
     assert args.device == "cpu"
     assert args.num_classes == 5

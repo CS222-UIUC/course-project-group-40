@@ -20,7 +20,7 @@ def test_OcrRecDataSet():
     # TEST OcrRecDataSet
     dataset = OcrRecDataSet(args.data_path, args.data_type)
 
-    assert dataset.txt_path == "./datasets/icdar2015/recognition/test/"
+    assert dataset.txt_path == "./dataset/icdar2015/recognition/test/"
     assert dataset.txt_type == "test.txt"
     assert dataset.transform is None
     assert isinstance(dataset[0][0], PIL.Image.Image)
@@ -28,8 +28,6 @@ def test_OcrRecDataSet():
 
     # TEST OcrRecDataSet with transform
     dataset = OcrRecDataSet(args.data_path, args.data_type, transform=transforms.ToTensor())
-
-    # TEST DATASET
     train_loader = DataLoader(dataset=dataset, batch_size=1, shuffle=False, num_workers=0)
     for img, label in train_loader:
         break

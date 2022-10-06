@@ -23,7 +23,7 @@ def setup_seed(seed=SEED):
 def setup_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str,
-                        default="./datasets/icdar2015/recognition/test/")
+                        default="./dataset/icdar2015/recognition/test/")
     parser.add_argument('--data_type', type=str,
                         default="test.txt")
     parser.add_argument('--device', default='cpu',

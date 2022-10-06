@@ -53,7 +53,7 @@ if __name__ == '__main__':
     plt.rcParams['axes.unicode_minus'] = False  # Show minus sign
 
     # SET FILE PATH
-    json_path = "./backend/vision_model/datasets/icdar2015/recognition/test/"
+    json_path = "./backend/vision_model/dataset/icdar2015/recognition/test/"
     json_type = "test.txt"
 
     # GENERATE DATASET
