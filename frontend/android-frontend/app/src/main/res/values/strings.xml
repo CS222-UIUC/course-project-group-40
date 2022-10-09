@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UI</string>
+    <string name="search_photo">Photos</string>
+    <string name="search_camera">Camera</string>
+</resources>
