@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">UI</string>
-    <string name="search_photo">Photos</string>
-    <string name="search_camera">Camera</string>
+    <string name="app_name">android-frontend</string>
+    <string name="button">Launch Image Recognize</string>
 </resources>
