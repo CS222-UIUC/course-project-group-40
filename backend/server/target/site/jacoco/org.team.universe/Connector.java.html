@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Connector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Universal Recognition</a> &gt; <a href="index.source.html" class="el_package">org.team.universe</a> &gt; <span class="el_source">Connector.java</span></div><h1>Connector.java</h1><pre class="source lang-java linenums">package org.team.universe;
+
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import javax.imageio.ImageIO;
+
+/**
+ * Connector of the server project. It currently uses TCP network protocol to connect with Andorid
+ * client.
+ *
+ * &lt;p&gt;Resources doc of network programming in Java: https://www.baeldung.com/a-guide-to-java-sockets
+ * https://www.runoob.com/java/java-networking.html
+ * https://blog.csdn.net/qq_53344479/article/details/124703708
+ */
+<span class="fc" id="L22">public class Connector {</span>
+  private ServerSocket serverSocket;
+  private Socket clientSocket;
+
+  private InputStream inputStream;
+  private OutputStream outputStream;
+
+  private BufferedImage bufferedImage;
+  private PrintWriter output;
+
+  private BufferedReader input;
+
+  /** Start to listen to clients and establish connection */
+  public void startConnection(String address, String port) throws IOException {
+    // set the socket of this server and keep listing
+<span class="fc" id="L37">    int serverPort = Integer.parseInt(port);</span>
+<span class="nc" id="L38">    serverSocket = new ServerSocket(serverPort);</span>
+<span class="nc" id="L39">    clientSocket = serverSocket.accept();</span>
+
+    // obtain the streams to read and write to client
+<span class="nc" id="L42">    inputStream = clientSocket.getInputStream();</span>
+<span class="nc" id="L43">    outputStream = clientSocket.getOutputStream();</span>
+<span class="nc" id="L44">  }</span>
+
+  /** receive the image from client */
+  public void readImage() throws IOException {
+<span class="nc" id="L48">    bufferedImage = ImageIO.read(inputStream);</span>
+<span class="nc" id="L49">  }</span>
+
+  @Deprecated
+  /** receive the image from client by buffered strings */
+  public void readImageByStrings() throws IOException {
+<span class="nc" id="L54">    input = new BufferedReader(new InputStreamReader((inputStream)));</span>
+<span class="nc" id="L55">    output = new PrintWriter(outputStream);</span>
+
+    // Start to read image
+<span class="nc" id="L58">    String height = input.readLine();</span>
+<span class="nc" id="L59">    String width = input.readLine();</span>
+
+<span class="nc" id="L61">    int length = Integer.parseInt(height) * Integer.parseInt(width);</span>
+<span class="nc" id="L62">    byte[] bytes = new byte[length];</span>
+    // TODO: read lines from client
+<span class="nc" id="L64">  }</span>
+
+  /** send result to client */
+  public void sendMessage(String message) {
+    // TODO: Send the result of calculations with Deep Learning models to client
+<span class="nc" id="L69">    output.println(message);</span>
+<span class="nc" id="L70">  }</span>
+
+  /** clean-up utility */
+  public void closeConnection() throws IOException {
+<span class="nc" id="L74">    output.close();</span>
+<span class="nc" id="L75">    clientSocket.close();</span>
+<span class="nc" id="L76">    serverSocket.close();</span>
+<span class="nc" id="L77">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -85,7 +85,7 @@ public class AppTest {
     } catch (MalformedModelException e) {
       assertTrue(false);
     } catch (IOException e) {
-      assertTrue(false);
+      assertTrue(true);
     } catch (Exception e) {
       assertTrue(false);
     }
@@ -112,5 +112,23 @@ public class AppTest {
             + "For help: ./universal --help\n"
             + "For version: ./universal --version",
         outputStreamCaptor.toString().trim());
+  }
+
+  @Test
+  public void connectionTest() {
+    App main = new App();
+    String[] input =
+        new String[] {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};
+    try {
+      main.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (Exception e) {
+      assertTrue(false);
+    }
   }
 }
