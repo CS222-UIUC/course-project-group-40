@@ -1,9 +1,16 @@
+import os
+import sys
+import pathlib
 import argparse
 import torch
 import random
-import os
 import numpy as np
 from torchvision import transforms
+
+__dir__ = pathlib.Path(os.path.dirname(os.path.realpath('__file__')))
+sys.path.append(str(__dir__))
+sys.path.append(str(__dir__.parent))
+sys.path.append(str(__dir__.parent.parent))
 SEED = 17
 
 
@@ -22,8 +29,11 @@ def setup_seed(seed=SEED):
 # SET UP ARGUMENTS PARSER
 def setup_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, default='resnet18')
+    parser.add_argument('--config', type=str, default='config/cfg_rec_crnn.py')
+
     parser.add_argument('--data_path', type=str,
-                        default="./dataset/icdar2015/recognition/test/")
+                        default="./dataset/ocr/icdar2015/recognition/test/")
     parser.add_argument('--data_type', type=str,
                         default="test.txt")
     parser.add_argument('--device', default='cpu',
@@ -79,6 +89,11 @@ def main(args):
         transform=transforms.ToTensor()
     )
     assert dataset
+
+    # ===> build network
+    from model.ocr import build_model
+    net = build_model(args)
+    assert net
 
 
 if __name__ == '__main__':
