@@ -1,4 +1,4 @@
-package com.company.ui;
+package com.company.android_frontend;
 
 import org.junit.Test;
 

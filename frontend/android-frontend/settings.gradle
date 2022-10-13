@@ -1,2 +1,2 @@
-rootProject.name = "UI"
+rootProject.name = "android-frontend"
 include ':app'
