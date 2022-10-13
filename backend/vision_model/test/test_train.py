@@ -1,9 +1,10 @@
 import numpy as np
 import torch
-# import random # Curently not used
 import os
 import sys
-sys.path.append(".")
+# import random # Curently not used
+# import pathlib
+# sys.path.append(".")
 
 
 # TEST FOR SEED SETUP
@@ -25,7 +26,7 @@ def test_args():
     args = setup_args()
 
     # TESTS
-    assert args.data_path == "./dataset/icdar2015/recognition/test/"
+    assert args.data_path == "./dataset/ocr/icdar2015/recognition/test/"
     assert args.data_type == "test.txt"
     assert args.device == "cpu"
     assert args.num_classes == 5
@@ -51,20 +52,19 @@ def test_device():
 
 # TEST FOR TRAINING MAIN FUNCTION
 def test_main():
-    from src.train import main
-    from src.train import setup_args
+    from src.train import setup_args, main
     sys.argv = ['']
-    args = setup_args()
+    opt = setup_args()
 
     # TESTS
-    main(args)
+    main(opt)
 
 
 # TEST FOR BUILD OPTIMIZER
 def test_optimizer():
     from src.train import build_optimizer
     from src.train import setup_args
-    from src.model import MLP
+    from src.mlp import MLP
 
     sys.argv = ['']
     args = setup_args()
@@ -79,7 +79,7 @@ def test_optimizer():
 def test_scheduler():
     from src.train import build_optimizer
     from src.train import build_scheduler
-    from src.model import MLP
+    from src.mlp import MLP
     from src.train import setup_args
     sys.argv = ['']
     args = setup_args()

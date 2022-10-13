@@ -1,12 +1,15 @@
 import torch
 import os
-import sys
-sys.path.append(".")
+
+# __dir__ = pathlib.Path(os.path.dirname(os.path.realpath('__file__')))
+# sys.path.append(str(__dir__))
+# sys.path.append(str(__dir__.parent))
+# sys.path.append(str(__dir__.parent.parent))
 
 
 # TEST FOR MLP
 def test_MLP():
-    from src.model import MLP
+    from src.mlp import MLP
     model = MLP()
 
     # TEST MLP
@@ -29,3 +32,12 @@ def test_MLP():
     # TEST REMOVE
     os.remove("test.pt")
     assert not os.path.exists("test.pt")
+
+
+def test_build_model():
+    from src.train import setup_args, setup_seed
+    from model.ocr import build_model
+    setup_seed()
+    opt = setup_args()
+    model = build_model(opt)
+    assert model
