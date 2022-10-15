@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">android-frontend</string>
+    <string name="button">Launch Image Recognize</string>
+</resources>
