@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99305b1e-4bdf-466c-90e2-87e182b7a466" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/uiuc.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversalRecognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UniversalRecognition.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +65,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunManager" selected="JUnit.ConnectorTest">
@@ -92,6 +97,22 @@
       <option name="PACKAGE_NAME" value="org.team.universe" />
       <option name="MAIN_CLASS_NAME" value="org.team.universe.ConnectorTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConnectorTest.closeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UniversalRecognition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.team.universe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.team.universe" />
+      <option name="MAIN_CLASS_NAME" value="org.team.universe.ConnectorTest" />
+      <option name="METHOD_NAME" value="closeTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,29 +159,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="universe in UniversalRecognition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/org/team/universe" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.Test" />
       <item itemvalue="JUnit.AppTest" />
       <item itemvalue="JUnit.ParserTest" />
-      <item itemvalue="JUnit.universe in UniversalRecognition" />
       <item itemvalue="JUnit.LoaderTest" />
       <item itemvalue="JUnit.ConnectorTest" />
+      <item itemvalue="JUnit.ConnectorTest.closeTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ConnectorTest" />
+        <item itemvalue="JUnit.ConnectorTest.closeTest" />
         <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.LoaderTest" />
         <item itemvalue="JUnit.ParserTest" />
-        <item itemvalue="JUnit.universe in UniversalRecognition" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +189,7 @@
       <workItem from="1664939876455" duration="8626000" />
       <workItem from="1665066593931" duration="2386000" />
       <workItem from="1665070229754" duration="1042000" />
-      <workItem from="1665696578812" duration="4877000" />
+      <workItem from="1665696578812" duration="7786000" />
     </task>
     <servers />
   </component>

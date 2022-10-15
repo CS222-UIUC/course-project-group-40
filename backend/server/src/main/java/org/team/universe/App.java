@@ -32,16 +32,16 @@ public class App {
     BufferedImage bufferedImage = null;
 
     // TODO: catch exceptions and handle errors
-    connector.startConnection(serverAddress, parser.getPort());
+    //    connector.startConnection(serverAddress, parser.getPort(), null, null);
 
     // TODO: classify the received image or recongize texts
 
     // TODO: return result to Android devices
-    String message = null;
-    connector.sendMessage(message);
+    //    String message = "Hello, World";
+    //    connector.sendMessage(message);
 
     // TODO: clean-up resources and normally exit
-    connector.closeConnection();
+    //    connector.closeConnection();
   }
 
   /** Output sample usage. */

@@ -32,15 +32,24 @@ public class Connector {
   private BufferedReader input;
 
   /** Start to listen to clients and establish connection */
-  public void startConnection(String address, String port) throws IOException {
+  public void startConnection(
+      String address, String port, InputStream inputStreamTest, OutputStream outputStreamTest)
+      throws IOException {
     // set the socket of this server and keep listing
     int serverPort = Integer.parseInt(port);
-    serverSocket = new ServerSocket(serverPort);
-    clientSocket = serverSocket.accept();
+
+    // TODO: wait the development of Android client
+    // For now, we need to wait for the development of Android client
+    //    serverSocket = new ServerSocket(serverPort);
+    //    clientSocket = serverSocket.accept();
 
     // obtain the streams to read and write to client
-    inputStream = clientSocket.getInputStream();
-    outputStream = clientSocket.getOutputStream();
+    //    inputStream = clientSocket.getInputStream();
+    //    outputStream = clientSocket.getOutputStream();
+
+    // Toy Tests
+    inputStream = inputStreamTest;
+    outputStream = outputStreamTest;
   }
 
   /** receive the image from client */
@@ -66,13 +75,16 @@ public class Connector {
   /** send result to client */
   public void sendMessage(String message) {
     // TODO: Send the result of calculations with Deep Learning models to client
-    output.println(message);
+    output.write(message);
   }
 
   /** clean-up utility */
   public void closeConnection() throws IOException {
-    output.close();
-    clientSocket.close();
-    serverSocket.close();
+    inputStream.close();
+    outputStream.close();
+    // TODO: wait for Andriod client
+    //    output.close();
+    //    clientSocket.close();
+    //    serverSocket.close();
   }
 }
