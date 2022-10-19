@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="9e87fb1d-df64-4885-b47a-983a58787c7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
@@ -60,6 +61,13 @@
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/uiuc.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/uiuc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversalRecognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UniversalRecognition.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +228,7 @@
         <item itemvalue="JUnit.ConnectorTest" />
         <item itemvalue="JUnit.ConnectorTest.closeTest" />
         <item itemvalue="JUnit.AppTest" />
+
         <item itemvalue="JUnit.LoaderTest" />
         <item itemvalue="JUnit.ParserTest" />
       </list>
@@ -239,6 +248,7 @@
       <workItem from="1665070229754" duration="1042000" />
       <workItem from="1665696578812" duration="7786000" />
       <workItem from="1666220713241" duration="804000" />
+
     </task>
     <servers />
   </component>

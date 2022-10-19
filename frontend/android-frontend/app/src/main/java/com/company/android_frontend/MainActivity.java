@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean pick = true;
-                if (pick == true) {
+                if (pick) {
                     if (!checkCameraPermission()) {
                         requestCameraPermission();
                     } else {
@@ -48,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void PickImage() {
-        CropImage.activity().start(this);
+        CropImage
+                .activity()
+                .setGuidelines(CropImageView.Guidelines.OFF)
+                .start(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
+                ((ImageView) findViewById(R.id.cropImageView)).setImageURI(result.getUri());
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }

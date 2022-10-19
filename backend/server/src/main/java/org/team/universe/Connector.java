@@ -51,12 +51,12 @@ public class Connector {
     inputStream = inputStreamTest;
     outputStream = outputStreamTest;
   }
-
+  
   /** receive the image from client. */
   public void readImage() throws IOException {
     bufferedImage = ImageIO.read(inputStream);
   }
-
+  
   /** receive the image from client by buffered strings. */
   @Deprecated
   public void readImageByStrings() throws IOException {
@@ -73,6 +73,7 @@ public class Connector {
   }
 
   /** send result to client. */
+
   public void sendMessage(String message) {
     // TODO: Send the result of calculations with Deep Learning models to client
     output.write(message);
