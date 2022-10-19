@@ -52,7 +52,7 @@ public class Connector {
     outputStream = outputStreamTest;
   }
 
-  /** receive the image from client. */
+  /** receive the image from client by buffered image stream. */
   public void readImage() throws IOException {
     bufferedImage = ImageIO.read(inputStream);
   }
