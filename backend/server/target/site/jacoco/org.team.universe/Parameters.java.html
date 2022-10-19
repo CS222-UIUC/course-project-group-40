@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Parameters.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Universal Recognition</a> &gt; <a href="index.source.html" class="el_package">org.team.universe</a> &gt; <span class="el_source">Parameters.java</span></div><h1>Parameters.java</h1><pre class="source lang-java linenums">package org.team.universe;
+
+import com.beust.jcommander.Parameter;
+
+/** GNU-Standard Command Line Options and Parameters. */
+<span class="fc" id="L6">public class Parameters {</span>
+  // Official Doc: https://jcommander.org/#_overview
+
+  // Options and descriptions for inputs
+  @Parameter(
+      names = {&quot;--modelpath&quot;, &quot;-mp&quot;},
+      description =
+          &quot;Path of the Torchscript file of Deep Learning model. &quot;
+              + &quot;One of --modelpath or -p must be provided.&quot;)
+  private String modelpath;
+
+  @Parameter(
+      names = {&quot;--address&quot;, &quot;-a&quot;},
+      description =
+          &quot;Network address of Android client. &quot; + &quot;One of --address or -a must be provided.&quot;)
+  private String address;
+
+  @Parameter(
+      names = {&quot;--port&quot;, &quot;-p&quot;},
+      description =
+          &quot;Port to connect with Android client. &quot; + &quot;One of --port or -p must be provided.&quot;)
+  private String port;
+
+<span class="fc" id="L29">  @Parameter(</span>
+      names = {&quot;--help&quot;, &quot;-h&quot;},
+      description = &quot;Display usage.&quot;,
+      help = true)
+  private boolean help = false;
+
+<span class="fc" id="L35">  @Parameter(</span>
+      names = {&quot;--version&quot;, &quot;-v&quot;},
+      description = &quot;Display current version of Universal Recognition and exit normally.&quot;,
+      help = true)
+  private boolean version = false;
+
+  /** Getter function for Modelpath. */
+  public String getModelpath() {
+<span class="fc" id="L43">    return modelpath;</span>
+  }
+
+  /** Getter function for Address. */
+  public String getAddress() {
+<span class="fc" id="L48">    return address;</span>
+  }
+
+  /** Getter function for Port. */
+  public String getPort() {
+<span class="fc" id="L53">    return port;</span>
+  }
+
+  /** Getter function for Help. */
+  public boolean isHelp() {
+<span class="fc" id="L58">    return help;</span>
+  }
+
+  /** Getter function for Version. */
+  public boolean isVersion() {
+<span class="fc" id="L63">    return version;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
