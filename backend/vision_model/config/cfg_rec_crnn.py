@@ -26,7 +26,7 @@ config.train_options = {
     # for train
     'resume_from': '',  # 继续训练地址
     'third_party_name': '',  # 加载paddle模型可选
-    'checkpoint_save_dir': f"./output/{config.exp_name}/checkpoint",  # 模型保存地址，log文件也保存在这里
+    'checkpoint_save_dir': f"./output/ocr/{config.exp_name}/checkpoint",  # 模型保存地址，log文件也保存在这里
     'device': 'cuda:0',  # 不建议修改
     'epochs': 200,
     'fine_tune_stage': ['backbone', 'neck', 'head'],
@@ -72,7 +72,7 @@ config.loss = {
 # ## lable文件
 # ## 存在问题，gt中str-->label 是放在loss中还是放在dataloader中
 config.dataset = {
-    'alphabet': r'torchocr/datasets/alphabets/digit.txt',
+    'alphabet': r'dataset/orc/alphabets/digit.txt',
     'train': {
         'dataset': {
             'type': 'RecTextLineDataset',

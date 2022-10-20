@@ -1,8 +1,11 @@
 package org.team.universe;
 
+import java.awt.image.BufferedImage;
+
 /** Main program of the server project. */
 public class App {
-  private static int currentVersion = 0;
+  private static final int currentVersion = 0;
+  private static String serverAddress = "127.0.0.1";
 
   /** Main program. */
   public static void main(String[] args) throws Exception {
@@ -25,11 +28,24 @@ public class App {
     // TODO: load pre-trained PyTorch TorchScript model locally
 
     // TODO: receive one image from Android devices
+    Connector connector = new Connector();
+    BufferedImage bufferedImage = null;
+    while (true) {
+      // TODO: catch exceptions and handle errors
+      //    connector.startConnection(serverAddress, parser.getPort(), null, null);
 
-    // TODO: classify the received image or recongize texts
+      // TODO: classify the received image or recongize texts
 
-    // TODO: return result to Android devices
+      // TODO: return result to Android devices
+      //    String message = "Hello, World";
+      //    connector.sendMessage(message);
 
+      // TODO: clean-up resources and normally exit
+      //    connector.closeConnection();
+
+      // TODO: handle signal
+      break;
+    }
   }
 
   /** Output sample usage. */
