@@ -28,9 +28,4 @@ public class ButtonTest {
     public void clickButton() {
         onView(withId(R.id.click_button)).perform(click());
     }
-
-    @Test
-    public void clickButtonCamera() {
-        onView(withId(R.id.camera_button)).perform(click());
-    }
 }
