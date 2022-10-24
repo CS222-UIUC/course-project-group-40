@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             assert data != null;
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
-            photoList.add(bitmap);
+//            photoList.add(bitmap);
         }
     }
 

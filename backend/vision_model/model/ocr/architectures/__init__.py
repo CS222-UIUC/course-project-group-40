@@ -26,10 +26,10 @@ def build_model(args):
     """
     get architecture model class
     """
-    config = copy.deepcopy(parse_args_for_ocr(args))
+    if not isinstance(args, Dict):
+        args = parse_args_for_ocr(args)
+    config = copy.deepcopy(args)
     model_config = config['model']
-    print(args)
-    print(config)
     arch_type = model_config.pop('type')
     assert arch_type in support_model, f'{arch_type} is not developed yet!, only {support_model} are support now'
     arch_model = support_model[arch_type](Dict(model_config))
