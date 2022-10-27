@@ -19,8 +19,11 @@ import android.widget.Toast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     Button button;
+    TcpClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.click_button);
         TextView serverIP = (TextView) findViewById(R.id.serverIP);
+        TextView port = (TextView) findViewById(R.id.port);
         Button ipButton = findViewById(R.id.ip_button);
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -53,8 +57,15 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                if (serverIP.getText().toString().equals("123")) {
+                if (serverIP.getText().toString().equals("127.0.0.1") && port.getText().equals(1010)) {
+                    client = new TcpClient();
                     Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT).show();
+                    try {
+                        client.startConnection("127.0.0.1", 1010);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to Connect", Toast.LENGTH_SHORT).show();
                 }
