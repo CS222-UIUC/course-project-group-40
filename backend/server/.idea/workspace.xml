@@ -4,39 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99305b1e-4bdf-466c-90e2-87e182b7a466" name="Changes" comment="">
-
-      <change afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/uiuc.png" afterDir="false" />
+    <list default="true" id="9e87fb1d-df64-4885-b47a-983a58787c7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversalRecognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UniversalRecognition.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/ConnectorTest.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ConnectorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ConnectorTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ConnectorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ConnectorTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/test/java/org/team/universe/ParserTest.java" root0="FORCE_HIGHLIGHTING" />
@@ -46,176 +43,20 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/org/team/universe/Loader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/test/java/org/team/universe/LoaderTest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-
     <setting file="file://$PROJECT_DIR$/UniversalRecognition.iml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/org/team/universe/App.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test.sh" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectId" id="2Fh0cYPxLW78TZlGMZXW7qT5ByT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
-  <component name="RunManager" selected="JUnit.ConnectorTest">
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.team.universe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.AppTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConnectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.team.universe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.ConnectorTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConnectorTest.closeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.team.universe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.ConnectorTest" />
-      <option name="METHOD_NAME" value="closeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.team.universe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.LoaderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UniversalRecognition" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.team.universe.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.team.universe" />
-      <option name="MAIN_CLASS_NAME" value="org.team.universe.ParserTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="JUnit" factoryName="JUnit">
-      <module name="UniversalRecognition" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="temurin-11" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.AppTest" />
-      <item itemvalue="JUnit.ParserTest" />
-      <item itemvalue="JUnit.LoaderTest" />
-      <item itemvalue="JUnit.ConnectorTest" />
-      <item itemvalue="JUnit.ConnectorTest.closeTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.ConnectorTest" />
-        <item itemvalue="JUnit.ConnectorTest.closeTest" />
-        <item itemvalue="JUnit.AppTest" />
-
-        <item itemvalue="JUnit.LoaderTest" />
-        <item itemvalue="JUnit.ParserTest" />
-
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="99305b1e-4bdf-466c-90e2-87e182b7a466" name="Changes" comment="" />
-      <created>1664929092505</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1664929092505</updated>
-      <workItem from="1664929095539" duration="4635000" />
-      <workItem from="1664939876455" duration="8626000" />
-      <workItem from="1665066593931" duration="2386000" />
-
-      <workItem from="1665070229754" duration="1042000" />
-      <workItem from="1665696578812" duration="7786000" />
-
-    </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

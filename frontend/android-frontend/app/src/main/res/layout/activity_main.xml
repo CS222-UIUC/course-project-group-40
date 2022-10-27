@@ -22,5 +22,49 @@
             android:id="@+id/click_button">
         </Button>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/serverIP"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="30dp"
+                    android:hint="Server IP"
+                    android:padding="15dp"
+                    android:drawableStart="@drawable/ic_baseline_link_24"
+                    android:drawablePadding="10dp"/>
+
+                <EditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/port"
+                    android:layout_marginStart="30dp"
+                    android:hint="Port"
+                    android:padding="15dp"
+                    android:drawableStart="@drawable/ic_baseline_link_24"
+                    android:drawablePadding="10dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Connect"
+                android:layout_marginTop="35dp"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:id="@+id/ip_button">
+            </Button>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

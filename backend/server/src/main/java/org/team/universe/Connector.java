@@ -31,7 +31,7 @@ public class Connector {
 
   private BufferedReader input;
 
-  /** Start to listen to clients and establish connection */
+  /** Start to listen to clients and establish connection. */
   public void startConnection(
       String address, String port, InputStream inputStreamTest, OutputStream outputStreamTest)
       throws IOException {
@@ -52,13 +52,13 @@ public class Connector {
     outputStream = outputStreamTest;
   }
 
-  /** receive the image from client */
+  /** receive the image from client by buffered image stream. */
   public void readImage() throws IOException {
     bufferedImage = ImageIO.read(inputStream);
   }
 
+  /** receive the image from client by buffered strings. */
   @Deprecated
-  /** receive the image from client by buffered strings */
   public void readImageByStrings() throws IOException {
     input = new BufferedReader(new InputStreamReader((inputStream)));
     output = new PrintWriter(outputStream);
@@ -70,15 +70,22 @@ public class Connector {
     int length = Integer.parseInt(height) * Integer.parseInt(width);
     byte[] bytes = new byte[length];
     // TODO: read lines from client
+    //    int index = 0;
+    //    String line;
+    //    while ((line = input.readLine()) != null) {
+    //      byte[] lineBytes = line.getBytes();
+    //      System.arraycopy(lineBytes, 0, bytes, index, lineBytes.length);
+    //      index += line.length();
+    //    }
   }
 
-  /** send result to client */
+  /** send result to client. */
   public void sendMessage(String message) {
     // TODO: Send the result of calculations with Deep Learning models to client
     output.write(message);
   }
 
-  /** clean-up utility */
+  /** clean-up utility. */
   public void closeConnection() throws IOException {
     inputStream.close();
     outputStream.close();

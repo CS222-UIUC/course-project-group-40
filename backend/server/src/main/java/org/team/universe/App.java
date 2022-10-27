@@ -30,18 +30,22 @@ public class App {
     // TODO: receive one image from Android devices
     Connector connector = new Connector();
     BufferedImage bufferedImage = null;
+    while (true) {
+      // TODO: catch exceptions and handle errors
+      //    connector.startConnection(serverAddress, parser.getPort(), null, null);
 
-    // TODO: catch exceptions and handle errors
-    //    connector.startConnection(serverAddress, parser.getPort(), null, null);
+      // TODO: classify the received image or recongize texts
 
-    // TODO: classify the received image or recongize texts
+      // TODO: return result to Android devices
+      //    String message = "Hello, World";
+      //    connector.sendMessage(message);
 
-    // TODO: return result to Android devices
-    //    String message = "Hello, World";
-    //    connector.sendMessage(message);
+      // TODO: clean-up resources and normally exit
+      //    connector.closeConnection();
 
-    // TODO: clean-up resources and normally exit
-    //    connector.closeConnection();
+      // TODO: handle signal
+      break;
+    }
   }
 
   /** Output sample usage. */
