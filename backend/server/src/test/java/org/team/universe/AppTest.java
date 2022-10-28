@@ -64,7 +64,7 @@ public class AppTest {
           "-mp",
           "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
           "-i",
-          "/home/liam/Documents/cs222/backend/server/src/test/resources/uiuc.png"
+          "src/test/resources/uiuc.png"
         };
     try {
       App.main(input);
@@ -88,7 +88,7 @@ public class AppTest {
           "-mp",
           "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
           "-i",
-          "/home/liam/Documents/cs222/backend/server/sr"
+          "server/sr"
         };
     try {
       App.main(input);
@@ -114,7 +114,7 @@ public class AppTest {
             "-mp",
             "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
             "-i",
-            "/home/liam/Documents/cs222/backend/server/src"
+            "src"
         };
     try {
       App.main(input);
@@ -138,7 +138,7 @@ public class AppTest {
             "-mp",
             "output/ocr/CRNN",
             "-i",
-            "/home/liam/Documents/cs222/backend/server/src"
+            "src"
         };
     try {
       App.main(input);

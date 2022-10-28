@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e87fb1d-df64-4885-b47a-983a58787c7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../frontend/android-frontend/app/src/main/java/com/company/android_frontend/TcpClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversalRecognition.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vision_model/model/ocr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vision_model/model/ocr/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vision_model/model/ocr/architectures/RecModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vision_model/model/ocr/architectures/RecModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vision_model/model/ocr/architectures/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vision_model/model/ocr/architectures/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vision_model/src/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/../vision_model/src/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/android-frontend/app/src/main/java/com/company/android_frontend/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/android-frontend/app/src/main/java/com/company/android_frontend/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/android-frontend/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/android-frontend/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

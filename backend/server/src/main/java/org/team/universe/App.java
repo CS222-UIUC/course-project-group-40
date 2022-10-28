@@ -62,7 +62,8 @@ public class App {
         throw new Exception("Image file does not exist, check the path.");
       }
 
-      System.out.println("Working Directory = " + System.getProperty("user.dir"));
+      // Github Actions cannot
+      //      System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
       // Start a new process in Java
       // https://stackoverflow.com/questions/15464111/run-cmd-commands-through-java
