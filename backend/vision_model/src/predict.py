@@ -26,7 +26,7 @@ class RecInfer:
             state_dict[k.replace('module.', '')] = v
         self.model.load_state_dict(state_dict)
 
-        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cpu')
         self.model.to(self.device)
         self.model.eval()
 

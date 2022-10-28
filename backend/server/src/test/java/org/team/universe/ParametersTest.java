@@ -86,6 +86,21 @@ public class ParametersTest {
   }
 
   @Test
+  public void getPythonNotNullTest() {
+    Parameters param = new Parameters();
+    String[] args = {"-pp", "python3"};
+
+    Objects.requireNonNull(args, "Null parameter array");
+    JCommander jcommander = new JCommander(param);
+    jcommander.setProgramName("UniversialRecognition");
+    jcommander.parse(args);
+
+    if (param.getPythonpath() == null) {
+      assertTrue(false);
+    }
+  }
+
+  @Test
   public void getAddressValueTest() {
     Parameters param = new Parameters();
     String[] args = {"--modelpath", "Documents/model.pt", "-a", "127.0.0.1", "-p", "1010"};

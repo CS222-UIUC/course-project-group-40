@@ -84,6 +84,32 @@ public class ParserTest {
   }
 
   @Test
+  public void getPythonpathValueTest() {
+    String[] args = {"--pythonpath", "python3"};
+    Parser param = new Parser(args);
+
+    assertTrue(param.getPythonpath().equals("python3"));
+  }
+
+  @Test
+  public void getPythonPathErrorTest() {
+    String[] args = {"-pp"};
+    Parser param = new Parser(args);
+
+    assertTrue(param.isError());
+    assertTrue(param.getPythonpath() == null);
+  }
+
+  @Test
+  public void getImagePathErrorTest() {
+    String[] args = {"-i"};
+    Parser param = new Parser(args);
+
+    assertTrue(param.isError());
+    assertTrue(param.getImagepath() == null);
+  }
+
+  @Test
   public void getAddressErrorTest() {
     String[] args = {"--address"};
     Parser param = new Parser(args);

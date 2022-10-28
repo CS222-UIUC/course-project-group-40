@@ -11,7 +11,7 @@ public class Parameters {
       names = {"--modelpath", "-mp"},
       description =
           "Path of the Torchscript file of Deep Learning model. "
-              + "One of --modelpath or -p must be provided.")
+              + "One of --modelpath or -mp must be provided.")
   private String modelpath;
 
   @Parameter(
@@ -25,6 +25,16 @@ public class Parameters {
       description =
           "Port to connect with Android client. " + "One of --port or -p must be provided.")
   private String port;
+
+  @Parameter(
+      names = {"--image-path", "-i"},
+      description = "Path of image file for testing only. ")
+  private String imagepath;
+
+  @Parameter(
+      names = {"--pythonpath", "-pp"},
+      description = "Path of the Python exec file" + "One of --pythonpath or -pp must be provided.")
+  private String pythonpath;
 
   @Parameter(
       names = {"--help", "-h"},
@@ -41,6 +51,16 @@ public class Parameters {
   /** Getter function for Modelpath. */
   public String getModelpath() {
     return modelpath;
+  }
+
+  /** Getter function for Imagepath. */
+  public String getImagepath() {
+    return imagepath;
+  }
+
+  /** Getter function for Pythonpath. */
+  public String getPythonpath() {
+    return pythonpath;
   }
 
   /** Getter function for Address. */
