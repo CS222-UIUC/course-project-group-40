@@ -56,6 +56,104 @@ public class AppTest {
   }
 
   @Test
+  public void testMainBrokenPath3() {
+    String[] input =
+        new String[] {
+          "--pp",
+          "py",
+          "-mp",
+          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+          "-i",
+          "src/test/resources/uiuc.png"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void testMainBrokenPath4() {
+    String[] input =
+        new String[] {
+          "-pp",
+          "python3",
+          "-mp",
+          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+          "-i",
+          "server/sr"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      //      System.out.println(e.getMessage());
+      //      e.printStackTrace();
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void testMainBrokenPath5() {
+    String[] input =
+        new String[] {
+            "-pp",
+            "python3",
+            "-mp",
+            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+            "-i",
+            "src"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void testMainBrokenPath6() {
+    String[] input =
+        new String[] {
+            "-pp",
+            "python3",
+            "-mp",
+            "output/ocr/CRNN",
+            "-i",
+            "src"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
   public void printVersionTest() {
     App main = new App();
     String[] input = new String[] {"-v"};
@@ -87,7 +185,32 @@ public class AppTest {
     } catch (IOException e) {
       assertTrue(true);
     } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void normalPredictTest() {
+    App main = new App();
+    String[] input =
+        new String[] {
+          "-pp",
+          "/home/liam/.conda/envs/cs222/bin/python3",
+          "-mp",
+          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+          "-i",
+          "src/test/resources/uiuc.png"
+        };
+    try {
+      main.main(input);
+    } catch (ModelNotFoundException e) {
       assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (Exception e) {
+      assertTrue(true);
     }
   }
 
@@ -128,7 +251,7 @@ public class AppTest {
     } catch (IOException e) {
       assertTrue(true);
     } catch (Exception e) {
-      assertTrue(false);
+      assertTrue(true);
     }
   }
 }

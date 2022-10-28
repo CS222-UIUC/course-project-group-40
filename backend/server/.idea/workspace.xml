@@ -6,34 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="9e87fb1d-df64-4885-b47a-983a58787c7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/team/universe/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/App.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/Connector.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/org.team.universe/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.AppTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ConnectorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ConnectorTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.LoaderTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParametersTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-org.team.universe.ParserTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.AppTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ConnectorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ConnectorTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.LoaderTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParametersTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/org.team.universe.ParserTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/test/java/org/team/universe/ParserTest.java" root0="FORCE_HIGHLIGHTING" />
@@ -43,20 +24,79 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/org/team/universe/Loader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/test/java/org/team/universe/LoaderTest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UniversalRecognition.iml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/org/team/universe/App.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test.sh" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="ProjectId" id="2GQAeM1frb6CxCSBdt6SMyJ1GVY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AppTest.testMainBrokenPath4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UniversalRecognition" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.team.universe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.team.universe" />
+      <option name="MAIN_CLASS_NAME" value="org.team.universe.AppTest" />
+      <option name="METHOD_NAME" value="testMainBrokenPath4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AppTest.testMainBrokenPath4" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e87fb1d-df64-4885-b47a-983a58787c7e" name="Changes" comment="" />
+      <created>1666310530624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666310530624</updated>
+      <workItem from="1666310533937" duration="1333000" />
+      <workItem from="1666923041770" duration="792000" />
+      <workItem from="1666925096462" duration="7472000" />
+      <workItem from="1666936116388" duration="52000" />
+      <workItem from="1666936178268" duration="132000" />
+    </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

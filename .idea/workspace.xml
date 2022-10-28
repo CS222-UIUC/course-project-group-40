@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0d98c11-27e6-415f-a4aa-0f4029c0eb65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_engine_0_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_jni_1_12_1_0_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_model_zoo_0_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_native_cpu_linux_x86_64_1_12_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_native_cpu_osx_x86_64_1_12_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__ai_djl_pytorch_pytorch_native_cpu_win_x86_64_1_12_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/UniversalRecognition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/UniversalRecognition.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/src/main/java/org/team/universe/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/src/test/java/org/team/universe/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/src/test/java/org/team/universe/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +37,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/vision_model" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -44,7 +51,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665098621622</updated>
+      <workItem from="1666928225191" duration="16000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
