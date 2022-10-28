@@ -84,7 +84,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: jacoco-report
-        path: target/site/jacoco/
+        path: backend/server/target/site/jacoco/
 
   comment_pr_with_coverage_badge:
     needs: coverage
