@@ -106,6 +106,54 @@ public class AppTest {
   }
 
   @Test
+  public void testMainBrokenPath5() {
+    String[] input =
+        new String[] {
+            "-pp",
+            "python3",
+            "-mp",
+            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+            "-i",
+            "/home/liam/Documents/cs222/backend/server/src"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void testMainBrokenPath6() {
+    String[] input =
+        new String[] {
+            "-pp",
+            "python3",
+            "-mp",
+            "output/ocr/CRNN",
+            "-i",
+            "/home/liam/Documents/cs222/backend/server/src"
+        };
+    try {
+      App.main(input);
+    } catch (ModelNotFoundException e) {
+      assertTrue(false);
+    } catch (MalformedModelException e) {
+      assertTrue(false);
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (Exception e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
   public void printVersionTest() {
     App main = new App();
     String[] input = new String[] {"-v"};
