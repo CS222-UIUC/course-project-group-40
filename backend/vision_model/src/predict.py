@@ -73,33 +73,97 @@ def init_args():
 
 
 if __name__ == '__main__':
+    ############################################################
+    # 1. INIT ARUGMENTS AND LOAD IMAGE
+
     import cv2
-    # from utils import save_checkpoint, get_logger
-
     args = init_args()
-
     img = [cv2.imread(args.img_path)]
 
     # log_files_list = [str(x) for x in pathlib.Path(args.img_path).glob("*.jpg")]
     # img = [cv2.imread(img_path) for img_path in log_files_list]
 
-    model = RecInfer(args.model_path)
-    out = model.predict(img)
+    ############################################################
+    # 2. LOAD MODEL AND PREDICT
 
-    print(out)
+    # RecModel = RecInfer(args.model_path)
+    # out = RecModel.predict(img)
+
+    # print(out)
     # for i in range(30):
     #     print(out[i])
+    # exit()
+
+    ############################################################
+    # 3. MODIFY AND SAVE THE PRETRAINED MODEL TO FIT RECOGNIZATION TASK
+
+    # from torch import nn
+    # model = nn.DataParallel(model.model)
 
     # ckpt = torch.load(args.model_path, map_location='cpu')
     # cfg = ckpt['cfg']
 
+
     # cfg.train_options['checkpoint_save_dir'] = "./output/ocr/CRNN/"
     # cfg['dataset']['alphabet'] = "./dataset/ocr/alphabets/ppocr_keys_v1.txt"
-    # print(cfg.train_options['checkpoint_save_dir'])
 
+    # from utils import get_logger
     # logger = get_logger('ocr', log_file=os.path.join(cfg.train_options['checkpoint_save_dir'], 'train.log'))
-    # model = nn.DataParallel(model.model)
-    # optimizer = build_optimizer(model, cfg['optimizer'])
-    # scheduler = build_scheduler(optimizer, cfg['lr_scheduler'])
-
+    # optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    # scheduler = torch.optim.lr_scheduler.StepLR(
+    #     optimizer,
+    #     step_size=1,
+    #     gamma=0.95
+    # )
     # save_checkpoint("./output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", model, optimizer, logger, cfg)
+
+    ############################################################
+    # 4. LOAD MODEL(JAVA STYLE) AND PREDICT
+
+    from model.ocr import build_model_for_java
+
+    ckpt = torch.load(args.model_path, map_location='cpu')
+    cfg = ckpt['cfg']
+    RecModelForJava = build_model_for_java(cfg)
+    state_dict = {}
+
+    for k, v in ckpt['state_dict'].items():
+        state_dict[k.replace('module.', '')] = v
+    RecModelForJava.load_state_dict(state_dict)
+
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    RecModelForJava.to(device)
+    RecModelForJava.eval()
+
+    out = RecModelForJava.predict(img)
+    print(out)
+    
+    exit()
+    ############################################################
+    # 5. MODIFY AND SAVE THE PRETRAINED MODEL TO FIT JAVA STYLE
+
+    from model.ocr import build_model_for_java
+
+    ckpt = torch.load(args.model_path, map_location='cpu')
+    cfg = ckpt['cfg']
+    RecModelForJava = build_model_for_java(cfg)
+    state_dict = {}
+
+
+    for k, v in ckpt['state_dict'].items():
+        state_dict[k.replace('module.', '')] = v
+    RecModelForJava.load_state_dict(state_dict)
+
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    RecModelForJava.to(device)
+    RecModelForJava.eval()
+
+    cfg.train_options['checkpoint_save_dir'] = "./output/ocr/CRNN/"
+    cfg['dataset']['alphabet'] = "./dataset/ocr/alphabets/ppocr_keys_v1.txt"
+
+    mode_state_dict = RecModelForJava.state_dict()
+    checkpoint_path = "./output/ocr/CRNN/ch_rec_moblie_crnn_mbv2.pth"
+    state = {'state_dict': mode_state_dict,
+             'cfg': cfg}
+    torch.save(state, checkpoint_path)
+
