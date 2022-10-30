@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,7 +24,8 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
+
+    Button button, ipButton, resultButton;
     TcpClient client;
 
     @Override
@@ -32,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.click_button);
         TextView serverIP = (TextView) findViewById(R.id.serverIP);
         TextView port = (TextView) findViewById(R.id.port);
-        Button ipButton = findViewById(R.id.ip_button);
+
+        ipButton = findViewById(R.id.ip_button);
+        resultButton = findViewById(R.id.result_button);
+        resultButton.setEnabled(false);
+
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -69,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to Connect", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        resultButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View view) {
+                Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
+                // TODO: putExtra to pass the result
+                startActivity(displayResult);
             }
         });
     }
@@ -108,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 ((ImageView) findViewById(R.id.cropImageView)).setImageURI(result.getUri());
+                // enable SEE RESULT button
+                resultButton.setEnabled(true);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
