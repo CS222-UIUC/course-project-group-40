@@ -11,7 +11,7 @@ cd cs222/backend/
 docker build -t universalrecognition:v1 .
 
 # run the image and login as root
-docker run -i universalrecognition:v1 /bin/bash << 'EOF'
+docker run -p 1080:1080 -i universalrecognition:v1 /bin/bash << 'EOF'
 
 # start the server program
 cd cs222/backend/server/
