@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
                 // TODO: putExtra to pass the result
+                displayResult.putExtra("textRecognized", "This is the recognized text");
                 startActivity(displayResult);
             }
         });
