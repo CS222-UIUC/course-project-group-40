@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                     Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.PNG, 0, bos);
+
                     byte[] array = bos.toByteArray();
 
                     OutputStream outputStream = socket.getOutputStream();
