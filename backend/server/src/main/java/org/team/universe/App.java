@@ -1,6 +1,9 @@
 package org.team.universe;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 
 /** Main program of the server project. */
 public class App {
@@ -25,7 +28,24 @@ public class App {
       return;
     }
 
-    // TODO: load pre-trained PyTorch TorchScript model locally
+    // Check Python related files exist
+    //    File python = new File(parser.getPythonpath());
+    //    if (!(python.exists() && !python.isDirectory())) {
+    //      // Ptyhon file does not exist, abnormally exists
+    //      throw new Exception("Python executable does not exist, check the path.");
+    //    }
+
+    File predict = new File("../vision_model/src/predict.py");
+    if (!(predict.exists() && !predict.isDirectory())) {
+      // Predict file does not exist, abnormally exists
+      throw new Exception("Python prediction file does not exist, check the program.");
+    }
+
+    File model = new File("../vision_model/" + parser.getModelpath());
+    if (!(model.exists() && !model.isDirectory())) {
+      // Model file does not exist, abnormally exists
+      throw new Exception("Model file does not exist, check the path.");
+    }
 
     // TODO: receive one image from Android devices
     Connector connector = new Connector();
@@ -35,6 +55,43 @@ public class App {
       //    connector.startConnection(serverAddress, parser.getPort(), null, null);
 
       // TODO: classify the received image or recongize texts
+      // WARNING: we use the argument `Imagepath` for local test only
+      File image = new File(parser.getImagepath());
+      if (!(image.exists() && !image.isDirectory())) {
+        // Image file does not exist, abnormally exists
+        throw new Exception("Image file does not exist, check the path.");
+      }
+
+      // Github Actions cannot
+      //      System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+      // Start a new process in Java
+      // https://stackoverflow.com/questions/15464111/run-cmd-commands-through-java
+      ProcessBuilder builder =
+          new ProcessBuilder(
+              // for Github Action tests only
+              "python3",
+
+              // for local tests, you should COMMENT the above line and UNCOMMENT the following line
+              // parser.getPythonpath(),
+              "src/predict.py",
+              "--model_path",
+              model.getPath(),
+              "--img_path",
+              image.getPath());
+      builder.redirectErrorStream(true);
+
+      builder.directory(new File("../vision_model/"));
+      Process process = builder.start();
+      BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String line;
+      while (true) {
+        line = r.readLine();
+        if (line == null) {
+          break;
+        }
+        System.out.println(line);
+      }
 
       // TODO: return result to Android devices
       //    String message = "Hello, World";

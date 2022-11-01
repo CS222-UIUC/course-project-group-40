@@ -59,6 +59,24 @@ public class Parser {
     }
   }
 
+  /** Getter function for Imagepath. */
+  public String getImagepath() {
+    if (result != null) {
+      return result.getImagepath();
+    } else {
+      return null;
+    }
+  }
+
+  /** Getter function for Pythonpath. */
+  public String getPythonpath() {
+    if (result != null) {
+      return result.getPythonpath();
+    } else {
+      return null;
+    }
+  }
+
   /** Getter function for Address. */
   public String getAddress() {
     if (result != null) {

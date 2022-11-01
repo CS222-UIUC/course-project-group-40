@@ -3,9 +3,10 @@ import copy
 import os
 import sys
 from importlib import import_module
-from .RecModel import RecModel
+from .RecModel import RecModel, RecModelForJava
 
 support_model = {'RecModel': RecModel}
+support_model_for_java = {'RecModel': RecModelForJava}
 
 
 def parse_args_for_ocr(args):
@@ -33,4 +34,20 @@ def build_model(args):
     arch_type = model_config.pop('type')
     assert arch_type in support_model, f'{arch_type} is not developed yet!, only {support_model} are support now'
     arch_model = support_model[arch_type](Dict(model_config))
+    return arch_model
+
+
+def build_model_for_java(args):
+    """
+    get architecture model class FOR Java only
+    """
+    if not isinstance(args, Dict):
+        args = parse_args_for_ocr(args)
+    config = copy.deepcopy(args)
+    model_config = config['model']
+    dataset_config = config['dataset']['train']['dataset']
+    convertor_config = config['dataset']['alphabet']
+    arch_type = model_config.pop('type')
+    assert arch_type in support_model_for_java, f'{arch_type} is not developed yet!, only {support_model_for_java} are support now'
+    arch_model = support_model_for_java[arch_type](Dict(model_config), dataset_config, convertor_config)
     return arch_model

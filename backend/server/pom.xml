@@ -55,50 +55,50 @@
     </dependency>
 
 
-    <!-- For Linux CPU-->
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-native-cpu</artifactId>
-      <classifier>linux-x86_64</classifier>
-      <scope>runtime</scope>
-      <version>1.12.1</version>
-    </dependency>
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-jni</artifactId>
-      <version>1.12.1-0.19.0</version>
-      <scope>runtime</scope>
-    </dependency>
+<!--    &lt;!&ndash; For Linux CPU&ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-native-cpu</artifactId>-->
+<!--      <classifier>linux-x86_64</classifier>-->
+<!--      <scope>runtime</scope>-->
+<!--      <version>1.12.1</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-jni</artifactId>-->
+<!--      <version>1.12.1-0.19.0</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
 
-    <!-- For MacOS CPU -->
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-native-cpu</artifactId>
-      <classifier>osx-x86_64</classifier>
-      <version>1.12.1</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-jni</artifactId>
-      <version>1.12.1-0.19.0</version>
-      <scope>runtime</scope>
-    </dependency>
+<!--    &lt;!&ndash; For MacOS CPU &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-native-cpu</artifactId>-->
+<!--      <classifier>osx-x86_64</classifier>-->
+<!--      <version>1.12.1</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-jni</artifactId>-->
+<!--      <version>1.12.1-0.19.0</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
 
-    <!-- For Windows CPU -->
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-native-cpu</artifactId>
-      <classifier>win-x86_64</classifier>
-      <scope>runtime</scope>
-      <version>1.12.1</version>
-    </dependency>
-    <dependency>
-      <groupId>ai.djl.pytorch</groupId>
-      <artifactId>pytorch-jni</artifactId>
-      <version>1.12.1-0.19.0</version>
-      <scope>runtime</scope>
-    </dependency>
+<!--    &lt;!&ndash; For Windows CPU &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-native-cpu</artifactId>-->
+<!--      <classifier>win-x86_64</classifier>-->
+<!--      <scope>runtime</scope>-->
+<!--      <version>1.12.1</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>ai.djl.pytorch</groupId>-->
+<!--      <artifactId>pytorch-jni</artifactId>-->
+<!--      <version>1.12.1-0.19.0</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>junit</groupId>
@@ -117,6 +117,19 @@
       <groupId>com.beust</groupId>
       <artifactId>jcommander</artifactId>
       <version>1.82</version>
+    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>org.apache.maven.plugins</groupId>-->
+<!--      <artifactId>maven-shade-plugin</artifactId>-->
+<!--      <version>3.4.0</version>-->
+<!--      <type>maven-plugin</type>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <version>3.4.2</version>
+      <type>maven-plugin</type>
     </dependency>
 
   </dependencies>
@@ -147,6 +160,32 @@
           <!--            </includes>-->
           <!--          </configuration>-->
         </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+              <configuration>
+                <archive>
+                  <manifest>
+                    <mainClass>
+                      org.team.universe.App
+                    </mainClass>
+                  </manifest>
+                </archive>
+                <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.1.0</version>
@@ -159,7 +198,18 @@
               </manifest>
             </archive>
           </configuration>
+          <executions>
+            <execution>
+              <id>default-jar</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
+
+
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
@@ -197,7 +247,17 @@
             </execution>
           </executions>
         </plugin>
+
       </plugins>
     </pluginManagement>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+      </plugin>
+
+    </plugins>
   </build>
 </project>
