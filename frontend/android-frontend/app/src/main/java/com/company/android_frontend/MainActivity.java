@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button, connectButton, resultButton;
     private Socket socket;
-    private static final int SERVERPORT = 1010;
+    private static final int SERVERPORT = 1080;
     private static final String SERVER_IP = "127.0.0.1";
 
 
@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    bmp.compress(Bitmap.CompressFormat.PNG, 0, bos);
                     byte[] array = bos.toByteArray();
 
                     OutputStream outputStream = socket.getOutputStream();
