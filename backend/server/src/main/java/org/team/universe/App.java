@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+// import static org.team.universe.Loader.loadFromFile;
+// import ai.djl.repository.zoo.ZooModel;
+// import ai.djl.modality.Classifications;
+// import ai.djl.inference.Predictor;
 
 /** Main program of the server project. */
 public class App {
@@ -46,6 +50,9 @@ public class App {
       // Model file does not exist, abnormally exists
       throw new Exception("Model file does not exist, check the path.");
     }
+
+    //  System.out.println(parser);
+    //  ZooModel<BufferedImage, Classifications> model = loadFromFile(parser.getModelpath());
 
     // TODO: receive one image from Android devices
     Connector connector = new Connector();
@@ -92,6 +99,10 @@ public class App {
         }
         System.out.println(line);
       }
+
+      // Predictor<BufferedImage, Classifications> predictor = model.newPredictor();
+      // Classifications detection = predictor.predict(bufferedImage);
+      // System.out.println(detection);
 
       // TODO: return result to Android devices
       //    String message = "Hello, World";

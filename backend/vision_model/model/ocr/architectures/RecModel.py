@@ -42,12 +42,12 @@ class RecModel(nn.Module):
 
 
 class RecModelForJava(RecModel):
-    def __init__(self, config, dataset_config, converter_config, batch_size=16):
+    def __init__(self, config, dataset_config, converter_config, batch_size=16, device='cpu'):
         super().__init__(config)
         self.process = RecDataProcess(dataset_config)
         self.converter = CTCLabelConverter(converter_config)
         self.batch_size = batch_size
-        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device(device)
 
     def forward(self, x):
         x = self.backbone(x)
