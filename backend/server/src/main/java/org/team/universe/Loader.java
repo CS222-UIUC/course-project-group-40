@@ -7,9 +7,9 @@ import ai.djl.modality.Classifications;
 import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.awt.image.BufferedImage;
 // import ai.djl.modality.cv.Image;
 
 /** Loader to load PyTorch TorchScript model. */
@@ -21,7 +21,7 @@ public class Loader {
     // offical Doc http://docs.djl.ai/docs/load_model.html
     Criteria<BufferedImage, Classifications> criteria =
         Criteria.builder()
-            .setTypes(BufferedImage.class, Classifications.class) // defines input and output data type
+            .setTypes(BufferedImage.class, Classifications.class) // define input & output data type
             .optModelPath(Paths.get(scriptPath)) // search models in specified path
             .build();
 
