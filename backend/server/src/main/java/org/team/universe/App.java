@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
+
 /** Main program of the server project. */
 public class App {
   private static final int currentVersion = 0;
@@ -57,6 +58,9 @@ public class App {
       // Model file does not exist, abnormally exists
       throw new Exception("Model file does not exist, check the path.");
     }
+
+    //  System.out.println(parser);
+    //  ZooModel<BufferedImage, Classifications> model = loadFromFile(parser.getModelpath());
 
     // TODO: receive one image from Android devices
     Connector connector = new Connector();

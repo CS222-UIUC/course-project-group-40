@@ -10,13 +10,28 @@ sys.path.append(str(__dir__.parent))
 sys.path.append(str(__dir__.parent.parent))
 
 
-# CLASS FOR RECOGNIZATION PREDICT
-class RecInfer:
-    def __init__(self, model_path, batch_size=16):
+# =======> CLASS FOR OBJECT DETECTION <======= #
+class ObjDecInfer:
+    def __init__(self, model_path, batch_size=16, device='cpu'):
+        """ Initialize the Object Detection Inference model
+        Args:
+            @model_path: Path to the model
+            @batch_size: Batch size for inference
+            @device: Device to run the inference on
+        Returns:
+            @return: None
+        """
+        # ------> IMPORT MODULES <--------- #
         from model.ocr import build_model
-        from utils import CTCLabelConverter
-        from src.data import RecDataProcess
+        # from model.objectDetection import build_model
+        # from src.data import ObjDataProcess
 
+        # -----> SET UP HYPER PARA <----- #
+        self.model_path = model_path
+        self.batch_size = batch_size
+        self.device = torch.device(device)
+
+        # -----> SET UP MODEL <----- #
         ckpt = torch.load(model_path, map_location='cpu')
         cfg = ckpt['cfg']
         self.model = build_model(cfg)
@@ -26,17 +41,57 @@ class RecInfer:
             state_dict[k.replace('module.', '')] = v
         self.model.load_state_dict(state_dict)
 
-        self.device = torch.device('cpu')
         self.model.to(self.device)
         self.model.eval()
 
+
+# =======>   CLASS FOR OCR PREDICT    <======= #
+class RecInfer:
+    def __init__(self, model_path, batch_size=16, device='cpu'):
+        """ Initialize the OCR Reconition Inference model
+        Args:
+            @model_path: Path to the model
+            @batch_size: Batch size for inference
+        Returns:
+            @return: None
+        """
+        # -----> IMPORT MODULES <----- #
+        from model.ocr import build_model
+        from utils import CTCLabelConverter
+        from src.data import RecDataProcess
+
+        # -----> SET UP HYPER PARA <----- #
+        self.batch_size = batch_size
+        self.device = torch.device(device)
+
+        # -----> SET UP MODEL <----- #
+        ckpt = torch.load(model_path, map_location='cpu')
+        cfg = ckpt['cfg']
+        self.model = build_model(cfg)
+        state_dict = {}
+
+        for k, v in ckpt['state_dict'].items():
+            state_dict[k.replace('module.', '')] = v
+        self.model.load_state_dict(state_dict)
+
+        self.model.to(self.device)
+        self.model.eval()
+
+        # -----> SET UP DATA PROCESS <----- #
         self.process = RecDataProcess(cfg['dataset']['train']['dataset'])
 
+        # -----> SET UP CONVERTER <----- #
         self.converter = CTCLabelConverter(cfg['dataset']['alphabet'])
-        self.batch_size = batch_size
 
-    # PREDICT FUNCTION
     def predict(self, imgs):
+        """ PREDICT FUNCTION
+        Args:
+            @imgs: Single image or list of images
+        Returns:
+            @return: list of predictions.
+        """
+
+        # -----> SET UP DATA <----- #
         if not isinstance(imgs, list):
             imgs = [imgs]
         imgs = [self.process.normalize_img(self.process.resize_with_specific_height(img)) for img in imgs]
@@ -61,11 +116,12 @@ class RecInfer:
         return out_txts
 
 
-# INIT ARUGMENTS
+# ======> INIT ARUGMENTS <======= #
 def init_args():
     import argparse
     parser = argparse.ArgumentParser(description='PytorchOCR infer')
-    parser.add_argument('--model_path', required=True, type=str, help='rec model path')
+    parser.add_argument('--task', type=str, default='rec', help='Task type')
+    parser.add_argument('--model_path', required=True, type=str, help='model path')
     parser.add_argument('--img_path', required=True, type=str, help='img path for predict')
 
     args = parser.parse_args()
@@ -103,7 +159,6 @@ if __name__ == '__main__':
     # ckpt = torch.load(args.model_path, map_location='cpu')
     # cfg = ckpt['cfg']
 
-
     # cfg.train_options['checkpoint_save_dir'] = "./output/ocr/CRNN/"
     # cfg['dataset']['alphabet'] = "./dataset/ocr/alphabets/ppocr_keys_v1.txt"
 
@@ -131,13 +186,13 @@ if __name__ == '__main__':
         state_dict[k.replace('module.', '')] = v
     RecModelForJava.load_state_dict(state_dict)
 
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cpu')
     RecModelForJava.to(device)
     RecModelForJava.eval()
 
     out = RecModelForJava.predict(img)
     print(out)
-    
+
     exit()
     ############################################################
     # 5. MODIFY AND SAVE THE PRETRAINED MODEL TO FIT JAVA STYLE
@@ -149,12 +204,11 @@ if __name__ == '__main__':
     RecModelForJava = build_model_for_java(cfg)
     state_dict = {}
 
-
     for k, v in ckpt['state_dict'].items():
         state_dict[k.replace('module.', '')] = v
     RecModelForJava.load_state_dict(state_dict)
 
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cpu')
     RecModelForJava.to(device)
     RecModelForJava.eval()
 
@@ -166,4 +220,3 @@ if __name__ == '__main__':
     state = {'state_dict': mode_state_dict,
              'cfg': cfg}
     torch.save(state, checkpoint_path)
-

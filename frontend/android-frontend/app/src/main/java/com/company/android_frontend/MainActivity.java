@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,22 +23,33 @@ import android.widget.Toast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button, ipButton, resultButton;
-    TcpClient client;
+    private Button button, connectButton, resultButton;
+    private Socket socket;
+    private static final int SERVERPORT = 1080;
+    private static final String SERVER_IP = "127.0.0.1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new Thread(new ClientThread()).start();
+
         button = findViewById(R.id.click_button);
         TextView serverIP = (TextView) findViewById(R.id.serverIP);
         TextView port = (TextView) findViewById(R.id.port);
 
-        ipButton = findViewById(R.id.ip_button);
+        connectButton = findViewById(R.id.ip_button);
         resultButton = findViewById(R.id.result_button);
         resultButton.setEnabled(false);
 
@@ -60,21 +73,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        ipButton.setOnClickListener(new View.OnClickListener() {
+        connectButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                if (serverIP.getText().toString().equals("127.0.0.1") && port.getText().equals(1010)) {
-                    client = new TcpClient();
-                    Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT).show();
-                    try {
-                        client.startConnection("127.0.0.1", 1010);
+                try {
+                    ImageView imageView = (ImageView) findViewById(R.id.cropImageView);
+                    Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Failed to Connect", Toast.LENGTH_SHORT).show();
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    bmp.compress(Bitmap.CompressFormat.PNG, 0, bos);
+
+                    byte[] array = bos.toByteArray();
+
+                    OutputStream outputStream = socket.getOutputStream();
+                    DataOutputStream dos = new DataOutputStream(outputStream);
+                    dos.writeInt(array.length);
+                    dos.write(array, 0 , array.length);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -84,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
                 // TODO: putExtra to pass the result
+                displayResult.putExtra("textRecognized", "This is the recognized text");
                 startActivity(displayResult);
             }
         });
@@ -115,6 +133,20 @@ public class MainActivity extends AppCompatActivity {
         boolean res1 = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
         boolean res2 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         return res1 && res2;
+    }
+
+    class ClientThread implements Runnable {
+        @Override
+        public void run() {
+            try {
+                InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+                socket = new Socket(serverAddr, SERVERPORT);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

@@ -32,3 +32,6 @@ hs_err_pid*
 
 # checkstyle file
 .flake8
+frontend/Android/.gradle
+backend/server/target
+backend/vision_model/output/ocr/CRNN/ch_rec_moblie_crnn_mbv2.pth
