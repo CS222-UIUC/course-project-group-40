@@ -2,17 +2,25 @@ package org.team.universe;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import javax.imageio.ImageIO;
+import org.apache.commons.io.IOUtils;
 
 /**
- * Connector of the server project. It currently uses TCP network protocol to connect with Andorid
+ * Connector of the server project. It currently uses TCP network protocol to connect with Android
  * client.
  *
  * <p>Resources doc of network programming in Java: https://www.baeldung.com/a-guide-to-java-sockets
@@ -31,21 +39,83 @@ public class Connector {
 
   private BufferedReader input;
 
+  private static Boolean isRunningTest = null;
+
+  /** Check test status. */
+  private static boolean isRunningTest() {
+    // https://stackoverflow.com/questions/2341943/how-can-i-find-out-if-code-is-running-inside-a-junit-test-or-not
+
+    if (isRunningTest == null) {
+      isRunningTest = true;
+      try {
+        Class.forName("org.junit.Test");
+      } catch (ClassNotFoundException e) {
+        isRunningTest = false;
+      }
+    }
+    return isRunningTest;
+  }
+
+  /** Start to listen to clients and establish connection with Byte Array. */
+  public void startConnectionByteArray(String address, String port) throws IOException {
+    // set the socket of this server and keep listing
+    int serverPort = Integer.parseInt(port);
+    if (isRunningTest()) {
+      File test = new File("output.txt");
+      inputStream = new FileInputStream(test);
+      outputStream = new FileOutputStream(test);
+    } else {
+      // TODO: wait the development of Android client
+      // TODO: START
+//            serverSocket = new ServerSocket(serverPort);
+//            System.out.println("Initial Server Socket.");
+      // TODO: END
+    }
+  }
+
+  /** Continue to listen to clients and establish connection with Byte Array. */
+  public void reconnectByteArray() throws IOException {
+    if (isRunningTest()) {
+      File test = new File("output.txt");
+      inputStream = new FileInputStream(test);
+      outputStream = new FileOutputStream(test);
+    } else {
+      // TODO: wait the development of Android client
+      // TODO: START
+//            System.out.println("Start to listen to Android Client");
+//            clientSocket = serverSocket.accept();
+//            System.out.println(
+//                "Connected! Inet Address: "
+//                    + clientSocket.getInetAddress().toString()
+//                    + ", Port: "
+//                    + String.valueOf(clientSocket.getLocalPort()));
+//            // obtain the streams to read and write to client
+//            inputStream = clientSocket.getInputStream();
+//            outputStream = clientSocket.getOutputStream();
+      // TODO: END
+    }
+  }
+
+  /** receive the image from client by Byte Array input stream. */
+  public BufferedImage readImageByteArray() throws IOException {
+    // TODO: wait the development of Android client
+    // TODO: START
+//        byte[] image_bytes = IOUtils.toByteArray(inputStream);
+//        clientSocket.shutdownInput();
+//
+//        System.out.println("Received Image: " + String.valueOf(image_bytes.length) + " bytes");
+//        ByteArrayInputStream image_input_stream = new ByteArrayInputStream(image_bytes);
+//        bufferedImage = ImageIO.read(image_input_stream);
+    // TODO: END
+    return bufferedImage;
+  }
+
   /** Start to listen to clients and establish connection. */
   public void startConnection(
       String address, String port, InputStream inputStreamTest, OutputStream outputStreamTest)
       throws IOException {
     // set the socket of this server and keep listing
     int serverPort = Integer.parseInt(port);
-
-    // TODO: wait the development of Android client
-    // For now, we need to wait for the development of Android client
-    //    serverSocket = new ServerSocket(serverPort);
-    //    clientSocket = serverSocket.accept();
-
-    // obtain the streams to read and write to client
-    //    inputStream = clientSocket.getInputStream();
-    //    outputStream = clientSocket.getOutputStream();
 
     // Toy Tests
     inputStream = inputStreamTest;
@@ -66,32 +136,80 @@ public class Connector {
     // Start to read image
     String height = input.readLine();
     String width = input.readLine();
-
-    int length = Integer.parseInt(height) * Integer.parseInt(width);
-    byte[] bytes = new byte[length];
-    // TODO: read lines from client
-    //    int index = 0;
-    //    String line;
-    //    while ((line = input.readLine()) != null) {
-    //      byte[] lineBytes = line.getBytes();
-    //      System.arraycopy(lineBytes, 0, bytes, index, lineBytes.length);
-    //      index += line.length();
-    //    }
   }
 
   /** send result to client. */
-  public void sendMessage(String message) {
+  public void sendMessage(InputStream processInputStream) throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
-    output.write(message);
+    //    IOUtils.copy(processInputStream, outputStream);
+    byte[] message = IOUtils.toByteArray(processInputStream);
+    //    outputStream.write(message);
+    //    clientSocket.shutdownOutput();
+    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+    bufferedWriter.write(parserMessage(new String(message, StandardCharsets.UTF_8)));
+    bufferedWriter.flush();
+    // TODO: wait the development of Android client
+    // TODO: START
+//        clientSocket.shutdownOutput();
+//
+//        System.out.println("Original message: " + new String(message, StandardCharsets.UTF_8));
+//        System.out.println(
+//            "Sent message: " + parserMessage(new String(message, StandardCharsets.UTF_8)));
+    // TODO: END
+  }
+
+  /** clean-up utility. */
+  public String parserMessage(String message) {
+    // recognized word
+    String result = "";
+
+    int word_start = 4;
+    int word_end = word_start;
+    int i = 0;
+    for (; i < message.length(); i++) {
+      if (message.charAt(i) == '\'' && message.charAt(i + 1) == ',') {
+        break;
+      }
+    }
+    word_end = i;
+    result += message.substring(word_start, word_end);
+    result += "]\n";
+
+    // each char with probability
+    i += 4;
+    int count = 0;
+    int probability_start = i;
+    for (; i < message.length(); i++) {
+      if (message.charAt(i) == ']' && message.charAt(i + 1) == ')') {
+        result += result.substring(count, count + 1);
+        result += ": ";
+        result += message.substring(probability_start, i);
+        result += "\n";
+        count += 1;
+        break;
+      }
+      if (message.charAt(i) == ',') {
+        result += result.substring(count, count + 1);
+        result += ": ";
+        result += message.substring(probability_start, i);
+        result += "\n";
+        probability_start = i + 2;
+        count += 1;
+      }
+    }
+
+    return "[" + result;
   }
 
   /** clean-up utility. */
   public void closeConnection() throws IOException {
     inputStream.close();
     outputStream.close();
-    // TODO: wait for Andriod client
-    //    output.close();
-    //    clientSocket.close();
-    //    serverSocket.close();
+    clientSocket.close();
+  }
+
+  /** Shut down server. */
+  public void shutDownServer() throws IOException {
+    serverSocket.close();
   }
 }

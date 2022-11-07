@@ -2,6 +2,7 @@ package org.team.universe;
 
 import static org.junit.Assert.assertTrue;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,42 +15,6 @@ import org.junit.jupiter.api.Test;
 public class ConnectorTest {
 
   private Connector connector;
-
-  // TODO: Leave for future tests with Android client
-  //  @Before
-  //  public void startServerTest() {
-  //    connector = new Connector();
-  //    Thread serverThread =
-  //        new Thread(
-  //            new Runnable() {
-  //              @Override
-  //              public void run() {
-  //                try {
-  //                  connector.startConnection("127.0.0.1", "2222");
-  //                } catch (IOException e) {
-  //                  e.printStackTrace();
-  //                }
-  //              }
-  //            });
-  //    serverThread.start();
-  //  }
-
-  // Async testing
-  // Doc:
-  // https://stackoverflow.com/questions/46521297/unit-testing-a-client-server-application-in-java
-  // https://www.baeldung.com/a-guide-to-java-sockets
-  //  @Test
-  //  public void startConnectionTest() {
-  //    Connector connector = new Connector();
-  //    try {
-  //      Socket clientSocket = new Socket("127.0.0.1", Integer.parseInt("2222"));
-  //      PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
-  //      BufferedReader input =
-  //          new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-  //    } catch (IOException e) {
-  //      assertTrue(true);
-  //    }
-  //  }
 
   @Test
   public void startConnectionToyTest() throws Exception {
@@ -98,6 +63,47 @@ public class ConnectorTest {
   }
 
   @Test
+  public void startConnectionByteArrayTest() {
+    Connector connector = new Connector();
+    try {
+      connector.startConnectionByteArray("127.0.0.1", "1040");
+    } catch (IOException e) {
+      assertTrue(false);
+    }
+  }
+
+  @Test
+  public void reconnectTest() {
+    Connector connector = new Connector();
+    try {
+      connector.startConnectionByteArray("127.0.0.1", "1040");
+      connector.reconnectByteArray();
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void readImageByByteTest() {
+    Connector connector = new Connector();
+    try {
+      connector.startConnectionByteArray("127.0.0.1", "1040");
+      BufferedImage image = connector.readImageByteArray();
+      if (image == null) {
+        assertTrue(true);
+      }
+      connector.closeConnection();
+      connector.reconnectByteArray();
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
   public void sendMessageTest() {
     Connector connector = new Connector();
     try {
@@ -106,11 +112,13 @@ public class ConnectorTest {
       InputStream inputStreamTest = new FileInputStream(icon);
       OutputStream outputStreamTest = new FileOutputStream("output.txt");
       connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
-      connector.sendMessage("Hello, World.");
+      connector.sendMessage(inputStreamTest);
     } catch (IOException e) {
       assertTrue(true);
     } catch (NullPointerException e) {
       assertTrue(true);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
 
@@ -124,6 +132,34 @@ public class ConnectorTest {
       OutputStream outputStreamTest = new FileOutputStream("output.txt");
       connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
       connector.closeConnection();
+    } catch (IOException e) {
+      assertTrue(false);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    }
+  }
+
+  @Test
+  public void parserMessageTest() {
+    Connector connector = new Connector();
+    String parsed = connector.parserMessage("[[('网站', [0.70039225, 0.9907616])]]\n");
+    String parsed2 =
+        connector.parserMessage(
+            "[[('伊利诺伊大学尼巴纳-香槟T', [0.9898179, 0.99173236, 0.699735, 0.988277, 0.99156404, 0.99948126, 0.68767715, 0.99439704, 0.9390116, 0.99303824, 0.76593804, 0.36590272])]]\n");
+    //    String test = "[[('伊利诺伊大学尼巴纳-香槟T', [0.9898179, 0.99173236, 0.699735, 0.988277, 0.99156404,
+    // 0.99948126, 0.68767715,, 0.99439704, 0.9390116, 0.99303824, 0.76593804, 0.36590272])]]";
+    //    String parsed3 = connector.parserMessage(test);
+  }
+
+  @Test
+  public void shutDownServerTest() {
+    Connector connector = new Connector();
+    try {
+      File icon = new File("src/test/resources/uiuc.png");
+
+      InputStream inputStreamTest = new FileInputStream(icon);
+      OutputStream outputStreamTest = new FileOutputStream("output.txt");
+      connector.shutDownServer();
     } catch (IOException e) {
       assertTrue(false);
     } catch (NullPointerException e) {
