@@ -1,15 +1,13 @@
 package org.team.universe;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import javax.imageio.ImageIO;
 
 /** Main program of the server project. */
 public class App {
   private static final int currentVersion = 0;
-  private static String serverAddress = "127.0.0.1";
+  private static final String serverAddress = "127.0.0.1";
 
   private static Boolean isRunningTest = null;
 
@@ -120,32 +118,33 @@ public class App {
     else {
       // TODO: wait the development of Android client
       // TODO: START
-//            connector.startConnectionByteArray(serverAddress, parser.getPort());
-//            while (true) {
-//              // TODO: catch exceptions and handle error
-//              connector.reconnectByteArray();
-//              BufferedImage image = connector.readImageByteArray();
-//              File stored_image = new File("received_image.png");
-//              ImageIO.write(image, "png", stored_image);
-//                      System.out.println("Working Directory = " + System.getProperty("user.dir"));
-//              System.out.println("Store image in: " + stored_image.getAbsolutePath());
-//
-//              // Execute ML prediction
-//              ProcessBuilder builder =
-//                  new ProcessBuilder(
-//                      parser.getPythonpath(),
-//                      "src/predict.py",
-//                      "--model_path",
-//                      model.getPath(),
-//                      "--img_path",
-//                      stored_image.getAbsolutePath());
-//              builder.redirectErrorStream(true);
-//
-//              builder.directory(new File("../vision_model/"));
-//              Process process = builder.start();
-//              connector.sendMessage(process.getInputStream());
-//              connector.closeConnection();
-//            }
+      //            connector.startConnectionByteArray(serverAddress, parser.getPort());
+      //            while (true) {
+      //              // TODO: catch exceptions and handle error
+      //              connector.reconnectByteArray();
+      //              BufferedImage image = connector.readImageByteArray();
+      //              File stored_image = new File("received_image.png");
+      //              ImageIO.write(image, "png", stored_image);
+      //                      System.out.println("Working Directory = " +
+      // System.getProperty("user.dir"));
+      //              System.out.println("Store image in: " + stored_image.getAbsolutePath());
+      //
+      //              // Execute ML prediction
+      //              ProcessBuilder builder =
+      //                  new ProcessBuilder(
+      //                      parser.getPythonpath(),
+      //                      "src/predict.py",
+      //                      "--model_path",
+      //                      model.getPath(),
+      //                      "--img_path",
+      //                      stored_image.getAbsolutePath());
+      //              builder.redirectErrorStream(true);
+      //
+      //              builder.directory(new File("../vision_model/"));
+      //              Process process = builder.start();
+      //              connector.sendMessage(process.getInputStream());
+      //              connector.closeConnection();
+      //            }
       // TODO: END
     }
     connector.shutDownServer();
@@ -167,6 +166,6 @@ public class App {
 
   /** Output current version. */
   private static void printVersion() {
-    System.out.println("Universal Recognition " + String.valueOf(currentVersion) + "\n");
+    System.out.println("Universal Recognition " + currentVersion + "\n");
   }
 }
