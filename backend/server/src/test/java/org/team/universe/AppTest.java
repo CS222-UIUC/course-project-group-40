@@ -59,12 +59,12 @@ public class AppTest {
   public void testMainBrokenPath3() {
     String[] input =
         new String[] {
-          "--pp",
-          "py",
-          "-mp",
-          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-          "-i",
-          "src/test/resources/uiuc.png"
+            "--pp",
+            "py",
+            "-mp",
+            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+            "-i",
+            "src/test/resources/uiuc.png"
         };
     try {
       App.main(input);
@@ -83,12 +83,7 @@ public class AppTest {
   public void testMainBrokenPath4() {
     String[] input =
         new String[] {
-          "-pp",
-          "python3",
-          "-mp",
-          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-          "-i",
-          "server/sr"
+            "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "server/sr"
         };
     try {
       App.main(input);
@@ -109,12 +104,7 @@ public class AppTest {
   public void testMainBrokenPath5() {
     String[] input =
         new String[] {
-            "-pp",
-            "python3",
-            "-mp",
-            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-            "-i",
-            "src"
+            "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "src"
         };
     try {
       App.main(input);
@@ -131,15 +121,7 @@ public class AppTest {
 
   @Test
   public void testMainBrokenPath6() {
-    String[] input =
-        new String[] {
-            "-pp",
-            "python3",
-            "-mp",
-            "output/ocr/CRNN",
-            "-i",
-            "src"
-        };
+    String[] input = new String[] {"-pp", "python3", "-mp", "output/ocr/CRNN", "-i", "src"};
     try {
       App.main(input);
     } catch (ModelNotFoundException e) {
@@ -194,12 +176,12 @@ public class AppTest {
     App main = new App();
     String[] input =
         new String[] {
-          "-pp",
-          "/home/liam/.conda/envs/cs222/bin/python3",
-          "-mp",
-          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-          "-i",
-          "src/test/resources/uiuc.png"
+            "-pp",
+            "/home/liam/.conda/envs/cs222/bin/python3",
+            "-mp",
+            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+            "-i",
+            "src/test/resources/uiuc.png"
         };
     try {
       main.main(input);
@@ -231,7 +213,7 @@ public class AppTest {
     }
 
     Assert.assertEquals(
-        "Usage: ./universal --modelpath Documents/model.pt --address 127.0.0.1 --port 1010\n"
+        "Usage: ./universal --modelpath Documents/model.pt --address 127.0.0.1 --port 1080\n"
             + "For help: ./universal --help\n"
             + "For version: ./universal --version",
         outputStreamCaptor.toString().trim());

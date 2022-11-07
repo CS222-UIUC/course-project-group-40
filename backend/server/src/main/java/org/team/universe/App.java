@@ -1,18 +1,30 @@
 package org.team.universe;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-// import static org.team.universe.Loader.loadFromFile;
-// import ai.djl.repository.zoo.ZooModel;
-// import ai.djl.modality.Classifications;
-// import ai.djl.inference.Predictor;
 
 /** Main program of the server project. */
 public class App {
   private static final int currentVersion = 0;
-  private static String serverAddress = "127.0.0.1";
+  private static final String serverAddress = "127.0.0.1";
+
+  private static Boolean isRunningTest = null;
+
+  /** Check test status. */
+  private static boolean isRunningTest() {
+    // https://stackoverflow.com/questions/2341943/how-can-i-find-out-if-code-is-running-inside-a-junit-test-or-not
+
+    if (isRunningTest == null) {
+      isRunningTest = true;
+      try {
+        Class.forName("org.junit.Test");
+      } catch (ClassNotFoundException e) {
+        isRunningTest = false;
+      }
+    }
+    return isRunningTest;
+  }
 
   /** Main program. */
   public static void main(String[] args) throws Exception {
@@ -32,13 +44,6 @@ public class App {
       return;
     }
 
-    // Check Python related files exist
-    //    File python = new File(parser.getPythonpath());
-    //    if (!(python.exists() && !python.isDirectory())) {
-    //      // Ptyhon file does not exist, abnormally exists
-    //      throw new Exception("Python executable does not exist, check the path.");
-    //    }
-
     File predict = new File("../vision_model/src/predict.py");
     if (!(predict.exists() && !predict.isDirectory())) {
       // Predict file does not exist, abnormally exists
@@ -56,64 +61,94 @@ public class App {
 
     // TODO: receive one image from Android devices
     Connector connector = new Connector();
-    BufferedImage bufferedImage = null;
-    while (true) {
-      // TODO: catch exceptions and handle errors
-      //    connector.startConnection(serverAddress, parser.getPort(), null, null);
 
-      // TODO: classify the received image or recongize texts
-      // WARNING: we use the argument `Imagepath` for local test only
-      File image = new File(parser.getImagepath());
-      if (!(image.exists() && !image.isDirectory())) {
-        // Image file does not exist, abnormally exists
-        throw new Exception("Image file does not exist, check the path.");
-      }
-
-      // Github Actions cannot
-      //      System.out.println("Working Directory = " + System.getProperty("user.dir"));
-
-      // Start a new process in Java
-      // https://stackoverflow.com/questions/15464111/run-cmd-commands-through-java
-      ProcessBuilder builder =
-          new ProcessBuilder(
-              // for Github Action tests only
-              "python3",
-
-              // for local tests, you should COMMENT the above line and UNCOMMENT the following line
-              // parser.getPythonpath(),
-              "src/predict.py",
-              "--model_path",
-              model.getPath(),
-              "--img_path",
-              image.getPath());
-      builder.redirectErrorStream(true);
-
-      builder.directory(new File("../vision_model/"));
-      Process process = builder.start();
-      BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
-      String line;
+    // Test code
+    if (isRunningTest()) {
+      // Check Python related files exist
+      //    File python = new File(parser.getPythonpath());
+      //    if (!(python.exists() && !python.isDirectory())) {
+      //      // Ptyhon file does not exist, abnormally exists
+      //      throw new Exception("Python executable does not exist, check the path.");
+      //    }
       while (true) {
-        line = r.readLine();
-        if (line == null) {
-          break;
+        // TODO: catch exceptions and handle errors
+        //    connector.startConnection(serverAddress, parser.getPort(), null, null);
+
+        // TODO: classify the received image or recongize texts
+        // WARNING: we use the argument `Imagepath` for local test only
+        File image = new File(parser.getImagepath());
+        if (!(image.exists() && !image.isDirectory())) {
+          // Image file does not exist, abnormally exists
+          throw new Exception("Image file does not exist, check the path.");
         }
-        System.out.println(line);
+
+        // Github Actions cannot
+        //      System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+        // Start a new process in Java
+        // https://stackoverflow.com/questions/15464111/run-cmd-commands-through-java
+        ProcessBuilder builder =
+            new ProcessBuilder(
+                // for Github Action tests only
+                "python3",
+
+                // for local tests, you should COMMENT the above line and UNCOMMENT the following
+                // line
+                // parser.getPythonpath(),
+                "src/predict.py",
+                "--model_path",
+                model.getPath(),
+                "--img_path",
+                image.getPath());
+        builder.redirectErrorStream(true);
+
+        builder.directory(new File("../vision_model/"));
+        Process process = builder.start();
+        BufferedReader r = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while (true) {
+          line = r.readLine();
+          if (line == null) {
+            break;
+          }
+          System.out.println(line);
+        }
+        break;
       }
-
-      // Predictor<BufferedImage, Classifications> predictor = model.newPredictor();
-      // Classifications detection = predictor.predict(bufferedImage);
-      // System.out.println(detection);
-
-      // TODO: return result to Android devices
-      //    String message = "Hello, World";
-      //    connector.sendMessage(message);
-
-      // TODO: clean-up resources and normally exit
-      //    connector.closeConnection();
-
-      // TODO: handle signal
-      break;
+    } else {
+      // Practical code
+      // TODO: wait the development of Android client
+      // TODO: START
+      //            connector.startConnectionByteArray(serverAddress, parser.getPort());
+      //            while (true) {
+      //              // TODO: catch exceptions and handle error
+      //              connector.reconnectByteArray();
+      //              BufferedImage image = connector.readImageByteArray();
+      //              File stored_image = new File("received_image.png");
+      //              ImageIO.write(image, "png", stored_image);
+      //                      System.out.println("Working Directory = " +
+      // System.getProperty("user.dir"));
+      //              System.out.println("Store image in: " + stored_image.getAbsolutePath());
+      //
+      //              // Execute ML prediction
+      //              ProcessBuilder builder =
+      //                  new ProcessBuilder(
+      //                      parser.getPythonpath(),
+      //                      "src/predict.py",
+      //                      "--model_path",
+      //                      model.getPath(),
+      //                      "--img_path",
+      //                      stored_image.getAbsolutePath());
+      //              builder.redirectErrorStream(true);
+      //
+      //              builder.directory(new File("../vision_model/"));
+      //              Process process = builder.start();
+      //              connector.sendMessage(process.getInputStream());
+      //              connector.closeConnection();
+      //            }
+      // TODO: END
     }
+    connector.shutDownServer();
   }
 
   /** Output sample usage. */
@@ -123,7 +158,7 @@ public class App {
             + "./universal "
             + "--modelpath Documents/model.pt "
             + "--address 127.0.0.1 "
-            + "--port 1010\n"
+            + "--port 1080\n"
             + "For help: "
             + "./universal --help\n"
             + "For version: "
@@ -132,6 +167,6 @@ public class App {
 
   /** Output current version. */
   private static void printVersion() {
-    System.out.println("Universal Recognition " + String.valueOf(currentVersion) + "\n");
+    System.out.println("Universal Recognition " + currentVersion + "\n");
   }
 }
