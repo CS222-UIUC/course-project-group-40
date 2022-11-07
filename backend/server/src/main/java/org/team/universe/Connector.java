@@ -164,27 +164,27 @@ public class Connector {
     // recognized word
     String result = "";
 
-    int word_start = 4;
-    int word_end = word_start;
+    int wordStart = 4;
+    int wordEnd = wordStart;
     int i = 0;
     for (; i < message.length(); i++) {
       if (message.charAt(i) == '\'' && message.charAt(i + 1) == ',') {
         break;
       }
     }
-    word_end = i;
-    result += message.substring(word_start, word_end);
+    wordEnd = i;
+    result += message.substring(wordStart, wordEnd);
     result += "]\n";
 
     // each char with probability
     i += 4;
     int count = 0;
-    int probability_start = i;
+    int probabilityStart = i;
     for (; i < message.length(); i++) {
       if (message.charAt(i) == ']' && message.charAt(i + 1) == ')') {
         result += result.substring(count, count + 1);
         result += ": ";
-        result += message.substring(probability_start, i);
+        result += message.substring(probabilityStart, i);
         result += "\n";
         count += 1;
         break;
@@ -192,9 +192,9 @@ public class Connector {
       if (message.charAt(i) == ',') {
         result += result.substring(count, count + 1);
         result += ": ";
-        result += message.substring(probability_start, i);
+        result += message.substring(probabilityStart, i);
         result += "\n";
-        probability_start = i + 2;
+        probabilityStart = i + 2;
         count += 1;
       }
     }

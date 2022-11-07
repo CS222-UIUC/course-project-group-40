@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 
-
 /** Main program of the server project. */
 public class App {
   private static final int currentVersion = 0;
@@ -116,10 +115,8 @@ public class App {
         }
         break;
       }
-    }
-
-    // Practical code
-    else {
+    } else {
+      // Practical code
       // TODO: wait the development of Android client
       // TODO: START
       //            connector.startConnectionByteArray(serverAddress, parser.getPort());
