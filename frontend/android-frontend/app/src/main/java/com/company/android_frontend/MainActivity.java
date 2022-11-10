@@ -8,12 +8,11 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,27 +22,33 @@ import android.widget.Toast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.InetAddress;
+import java.io.StringWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button button, connectButton, resultButton;
     private Socket socket;
-    private static final int SERVERPORT = 1080;
-    private static final String SERVER_IP = "127.0.0.1";
-
+    private static int SERVERPORT = 1040;
+    private static String SERVER_IP = "10.0.2.2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Thread(new ClientThread()).start();
 
         button = findViewById(R.id.click_button);
         TextView serverIP = (TextView) findViewById(R.id.serverIP);
@@ -82,15 +87,35 @@ public class MainActivity extends AppCompatActivity {
                     Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    bmp.compress(Bitmap.CompressFormat.PNG, 0, bos);
+                    bmp.compress(Bitmap.CompressFormat.PNG, 100, bos);
 
                     byte[] array = bos.toByteArray();
 
-                    OutputStream outputStream = socket.getOutputStream();
-                    DataOutputStream dos = new DataOutputStream(outputStream);
-                    dos.writeInt(array.length);
-                    dos.write(array, 0 , array.length);
-                } catch (IOException e) {
+                    // Start a new background thread to
+                    // run network connection and
+                    // avoid Mainthread exception in API30
+                    String ipAddress = serverIP.getText().toString();
+                    String p = port.getText().toString();
+
+                    int portNumber = Integer.parseInt(p);
+
+
+                    ClientThread client = new ClientThread(array, ipAddress, portNumber);
+                    FutureTask<String> task = new FutureTask<String>(client);
+
+                    Thread thread = new Thread(task);
+                    thread.start();
+                    Toast.makeText(MainActivity.this, "Image Array length:" + String.valueOf(array.length) + " bytes", Toast.LENGTH_SHORT).show();
+
+                    thread.join();
+                    // Print out
+                    if (task.isDone()) {
+                        Toast.makeText(MainActivity.this, "Result: " + task.get(), Toast.LENGTH_SHORT).show();
+                    }
+//                    thread.interrupt();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
             }
@@ -101,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
                 // TODO: putExtra to pass the result
-                displayResult.putExtra("textRecognized", "This is the recognized text");
                 startActivity(displayResult);
             }
         });
@@ -116,12 +140,12 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestStoragePermission() {
-        requestPermissions(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }, 100);
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestCameraPermission() {
-        requestPermissions(new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE }, 100);
+        requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
     }
 
     private boolean checkStoragePermission() {
@@ -135,19 +159,58 @@ public class MainActivity extends AppCompatActivity {
         return res1 && res2;
     }
 
-    class ClientThread implements Runnable {
+    class ClientThread implements Callable<String> {
+        private volatile Socket s;
+        private byte[] image;
+
+        private String serverIP;
+        private int port;
+        private String m;
+
+        public ClientThread(byte[] array, String ipAddress, int portNumber) {
+            image = array;
+
+            serverIP = ipAddress;
+            port = portNumber;
+        }
+
+
         @Override
-        public void run() {
+        public String call() {
+            String result = "";
             try {
-                InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
-                socket = new Socket(serverAddr, SERVERPORT);
+                // send image
+                s = new Socket(serverIP, port);
+                InputStream inputStream = s.getInputStream();
+                OutputStream outputStream = s.getOutputStream();
+
+                outputStream.write(image);
+//                outputStream.flush();
+                s.shutdownOutput();
+
+                // receive result
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                s.shutdownInput();
+
+                s.close();
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return result;
         }
+
+        public Socket getSocket() {
+            return s;
+        }
+
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

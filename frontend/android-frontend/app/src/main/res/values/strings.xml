@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">android-frontend</string>
+    <string name="app_name">Universal Recognition</string>
     <string name="button">Launch Image Recognize</string>
     <string name="take_photo">Take photo</string>
-    <string name="hintPort">Port</string>
-    <string name="hintIP">Server IP</string>
-    <string name="txtConnect">Connect</string>
+    <string name="default_ip_address">10.0.2.2</string>
+    <string name="default_port_number">1040</string>
 </resources>

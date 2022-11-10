@@ -43,32 +43,34 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/serverIP"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/serverIP"
-                    android:layout_marginTop="30dp"
                     android:layout_marginStart="30dp"
-                    android:hint="@string/hintIP"
-                    android:padding="15dp"
+                    android:layout_marginTop="30dp"
                     android:drawableStart="@drawable/ic_baseline_link_24"
-                    android:drawablePadding="10dp"/>
+                    android:drawablePadding="10dp"
+                    android:hint="Server IP"
+                    android:padding="15dp"
+                    android:text="@string/default_ip_address" />
 
                 <EditText
+                    android:id="@+id/port"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/port"
                     android:layout_marginStart="30dp"
-                    android:hint="@string/hintPort"
-                    android:padding="15dp"
                     android:drawableStart="@drawable/ic_baseline_link_24"
-                    android:drawablePadding="10dp"/>
+                    android:drawablePadding="10dp"
+                    android:hint="Port"
+                    android:padding="15dp"
+                    android:text="@string/default_port_number" />
 
             </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/txtConnect"
+                android:text="Connect"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="10dp"
                 android:padding="10dp"
