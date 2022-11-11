@@ -28,7 +28,7 @@ hs_err_pid*
 # cache file
 *.coverage
 .DS_Store
-*datasets*
+# *datasets*
 
 # checkstyle file
 .flake8
