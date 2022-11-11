@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button, connectButton, resultButton;
     private Socket socket;
-    private static int SERVERPORT = 1040;
-    private static String SERVER_IP = "10.0.2.2";
+    private String results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     thread.join();
                     // Print out
                     if (task.isDone()) {
+                        results = task.get();
                         Toast.makeText(MainActivity.this, "Result: " + task.get(), Toast.LENGTH_SHORT).show();
                     }
 //                    thread.interrupt();
@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
-                // TODO: putExtra to pass the result
+                // putExtra to pass the result
+                displayResult.putExtra("textRecognized", results);
                 startActivity(displayResult);
             }
         });
