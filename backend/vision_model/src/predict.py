@@ -22,7 +22,7 @@ class ObjDecInfer:
             @return: None
         """
         # ------> IMPORT MODULES <--------- #
-        from model.ocr import build_model
+        from model.objectDetection.pytorchyolo import models
         # from model.objectDetection import build_model
         # from src.data import ObjDataProcess
 
@@ -32,17 +32,25 @@ class ObjDecInfer:
         self.device = torch.device(device)
 
         # -----> SET UP MODEL <----- #
-        ckpt = torch.load(model_path, map_location='cpu')
-        cfg = ckpt['cfg']
-        self.model = build_model(cfg)
-        state_dict = {}
-
-        for k, v in ckpt['state_dict'].items():
-            state_dict[k.replace('module.', '')] = v
-        self.model.load_state_dict(state_dict)
-
+        self.model = models.load_model(
+            f"{model_path}/yolov3.cfg",
+            f"{model_path}/yolov3.weights")
+        self.labels = open(f"{model_path}/yolov3.labels").read().strip().split("\n")
         self.model.to(self.device)
         self.model.eval()
+
+    def predict(self, imgs):
+        from model.objectDetection.pytorchyolo import detect
+        boxes = []
+        if not isinstance(imgs, list):
+            imgs = [imgs]
+        for img in imgs:
+            box = detect.detect_image(self.model, img)
+            for b in box:
+                # if len(b) == 6:
+                assert len(b) == 6
+                boxes.append([b[0], b[1], b[2], b[3], self.labels[int(b[5])]])
+        return boxes
 
 
 # =======>   CLASS FOR OCR PREDICT    <======= #
@@ -120,7 +128,7 @@ class RecInfer:
 def init_args():
     import argparse
     parser = argparse.ArgumentParser(description='PytorchOCR infer')
-    parser.add_argument('--task', type=str, default='rec', help='Task type')
+    parser.add_argument('--task', type=str, default='ocr', choices=['ocr', 'obj'], help='Task type')
     parser.add_argument('--model_path', required=True, type=str, help='model path')
     parser.add_argument('--img_path', required=True, type=str, help='img path for predict')
 
@@ -174,25 +182,29 @@ if __name__ == '__main__':
 
     ############################################################
     # 4. LOAD MODEL(JAVA STYLE) AND PREDICT
+    if args.task == 'ocr':
+        from model.ocr import build_model_for_java
 
-    from model.ocr import build_model_for_java
+        ckpt = torch.load(args.model_path, map_location='cpu')
+        cfg = ckpt['cfg']
+        RecModelForJava = build_model_for_java(cfg)
+        state_dict = {}
 
-    ckpt = torch.load(args.model_path, map_location='cpu')
-    cfg = ckpt['cfg']
-    RecModelForJava = build_model_for_java(cfg)
-    state_dict = {}
+        for k, v in ckpt['state_dict'].items():
+            state_dict[k.replace('module.', '')] = v
+        RecModelForJava.load_state_dict(state_dict)
 
-    for k, v in ckpt['state_dict'].items():
-        state_dict[k.replace('module.', '')] = v
-    RecModelForJava.load_state_dict(state_dict)
+        device = torch.device('cpu')
+        RecModelForJava.to(device)
+        RecModelForJava.eval()
 
-    device = torch.device('cpu')
-    RecModelForJava.to(device)
-    RecModelForJava.eval()
+        out = RecModelForJava.predict(img)
+        print(out)
 
-    out = RecModelForJava.predict(img)
-    print(out)
-
+    elif args.task == 'obj':
+        ObjDecModel = ObjDecInfer(args.model_path)
+        out = ObjDecModel.predict(img)
+        print(out)
     exit()
     ############################################################
     # 5. MODIFY AND SAVE THE PRETRAINED MODEL TO FIT JAVA STYLE
