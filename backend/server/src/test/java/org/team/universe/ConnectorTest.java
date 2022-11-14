@@ -123,7 +123,7 @@ public class ConnectorTest {
   }
 
   @Test
-  public void sendOCRMessageTest() {
+  public void sendOcrMessageTest() {
     Connector connector = new Connector();
     try {
       File icon = new File("src/test/resources/uiuc.png");
@@ -131,7 +131,7 @@ public class ConnectorTest {
       InputStream inputStreamTest = new FileInputStream(icon);
       OutputStream outputStreamTest = new FileOutputStream("output.txt");
       connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
-      connector.sendOCRMessage(inputStreamTest);
+      connector.sendOcrMessage(inputStreamTest);
     } catch (IOException e) {
       assertTrue(true);
     } catch (NullPointerException e) {

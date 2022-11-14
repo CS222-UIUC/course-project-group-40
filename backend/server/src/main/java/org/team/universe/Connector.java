@@ -152,7 +152,7 @@ public class Connector {
   }
 
   /** send OCR result to client. */
-  public void sendOCRMessage(InputStream processInputStream)
+  public void sendOcrMessage(InputStream processInputStream)
       throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
     //    IOUtils.copy(processInputStream, outputStream);

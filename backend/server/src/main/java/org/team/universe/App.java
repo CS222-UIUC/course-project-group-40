@@ -143,7 +143,7 @@ public class App {
       //
       //                    builder.directory(new File("../vision_model/"));
       //                    Process process = builder.start();
-      //                    connector.sendOCRMessage(process.getInputStream());
+      //                    connector.sendOcrMessage(process.getInputStream());
       //
       //                    // Execute ML prediction for Object Detection
       //                      ProcessBuilder builderObject =
