@@ -66,8 +66,8 @@ public class Connector {
     } else {
       // TODO: wait the development of Android client
       // TODO: START
-      //            serverSocket = new ServerSocket(serverPort);
-      //            System.out.println("Initial Server Socket.");
+      //                  serverSocket = new ServerSocket(serverPort);
+      //                  System.out.println("Initial Server Socket.");
       // TODO: END
     }
   }
@@ -81,16 +81,16 @@ public class Connector {
     } else {
       // TODO: wait the development of Android client
       // TODO: START
-      //            System.out.println("Start to listen to Android Client");
-      //            clientSocket = serverSocket.accept();
-      //            System.out.println(
-      //                "Connected! Inet Address: "
-      //                    + clientSocket.getInetAddress().toString()
-      //                    + ", Port: "
-      //                    + String.valueOf(clientSocket.getLocalPort()));
-      //            // obtain the streams to read and write to client
-      //            inputStream = clientSocket.getInputStream();
-      //            outputStream = clientSocket.getOutputStream();
+      //                  System.out.println("Start to listen to Android Client");
+      //                  clientSocket = serverSocket.accept();
+      //                  System.out.println(
+      //                      "Connected! Inet Address: "
+      //                          + clientSocket.getInetAddress().toString()
+      //                          + ", Port: "
+      //                          + String.valueOf(clientSocket.getLocalPort()));
+      //                  // obtain the streams to read and write to client
+      //                  inputStream = clientSocket.getInputStream();
+      //                  outputStream = clientSocket.getOutputStream();
       // TODO: END
     }
   }
@@ -99,13 +99,13 @@ public class Connector {
   public BufferedImage readImageByteArray() throws IOException {
     // TODO: wait the development of Android client
     // TODO: START
-    //        byte[] image_bytes = IOUtils.toByteArray(inputStream);
-    //        clientSocket.shutdownInput();
+    //            byte[] image_bytes = IOUtils.toByteArray(inputStream);
+    //            clientSocket.shutdownInput();
     //
-    //        System.out.println("Received Image: " + String.valueOf(image_bytes.length) + "
-    // bytes");
-    //        ByteArrayInputStream image_input_stream = new ByteArrayInputStream(image_bytes);
-    //        bufferedImage = ImageIO.read(image_input_stream);
+    //            System.out.println("Received Image: " + String.valueOf(image_bytes.length) +
+    // "bytes");
+    //            ByteArrayInputStream image_input_stream = new ByteArrayInputStream(image_bytes);
+    //            bufferedImage = ImageIO.read(image_input_stream);
     // TODO: END
     return bufferedImage;
   }
@@ -138,8 +138,22 @@ public class Connector {
     String width = input.readLine();
   }
 
-  /** send result to client. */
+  /** send OCR result to client. Old function */
+  @Deprecated
   public void sendMessage(InputStream processInputStream) throws IOException, InterruptedException {
+    // TODO: Send the result of calculations with Deep Learning models to client
+    //    IOUtils.copy(processInputStream, outputStream);
+    byte[] message = IOUtils.toByteArray(processInputStream);
+    //    outputStream.write(message);
+    //    clientSocket.shutdownOutput();
+    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+    bufferedWriter.write(parserMessage(new String(message, StandardCharsets.UTF_8)));
+    bufferedWriter.flush();
+  }
+
+  /** send OCR result to client. */
+  public void sendOCRMessage(InputStream processInputStream)
+      throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
     //    IOUtils.copy(processInputStream, outputStream);
     byte[] message = IOUtils.toByteArray(processInputStream);
@@ -150,16 +164,38 @@ public class Connector {
     bufferedWriter.flush();
     // TODO: wait the development of Android client
     // TODO: START
-    //        clientSocket.shutdownOutput();
-    //
-    //        System.out.println("Original message: " + new String(message,
-    // StandardCharsets.UTF_8));
-    //        System.out.println(
-    //            "Sent message: " + parserMessage(new String(message, StandardCharsets.UTF_8)));
+
+    //            System.out.println("OCR - Original message: " + new String(message,
+    //     StandardCharsets.UTF_8));
+    //            System.out.println(
+    //                "OCR - Sent message: " + parserMessage(new String(message,
+    // StandardCharsets.UTF_8)));
     // TODO: END
   }
 
-  /** clean-up utility. */
+  /** send Object detection result to client. */
+  public void sendObjectMessage(InputStream processInputStream)
+      throws IOException, InterruptedException {
+    // TODO: Send the result of calculations with Deep Learning models to client
+    //    IOUtils.copy(processInputStream, outputStream);
+    byte[] message = IOUtils.toByteArray(processInputStream);
+    //    outputStream.write(message);
+    //    clientSocket.shutdownOutput();
+    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+    bufferedWriter.write(new String(message, StandardCharsets.UTF_8));
+    bufferedWriter.flush();
+    // TODO: wait the development of Android client
+    // TODO: START
+    //            clientSocket.shutdownOutput();
+    //
+    //            System.out.println("Object - Original message: " + new String(message,
+    //     StandardCharsets.UTF_8));
+    //            System.out.println(
+    //                "Object - Sent message: " + new String(message, StandardCharsets.UTF_8));
+    // TODO: END
+  }
+
+  /** OCR result utility. */
   public String parserMessage(String message) {
     // recognized word
     String result = "";
