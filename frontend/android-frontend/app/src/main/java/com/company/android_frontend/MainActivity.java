@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         });
         // Button "OCR Results"
         OCRButton.setOnClickListener(view -> {
-            Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
+            Intent displayResult = new Intent(MainActivity.this, OCRActivity.class);
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
                 results = "No text detected";
@@ -129,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
         // Button "Detect object"
         objectButton.setOnClickListener(view -> {
             // TODO: Draw boxes on the image currently displayed
+            Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
+            // putExtra to pass the result
+            if (results == null || results.isEmpty()) {
+                results = "No text detected";
+            }
+            displayResult.putExtra("textRecognized", results);
+            startActivity(displayResult);
         });
     }
 
