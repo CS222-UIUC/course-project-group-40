@@ -123,6 +123,44 @@ public class ConnectorTest {
   }
 
   @Test
+  public void sendOcrMessageTest() {
+    Connector connector = new Connector();
+    try {
+      File icon = new File("src/test/resources/uiuc.png");
+
+      InputStream inputStreamTest = new FileInputStream(icon);
+      OutputStream outputStreamTest = new FileOutputStream("output.txt");
+      connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
+      connector.sendOcrMessage(inputStreamTest);
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void sendObjectMessageTest() {
+    Connector connector = new Connector();
+    try {
+      File icon = new File("src/test/resources/uiuc.png");
+
+      InputStream inputStreamTest = new FileInputStream(icon);
+      OutputStream outputStreamTest = new FileOutputStream("output.txt");
+      connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
+      connector.sendObjectMessage(inputStreamTest);
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
   public void closeTest() {
     Connector connector = new Connector();
     try {

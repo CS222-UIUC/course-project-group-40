@@ -38,3 +38,4 @@ backend/vision_model/output/ocr/CRNN/ch_rec_moblie_crnn_mbv2.pth
 backend/vision_model/output/object/yolov3.weights
 backend/vision_model/output/object/yolov3-tiny.weights
 backend/vision_model/output/object/darknet53.conv.74
+__pycache__/

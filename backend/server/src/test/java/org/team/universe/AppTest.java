@@ -59,12 +59,12 @@ public class AppTest {
   public void testMainBrokenPath3() {
     String[] input =
         new String[] {
-            "--pp",
-            "py",
-            "-mp",
-            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-            "-i",
-            "src/test/resources/uiuc.png"
+          "--pp",
+          "py",
+          "-mp",
+          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+          "-i",
+          "src/test/resources/uiuc.png"
         };
     try {
       App.main(input);
@@ -83,7 +83,7 @@ public class AppTest {
   public void testMainBrokenPath4() {
     String[] input =
         new String[] {
-            "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "server/sr"
+          "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "server/sr"
         };
     try {
       App.main(input);
@@ -104,7 +104,7 @@ public class AppTest {
   public void testMainBrokenPath5() {
     String[] input =
         new String[] {
-            "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "src"
+          "-pp", "python3", "-mp", "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth", "-i", "src"
         };
     try {
       App.main(input);
@@ -176,12 +176,12 @@ public class AppTest {
     App main = new App();
     String[] input =
         new String[] {
-            "-pp",
-            "/home/liam/.conda/envs/cs222/bin/python3",
-            "-mp",
-            "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
-            "-i",
-            "src/test/resources/uiuc.png"
+          "-pp",
+          "/home/liam/.conda/envs/cs222/bin/python3",
+          "-mp",
+          "output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth",
+          "-i",
+          "src/test/resources/uiuc.png"
         };
     try {
       main.main(input);

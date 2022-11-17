@@ -20,10 +20,15 @@ RUN yes | pip install -r cs222/backend/vision_model/requirements.txt
 
 # Start to build the server program
 RUN cd cs222/backend/server \
-    && ./mvnw clean package
+    && ./mvnw clean package \
+    && cd ../vision_model \
+    && bash ./output/object/download_weights.sh
+# Download weights of Deep Learning models
+
 
 # Global Env Variables
 ENV PART SERVER
+ENV CUDA_VISIBLE_DEVICES ""
 
 # Export Port for Android client to connect
 EXPOSE 1080
