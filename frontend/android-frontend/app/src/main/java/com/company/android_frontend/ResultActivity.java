@@ -15,9 +15,6 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
-        if (value == null || value.isEmpty()) {
-            value = "Default text here";
-        }
 
         TextView resultView = findViewById(R.id.resultRecognized);
         resultView.setText(value);
