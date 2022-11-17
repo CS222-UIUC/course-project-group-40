@@ -11,8 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,25 +20,21 @@ import android.widget.Toast;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button, connectButton, resultButton;
+    private Button button, connectButton, OCRButton, objectButton;
     private Socket socket;
     private String results;
 
@@ -50,12 +44,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.click_button);
-        TextView serverIP = (TextView) findViewById(R.id.serverIP);
-        TextView port = (TextView) findViewById(R.id.port);
+        TextView serverIP = findViewById(R.id.serverIP);
+        TextView port = findViewById(R.id.port);
 
         connectButton = findViewById(R.id.ip_button);
-        resultButton = findViewById(R.id.result_button);
-        resultButton.setEnabled(false);
+        OCRButton = findViewById(R.id.result_button);
+        OCRButton.setEnabled(false);
+        objectButton = findViewById(R.id.object_detect_button);
+        objectButton.setEnabled(false);
 
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -120,15 +116,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        resultButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View view) {
-                Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
-                // putExtra to pass the result
-                displayResult.putExtra("textRecognized", results);
-                startActivity(displayResult);
+        // Button "OCR Results"
+        OCRButton.setOnClickListener(view -> {
+            Intent displayResult = new Intent(MainActivity.this, OCRActivity.class);
+            // putExtra to pass the result
+            if (results == null || results.isEmpty()) {
+                results = "No text detected";
             }
+            displayResult.putExtra("textRecognized", results);
+            startActivity(displayResult);
+        });
+        // Button "Detect object"
+        objectButton.setOnClickListener(view -> {
+            // TODO: Draw boxes on the image currently displayed
+            Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
+            // putExtra to pass the result
+            if (results == null || results.isEmpty()) {
+                results = "No text detected";
+            }
+            displayResult.putExtra("textRecognized", results);
+            startActivity(displayResult);
         });
     }
 
@@ -221,7 +228,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 ((ImageView) findViewById(R.id.cropImageView)).setImageURI(result.getUri());
                 // enable SEE RESULT button
-                resultButton.setEnabled(true);
+                OCRButton.setEnabled(true);
+                objectButton.setEnabled(true);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
