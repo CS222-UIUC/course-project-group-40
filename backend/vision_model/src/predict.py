@@ -205,7 +205,9 @@ if __name__ == '__main__':
         ObjDecModel = ObjDecInfer(args.model_path)
         out = ObjDecModel.predict(img)
         print(out)
+
     exit()
+
     ############################################################
     # 5. MODIFY AND SAVE THE PRETRAINED MODEL TO FIT JAVA STYLE
 
