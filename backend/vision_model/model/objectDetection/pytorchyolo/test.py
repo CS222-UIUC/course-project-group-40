@@ -13,7 +13,8 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
 from model.objectDetection.pytorchyolo.models import load_model
-from model.objectDetection.pytorchyolo.utils.utils import load_classes, ap_per_class, get_batch_statistics, non_max_suppression, xywh2xyxy, print_environment_info
+from model.objectDetection.pytorchyolo.utils.utils import load_classes, ap_per_class, get_batch_statistics, non_max_suppression,\
+    xywh2xyxy, print_environment_info
 from model.objectDetection.pytorchyolo.utils.datasets import ListDataset
 from model.objectDetection.pytorchyolo.utils.transforms import DEFAULT_TRANSFORMS
 from model.objectDetection.pytorchyolo.utils.parse_config import parse_data_config
