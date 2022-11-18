@@ -3,6 +3,7 @@ package org.team.universe;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,6 +28,7 @@ import org.apache.commons.io.IOUtils;
  * https://blog.csdn.net/qq_53344479/article/details/124703708
  */
 public class Connector {
+
   private ServerSocket serverSocket;
   private Socket clientSocket;
 
@@ -66,8 +68,8 @@ public class Connector {
     } else {
       // TODO: wait the development of Android client
       // TODO: START
-      //                        serverSocket = new ServerSocket(serverPort);
-      //                        System.out.println("Initial Server Socket.");
+      serverSocket = new ServerSocket(serverPort);
+      System.out.println("Initial Server Socket.");
       // TODO: END
     }
   }
@@ -81,16 +83,16 @@ public class Connector {
     } else {
       // TODO: wait the development of Android client
       // TODO: START
-      //                        System.out.println("Start to listen to Android Client");
-      //                        clientSocket = serverSocket.accept();
-      //                        System.out.println(
-      //                            "Connected! Inet Address: "
-      //                                + clientSocket.getInetAddress().toString()
-      //                                + ", Port: "
-      //                                + String.valueOf(clientSocket.getLocalPort()));
-      //                        // obtain the streams to read and write to client
-      //                        inputStream = clientSocket.getInputStream();
-      //                        outputStream = clientSocket.getOutputStream();
+      System.out.println("Start to listen to Android Client");
+      clientSocket = serverSocket.accept();
+      System.out.println(
+          "Connected! Inet Address: "
+              + clientSocket.getInetAddress().toString()
+              + ", Port: "
+              + String.valueOf(clientSocket.getLocalPort()));
+      // obtain the streams to read and write to client
+      inputStream = clientSocket.getInputStream();
+      outputStream = clientSocket.getOutputStream();
       // TODO: END
     }
   }
@@ -99,14 +101,12 @@ public class Connector {
   public BufferedImage readImageByteArray() throws IOException {
     // TODO: wait the development of Android client
     // TODO: START
-    //                byte[] image_bytes = IOUtils.toByteArray(inputStream);
-    //                clientSocket.shutdownInput();
-    //
-    //                System.out.println("Received Image: " + String.valueOf(image_bytes.length) +
-    //     "bytes");
-    //                ByteArrayInputStream image_input_stream = new
-    // ByteArrayInputStream(image_bytes);
-    //                bufferedImage = ImageIO.read(image_input_stream);
+    byte[] image_bytes = IOUtils.toByteArray(inputStream);
+    clientSocket.shutdownInput();
+
+    System.out.println("Received Image: " + String.valueOf(image_bytes.length) + "bytes");
+    ByteArrayInputStream image_input_stream = new ByteArrayInputStream(image_bytes);
+    bufferedImage = ImageIO.read(image_input_stream);
     // TODO: END
     return bufferedImage;
   }
@@ -161,16 +161,14 @@ public class Connector {
     //    outputStream.write(message);
     //    clientSocket.shutdownOutput();
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-    bufferedWriter.write(parserMessage(new String(message, StandardCharsets.UTF_8)));
+    bufferedWriter.write("OCR:" + new String(message, StandardCharsets.UTF_8) + "\t");
     bufferedWriter.flush();
     // TODO: wait the development of Android client
     // TODO: START
 
-    //                System.out.println("OCR - Original message: " + new String(message,
-    //         StandardCharsets.UTF_8));
-    //                System.out.println(
-    //                    "OCR - Sent message: " + parserMessage(new String(message,
-    //     StandardCharsets.UTF_8)));
+    System.out.println("OCR - Original message: " + new String(message, StandardCharsets.UTF_8));
+    System.out.println(
+        "OCR - Sent message: " + parserMessage(new String(message, StandardCharsets.UTF_8)));
     // TODO: END
   }
 
@@ -183,20 +181,19 @@ public class Connector {
     //    outputStream.write(message);
     //    clientSocket.shutdownOutput();
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-    bufferedWriter.write(new String(message, StandardCharsets.UTF_8));
+    bufferedWriter.write("Object:" + new String(message, StandardCharsets.UTF_8));
     bufferedWriter.flush();
     // TODO: wait the development of Android client
     // TODO: START
-    //                clientSocket.shutdownOutput();
-    //
-    //                System.out.println("Object - Original message: " + new String(message,
-    //         StandardCharsets.UTF_8));
-    //                System.out.println(
-    //                    "Object - Sent message: " + new String(message, StandardCharsets.UTF_8));
+    clientSocket.shutdownOutput();
+
+    System.out.println("Object - Original message: " + new String(message, StandardCharsets.UTF_8));
+    System.out.println("Object - Sent message: " + new String(message, StandardCharsets.UTF_8));
     // TODO: END
   }
 
   /** OCR result utility. */
+  @Deprecated
   public String parserMessage(String message) {
     // recognized word
     String result = "";
