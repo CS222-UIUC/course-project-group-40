@@ -31,7 +31,7 @@ ENV PART SERVER
 ENV CUDA_VISIBLE_DEVICES ""
 
 # Export Port for Android client to connect
-EXPOSE 1080
+EXPOSE 1040
 
 # For Reference Only
 # https://stackoverflow.com/questions/33907835/docker-error-cannot-delete-docker-container-conflict-unable-to-remove-reposito
