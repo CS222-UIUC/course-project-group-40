@@ -90,6 +90,7 @@ public class Connector {
               + clientSocket.getInetAddress().toString()
               + ", Port: "
               + String.valueOf(clientSocket.getLocalPort()));
+
       // obtain the streams to read and write to client
       inputStream = clientSocket.getInputStream();
       outputStream = clientSocket.getOutputStream();
@@ -112,13 +113,13 @@ public class Connector {
   }
 
   /** Start to listen to clients and establish connection. */
+  @Deprecated
   public void startConnection(
       String address, String port, InputStream inputStreamTest, OutputStream outputStreamTest)
       throws IOException {
     // set the socket of this server and keep listing
     int serverPort = Integer.parseInt(port);
 
-    // Toy Tests
     inputStream = inputStreamTest;
     outputStream = outputStreamTest;
   }
@@ -142,11 +143,9 @@ public class Connector {
   /** send OCR result to client. Old function */
   @Deprecated
   public void sendMessage(InputStream processInputStream) throws IOException, InterruptedException {
-    // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
+    // Send the result of calculations with Deep Learning models to client
     byte[] message = IOUtils.toByteArray(processInputStream);
-    //    outputStream.write(message);
-    //    clientSocket.shutdownOutput();
+
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
     bufferedWriter.write(parserMessage(new String(message, StandardCharsets.UTF_8)));
     bufferedWriter.flush();
@@ -155,17 +154,14 @@ public class Connector {
   /** send OCR result to client. */
   public void sendOcrMessage(InputStream processInputStream)
       throws IOException, InterruptedException {
-    // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
+    // Send the result of calculations with Deep Learning models to client
     byte[] message = IOUtils.toByteArray(processInputStream);
-    //    outputStream.write(message);
-    //    clientSocket.shutdownOutput();
+
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
     bufferedWriter.write("OCR:" + new String(message, StandardCharsets.UTF_8) + "\t");
     bufferedWriter.flush();
     // TODO: wait the development of Android client
     // TODO: START
-
     System.out.println("OCR - Original message: " + new String(message, StandardCharsets.UTF_8));
     System.out.println(
         "OCR - Sent message: " + parserMessage(new String(message, StandardCharsets.UTF_8)));
@@ -175,11 +171,9 @@ public class Connector {
   /** send Object detection result to client. */
   public void sendObjectMessage(InputStream processInputStream)
       throws IOException, InterruptedException {
-    // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
+    // Send the result of calculations with Deep Learning models to client
     byte[] message = IOUtils.toByteArray(processInputStream);
-    //    outputStream.write(message);
-    //    clientSocket.shutdownOutput();
+
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
     bufferedWriter.write("Object:" + new String(message, StandardCharsets.UTF_8));
     bufferedWriter.flush();
