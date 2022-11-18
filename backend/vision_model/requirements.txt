@@ -8,7 +8,7 @@ huggingface-hub==0.10.0
 idna==3.4
 iniconfig==1.1.1
 mccabe==0.7.0
-numpy==1.20
+numpy==1.23.4
 packaging==21.3
 Pillow==9.2.0
 pluggy==1.0.0
