@@ -10,7 +10,7 @@ LABEL maintainer="liam@cs222-40"
 # Set up tools
 RUN apt-get update \
     && apt-get install -y git default-jre default-jdk \
-    && apt-get install -y python3.9 pip
+    && apt-get install -y python3.9 pip wget
 
 # Clone Git Repo
 RUN git clone https://github.com/CS222-UIUC/course-project-group-40.git cs222
