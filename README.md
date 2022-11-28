@@ -19,7 +19,6 @@ The server program needs to communicate with Yuanxi's Machine Learning predictio
 
 ### Android
 
-
 ## Installation and Usage
 ### Installation
 Assumption: docker is installed and running
@@ -49,4 +48,5 @@ sh -c "$(wget https://raw.githubusercontent.com/CS222-UIUC/course-project-group-
 - Yang Duan (yangd4), mainly works on the server program. 
 - Mike Cheng, 
 - Ziyu Wang,
+
 

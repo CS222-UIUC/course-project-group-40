@@ -17,6 +17,8 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Connector of the server project. It currently uses TCP network protocol to connect with Android
@@ -184,6 +186,30 @@ public class Connector {
     // StandardCharsets.UTF_8));
     //    System.out.println("Object - Sent message: " + new String(message,
     // StandardCharsets.UTF_8));
+    // TODO: END
+  }
+
+  /** send json object to client. */
+  @Deprecated
+  public void sendJsonMessage(
+      InputStream processInputStreamOcr, InputStream processInputStreamObject, JSONObject json)
+      throws IOException, InterruptedException, JSONException {
+    // Send the result of calculations with Deep Learning models to client
+    byte[] messageOcr = IOUtils.toByteArray(processInputStreamOcr);
+    byte[] messageObject = IOUtils.toByteArray(processInputStreamObject);
+    String stringOcr = new String(messageOcr, StandardCharsets.UTF_8);
+    String stringObject = new String(messageObject, StandardCharsets.UTF_8);
+
+    json.put("Ocr", stringOcr);
+    json.put("Object", stringObject);
+
+    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+    bufferedWriter.write(json.toString());
+    bufferedWriter.flush();
+    // TODO: wait the development of Android client
+    // TODO: START
+    //                clientSocket.shutdownOutput();
+    //                System.out.println("Sent message: " + json.toString());
     // TODO: END
   }
 

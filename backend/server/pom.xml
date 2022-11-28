@@ -131,6 +131,11 @@
       <version>3.4.2</version>
       <type>maven-plugin</type>
     </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20090211</version>
+    </dependency>
 
   </dependencies>
 
