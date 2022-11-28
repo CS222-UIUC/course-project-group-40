@@ -1,10 +1,8 @@
 package org.team.universe;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import javax.imageio.ImageIO;
 
 /** Main program of the server project. */
 public class App {
@@ -102,49 +100,49 @@ public class App {
       // Practical code
       // TODO: wait the development of Android client
       // TODO: START
-      connector.startConnectionByteArray(serverAddress, parser.getPort());
-      while (true) {
-        // TODO: catch exceptions and handle error
-        connector.reconnectByteArray();
-        BufferedImage image = connector.readImageByteArray();
-        File stored_image = new File("received_image.png");
-        ImageIO.write(image, "png", stored_image);
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        System.out.println("Store image in: " + stored_image.getAbsolutePath());
-
-        // Execute ML prediction for OCR
-        ProcessBuilder builder =
-            new ProcessBuilder(
-                parser.getPythonpath(),
-                "src/predict.py",
-                "--model_path",
-                model.getPath(),
-                "--img_path",
-                stored_image.getAbsolutePath());
-        builder.redirectErrorStream(true);
-
-        builder.directory(new File("../vision_model/"));
-        Process process = builder.start();
-        connector.sendOcrMessage(process.getInputStream());
-
-        // Execute ML prediction for Object Detection
-        ProcessBuilder builderObject =
-            new ProcessBuilder(
-                parser.getPythonpath(),
-                "src/predict.py",
-                "--model_path",
-                "../vision_model/output/object",
-                "--img_path",
-                stored_image.getAbsolutePath(),
-                "--task",
-                "obj");
-        builderObject.redirectErrorStream(true);
-
-        builderObject.directory(new File("../vision_model/"));
-        Process processObject = builderObject.start();
-        connector.sendObjectMessage(processObject.getInputStream());
-        connector.closeConnection();
-      }
+      //      connector.startConnectionByteArray(serverAddress, parser.getPort());
+      //      while (true) {
+      //        // TODO: catch exceptions and handle error
+      //        connector.reconnectByteArray();
+      //        BufferedImage image = connector.readImageByteArray();
+      //        File stored_image = new File("received_image.png");
+      //        ImageIO.write(image, "png", stored_image);
+      //        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+      //        System.out.println("Store image in: " + stored_image.getAbsolutePath());
+      //
+      //        // Execute ML prediction for OCR
+      //        ProcessBuilder builder =
+      //            new ProcessBuilder(
+      //                parser.getPythonpath(),
+      //                "src/predict.py",
+      //                "--model_path",
+      //                model.getPath(),
+      //                "--img_path",
+      //                stored_image.getAbsolutePath());
+      //        builder.redirectErrorStream(true);
+      //
+      //        builder.directory(new File("../vision_model/"));
+      //        Process process = builder.start();
+      //        connector.sendOcrMessage(process.getInputStream());
+      //
+      //        // Execute ML prediction for Object Detection
+      //        ProcessBuilder builderObject =
+      //            new ProcessBuilder(
+      //                parser.getPythonpath(),
+      //                "src/predict.py",
+      //                "--model_path",
+      //                "../vision_model/output/object",
+      //                "--img_path",
+      //                stored_image.getAbsolutePath(),
+      //                "--task",
+      //                "obj");
+      //        builderObject.redirectErrorStream(true);
+      //
+      //        builderObject.directory(new File("../vision_model/"));
+      //        Process processObject = builderObject.start();
+      //        connector.sendObjectMessage(processObject.getInputStream());
+      //        connector.closeConnection();
+      //      }
       // TODO: END
     }
     connector.shutDownServer();
