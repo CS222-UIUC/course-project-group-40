@@ -56,20 +56,11 @@ public class App {
       throw new Exception("Model file does not exist, check the path.");
     }
 
-    //  System.out.println(parser);
-    //  ZooModel<BufferedImage, Classifications> model = loadFromFile(parser.getModelpath());
-
     // TODO: receive one image from Android devices
     Connector connector = new Connector();
 
     // Test code
     if (isRunningTest()) {
-      // Check Python related files exist
-      //    File python = new File(parser.getPythonpath());
-      //    if (!(python.exists() && !python.isDirectory())) {
-      //      // Ptyhon file does not exist, abnormally exists
-      //      throw new Exception("Python executable does not exist, check the path.");
-      //    }
       while (true) {
         // TODO: catch exceptions and handle errors
         //    connector.startConnection(serverAddress, parser.getPort(), null, null);
@@ -82,19 +73,12 @@ public class App {
           throw new Exception("Image file does not exist, check the path.");
         }
 
-        // Github Actions cannot
-        //      System.out.println("Working Directory = " + System.getProperty("user.dir"));
-
         // Start a new process in Java
         // https://stackoverflow.com/questions/15464111/run-cmd-commands-through-java
         ProcessBuilder builder =
             new ProcessBuilder(
                 // for Github Action tests only
                 "python3",
-
-                // for local tests, you should COMMENT the above line and UNCOMMENT the following
-                // line
-                // parser.getPythonpath(),
                 "src/predict.py",
                 "--model_path",
                 model.getPath(),

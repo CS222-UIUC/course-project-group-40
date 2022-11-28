@@ -145,7 +145,6 @@ public class Connector {
   @Deprecated
   public void sendMessage(InputStream processInputStream) throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
     byte[] message = IOUtils.toByteArray(processInputStream);
     //    outputStream.write(message);
     //    clientSocket.shutdownOutput();
@@ -158,7 +157,6 @@ public class Connector {
   public void sendOcrMessage(InputStream processInputStream)
       throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
     byte[] message = IOUtils.toByteArray(processInputStream);
     //    outputStream.write(message);
     //    clientSocket.shutdownOutput();
@@ -180,10 +178,7 @@ public class Connector {
   public void sendObjectMessage(InputStream processInputStream)
       throws IOException, InterruptedException {
     // TODO: Send the result of calculations with Deep Learning models to client
-    //    IOUtils.copy(processInputStream, outputStream);
     byte[] message = IOUtils.toByteArray(processInputStream);
-    //    outputStream.write(message);
-    //    clientSocket.shutdownOutput();
     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
     bufferedWriter.write(new String(message, StandardCharsets.UTF_8));
     bufferedWriter.flush();
