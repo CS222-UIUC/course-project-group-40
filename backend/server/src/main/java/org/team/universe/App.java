@@ -62,10 +62,7 @@ public class App {
     // Test code
     if (isRunningTest()) {
       while (true) {
-        // TODO: catch exceptions and handle errors
-        //    connector.startConnection(serverAddress, parser.getPort(), null, null);
-
-        // TODO: classify the received image or recongize texts
+        // classify the received image or recongize texts
         // WARNING: we use the argument `Imagepath` for local test only
         File image = new File(parser.getImagepath());
         if (!(image.exists() && !image.isDirectory())) {
@@ -103,51 +100,49 @@ public class App {
       // Practical code
       // TODO: wait the development of Android client
       // TODO: START
-      //                        connector.startConnectionByteArray(serverAddress, parser.getPort());
-      //                        while (true) {
-      //                          // TODO: catch exceptions and handle error
-      //                          connector.reconnectByteArray();
-      //                          BufferedImage image = connector.readImageByteArray();
-      //                          File stored_image = new File("received_image.png");
-      //                          ImageIO.write(image, "png", stored_image);
-      //                                  System.out.println("Working Directory = " +
-      //             System.getProperty("user.dir"));
-      //                          System.out.println("Store image in: " +
-      // stored_image.getAbsolutePath());
+      //      connector.startConnectionByteArray(serverAddress, parser.getPort());
+      //      while (true) {
+      //        // TODO: catch exceptions and handle error
+      //        connector.reconnectByteArray();
+      //        BufferedImage image = connector.readImageByteArray();
+      //        File stored_image = new File("received_image.png");
+      //        ImageIO.write(image, "png", stored_image);
+      //        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+      //        System.out.println("Store image in: " + stored_image.getAbsolutePath());
       //
-      //                          // Execute ML prediction for OCR
-      //                          ProcessBuilder builder =
-      //                              new ProcessBuilder(
-      //                                  parser.getPythonpath(),
-      //                                  "src/predict.py",
-      //                                  "--model_path",
-      //                                  model.getPath(),
-      //                                  "--img_path",
-      //                                  stored_image.getAbsolutePath());
-      //                          builder.redirectErrorStream(true);
+      //        // Execute ML prediction for OCR
+      //        ProcessBuilder builder =
+      //            new ProcessBuilder(
+      //                parser.getPythonpath(),
+      //                "src/predict.py",
+      //                "--model_path",
+      //                model.getPath(),
+      //                "--img_path",
+      //                stored_image.getAbsolutePath());
+      //        builder.redirectErrorStream(true);
       //
-      //                          builder.directory(new File("../vision_model/"));
-      //                          Process process = builder.start();
-      //                          connector.sendOcrMessage(process.getInputStream());
+      //        builder.directory(new File("../vision_model/"));
+      //        Process process = builder.start();
+      //        connector.sendOcrMessage(process.getInputStream());
       //
-      //                          // Execute ML prediction for Object Detection
-      //                            ProcessBuilder builderObject =
-      //                                new ProcessBuilder(
-      //                                    parser.getPythonpath(),
-      //                                    "src/predict.py",
-      //                                    "--model_path",
-      //                                    "../vision_model/output/object",
-      //                                    "--img_path",
-      //                                    stored_image.getAbsolutePath(),
-      //                                    "--task",
-      //                                    "obj");
-      //                          builderObject.redirectErrorStream(true);
+      //        // Execute ML prediction for Object Detection
+      //        ProcessBuilder builderObject =
+      //            new ProcessBuilder(
+      //                parser.getPythonpath(),
+      //                "src/predict.py",
+      //                "--model_path",
+      //                "../vision_model/output/object",
+      //                "--img_path",
+      //                stored_image.getAbsolutePath(),
+      //                "--task",
+      //                "obj");
+      //        builderObject.redirectErrorStream(true);
       //
-      //                          builderObject.directory(new File("../vision_model/"));
-      //                            Process processObject = builderObject.start();
-      //                            connector.sendObjectMessage(processObject.getInputStream());
-      //                          connector.closeConnection();
-      //                        }
+      //        builderObject.directory(new File("../vision_model/"));
+      //        Process processObject = builderObject.start();
+      //        connector.sendObjectMessage(processObject.getInputStream());
+      //        connector.closeConnection();
+      //      }
       // TODO: END
     }
     connector.shutDownServer();

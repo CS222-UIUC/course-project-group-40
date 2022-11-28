@@ -56,7 +56,7 @@ def test_ObjDecInfer():
     model = ObjDecInfer(args.model_path)
     img_list = [cv2.imread(args.img_path)]
     out_list = model.predict(img_list)
-    print(out_list)
+
     img = cv2.imread(args.img_path)
     out = model.predict(img)
 
@@ -67,3 +67,36 @@ def test_ObjDecInfer():
     assert out_list[1][4] == 'dog'
     assert out_list[2][4] == 'truck'
     assert out[0][4] == 'bicycle'
+
+
+def test_ObjDecInferVisualization():
+    from src.predict import ObjDecInfer, init_args
+    import cv2
+
+    sys.argv = [
+        '',
+        '--model_path',
+        './output/object',
+        '--img_path',
+        './dataset/object/samples/dog.jpg'
+    ]
+    args = init_args()
+
+    model = ObjDecInfer(args.model_path)
+    img = cv2.imread(args.img_path)
+    out = model.predict(img)
+
+    # TESTS FOR POSITIONING
+    cv2.rectangle(
+        img[0],
+        (int(out[1][0]), int(out[1][1])),
+        (int(out[1][2]), int(out[1][3])),
+        (0, 0, 255),
+        10
+    )
+    cv2.imwrite(args.img_path.replace("dog.jpg", "dog1.jpg"), img[0])
+
+    import os
+    path = args.img_path.replace("dog.jpg", "dog1.jpg")
+    if os.path.exists(path):    # if file exists
+        os.remove(path)

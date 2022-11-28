@@ -1,13 +1,13 @@
 package com.company.android_frontend;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
-public class ResultActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class OCRActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +15,9 @@ public class ResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
+        if (value == null || value.isEmpty()) {
+            value = "Default text here";
+        }
 
         TextView resultView = findViewById(R.id.resultRecognized);
         resultView.setText(value);
