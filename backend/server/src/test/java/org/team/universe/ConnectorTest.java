@@ -9,6 +9,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 /** Unit test for connector. */
@@ -156,6 +158,27 @@ public class ConnectorTest {
     } catch (NullPointerException e) {
       assertTrue(true);
     } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void sendJsonMessageTest() {
+    Connector connector = new Connector();
+    try {
+      File icon = new File("src/test/resources/uiuc.png");
+
+      InputStream inputStreamTest = new FileInputStream(icon);
+      OutputStream outputStreamTest = new FileOutputStream("output.txt");
+      connector.startConnection("127.0.0.1", "2222", inputStreamTest, outputStreamTest);
+      connector.sendJsonMessage(inputStreamTest, inputStreamTest, new JSONObject());
+    } catch (IOException e) {
+      assertTrue(true);
+    } catch (NullPointerException e) {
+      assertTrue(true);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (JSONException e) {
       e.printStackTrace();
     }
   }
