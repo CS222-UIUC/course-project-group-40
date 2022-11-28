@@ -1,5 +1,5 @@
 # Universal Recognition
-We only test this project on Macbook laptops with Intel chips.
+We only tested this project on Macbook laptops with Intel chips.
 
 # Table of Contents
 **[Introduction](#Introduction)**<br>
