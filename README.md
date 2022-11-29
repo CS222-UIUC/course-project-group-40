@@ -20,6 +20,7 @@ We only tested this project on Macbook laptops with Intel chips.
 
 
 ## Technical Architecture
+![Diagram of Application Architecture](https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/architecture.jpeg)
 ### Machine Learning Model
 
 ### Server
