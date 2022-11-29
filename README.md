@@ -63,11 +63,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/CS222-UIUC/course-project-
 sh -c "$(wget https://raw.githubusercontent.com/CS222-UIUC/course-project-group-40/main/backend/install.sh -O -)"
 ```
 
-### Machine Learning Models for Vision Recognition
->python 3.8
->torch 1.12.1
->flake8 5.0.4
-
 ### Usage
 1. Install and run docker first
 2. Run the one-line command in the above Installation section. After running that line of code, this github repo is automatically cloned, the pre-trained Machine Learning models are downloaded, and the server is automatically started.
