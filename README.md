@@ -20,13 +20,26 @@ We only tested this project on Macbook laptops with Intel chips.
 
 
 ## Technical Architecture
+- Diagram of Application Architecture:  
 ![Diagram of Application Architecture](https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/architecture.jpeg)
-### Machine Learning Model
+- For each component, explains:
+-   (b) Role in the application
+-   (c) Interactions with other components 
+-   (d) Languages/libraries used to build it 
+-   (e) Who worked on it
 
-### Server
-The server program needs to communicate with Yuanxi's Machine Learning prediction programs and Mike and Ziyu's Android programs.
+- According to our project proposal, we devided our application architecture into three component: Machine Learning program, Server program, and Android client.
+ 
+### Backend: Machine Learning
 
-### Android
+### Backend: Server
+The server program includes several modules such as the network libraries, Docker service, Java main server program, Image libraries, System IO and File System.
+- The server program plays an important role in the application. It encapsulates and handles most of tasks in this application without disturbing users.
+- The main functionality of the server program is to communicate with Machine Learning prediction program and Android client via TCP connections. It receives images from Android client and stores these images to call Machine Learning prediction program. After Machine Learning prediction program finishes its calculation, the server program records the evaluation result and sends it to Android client.
+- The server program is written in Java. It utilizes a plenty of libraries such as maven, jcommander and so on. Moreover, Docker is used and integrated to help us easily share and run the server program.
+- Yang Duan mainly worked on the server program.
+
+### Frontend: Android
 
 ## Installation and Usage
 ### Installation
@@ -54,7 +67,7 @@ sh -c "$(wget https://raw.githubusercontent.com/CS222-UIUC/course-project-group-
 
 ## Group Information
 - Yuanxi Li, 
-- Yang Duan (yangd4), mainly works on the server program. 
+- Yang Duan (yangd4), mainly worked on the server program. He also worked with other team members on the communication part of Android client. 
 - Mike Cheng, 
 - Ziyu Wang,
 
