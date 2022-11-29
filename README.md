@@ -1,14 +1,22 @@
-# Universal Recognition
+# CS222 Course Project
 We only tested this project on Macbook laptops with Intel chips.
 
 # Table of Contents
 **[Introduction](#Introduction)**<br>
+**[Features](#Features)**<br>
 **[Technical Architecture](#Technical-Architecture)**<br>
 **[Installation and Usage](#Installation-and-Usage)**<br>
 **[Group Information](#Group-Information)**<br>
 
 ## Introduction
+- Project Name: Universal Recognition
+- This project integrates and presents the computer vision technologies such as Optical Character Recognition (OCR) and Object Detection on Android mobile devices with the help of the server program and pre-trained Machine Learning models.
+- There exist some applications or software that provide similar functionalities related to Optical Character Recognition (OCR) or Object Detection, but all of them only support one of these two techniques rather than both of them to the best of our knowledge. However, our project provides the functionalities with both of Optical Character Recognition (OCR) and Object Detection in one single application.
 
+## Features
+- 
+-
+- 
 
 
 ## Technical Architecture
