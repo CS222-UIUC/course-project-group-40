@@ -1,4 +1,4 @@
-# CS222 Course Project
+# CS222 Course Project - Group 40
 We only tested this project on Macbook laptops with Intel chips.
 
 # Table of Contents
