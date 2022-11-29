@@ -28,7 +28,7 @@ We only tested this project on Macbook laptops with Intel chips.
 -   (d) Languages/libraries used to build it 
 -   (e) Who worked on it
 
-- According to our project proposal, we devided our application architecture into three component: Machine Learning program, Server program, and Android client.
+- According to our project proposal, we devided our application architecture into three components: Machine Learning program, Server program, and Android client.
  
 ### Backend: Machine Learning
 -
