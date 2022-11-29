@@ -31,6 +31,7 @@ We only tested this project on Macbook laptops with Intel chips.
 - According to our project proposal, we devided our application architecture into three component: Machine Learning program, Server program, and Android client.
  
 ### Backend: Machine Learning
+-
 
 ### Backend: Server
 The server program includes several modules such as the network libraries, Docker service, Java main server program, Image libraries, System IO and File System.
@@ -40,6 +41,7 @@ The server program includes several modules such as the network libraries, Docke
 - Yang Duan mainly worked on the server program.
 
 ### Frontend: Android
+-
 
 ## Installation and Usage
 ### Installation
