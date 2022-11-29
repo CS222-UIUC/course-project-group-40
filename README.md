@@ -17,7 +17,10 @@ We only tested this project on Macbook laptops with Intel chips.
 ## Features
 - 
 -
-- 
+-
+-
+-
+-
 
 
 ## Technical Architecture
