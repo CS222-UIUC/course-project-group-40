@@ -5,6 +5,7 @@ We only tested this project on Macbook laptops with Intel chips.
 **[Introduction](#Introduction)**<br>
 **[Features](#Features)**<br>
 **[Technical Architecture](#Technical-Architecture)**<br>
+**[Development](#Development)**<br>
 **[Installation and Usage](#Installation-and-Usage)**<br>
 **[Group Information](#Group-Information)**<br>
 
@@ -42,6 +43,13 @@ The server program includes several modules such as the network libraries, Docke
 
 ### Frontend: Android
 -
+
+## Development
+-
+
+-
+
+
 
 ## Installation and Usage
 ### Installation
