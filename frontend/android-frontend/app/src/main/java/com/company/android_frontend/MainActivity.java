@@ -28,6 +28,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -121,9 +122,12 @@ public class MainActivity extends AppCompatActivity {
             Intent displayResult = new Intent(MainActivity.this, OCRActivity.class);
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
-                results = "No text detected";
+                // Example string
+                results = "OCR:[[('福', [0.3109253])]]\tObject:[[110.346924, -4.8393164, " +
+                        "575.0284, 350.96216, 'bicycle'], [128.24925, 117.09711, 315.7695, " +
+                        "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
-            displayResult.putExtra("textRecognized", results);
+            displayResult.putExtra("textRecognized", results.split("\t")[0]);
             startActivity(displayResult);
         });
         // Button "Detect object"
@@ -132,9 +136,12 @@ public class MainActivity extends AppCompatActivity {
             Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
-                results = "No text detected";
+                // Example string
+                results = "OCR:[[('福', [0.3109253])]]\tObject:[[110.346924, -4.8393164, " +
+                        "575.0284, 350.96216, 'bicycle'], [128.24925, 117.09711, 315.7695, " +
+                        "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
-            displayResult.putExtra("textRecognized", results);
+            displayResult.putExtra("textRecognized", results.split("\t")[1]);
             startActivity(displayResult);
         });
     }
