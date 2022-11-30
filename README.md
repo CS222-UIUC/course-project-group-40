@@ -68,7 +68,16 @@ sh -c "$(wget https://raw.githubusercontent.com/CS222-UIUC/course-project-group-
 
 ### Usage
 1. Install and run docker first
-2. Run the one-line command in the above Installation section. After running that line of code, this github repo is automatically cloned, the pre-trained Machine Learning models are downloaded, and the server is automatically started.
+2. Run the one-line command in the above Installation section. After running that line of code, this github repo is automatically cloned, the pre-trained Machine Learning models are downloaded, and the server is automatically started [our default network port is 1040, please make sure this port is not used by other applications]. \\
+Note: If you stop the docker container, you need to run docker first and run the following command to restart the container and run the server program inside it:
+```shell
+docker run -p 1040:1040 -i universalrecognition:v1 sh -c "cd cs222/backend/server/ && \
+java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
+     -pp /usr/bin/python3 \
+     -mp output/ocr/CRNN/ch_rec_moblie_crnn_mbv.pth \
+     -i ../server/src/test/resources/uiuc.png \
+     -p 1040"
+```
 3. Change directory into `cs222` under the directory where you run the command in the last step
 4. Android: 
 
