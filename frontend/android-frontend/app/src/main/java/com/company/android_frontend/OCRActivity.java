@@ -25,3 +25,4 @@ public class OCRActivity extends AppCompatActivity {
 
     }
 }
+
