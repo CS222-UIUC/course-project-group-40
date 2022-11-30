@@ -45,5 +45,23 @@ def test_OcrRecDataSet():
     assert dataset[10000000]
 
 
+def test_ObjDetectDataSet():
+    from src.predict import ObjDecInfer, init_args
+    import cv2
+
+    sys.argv = [
+        '',
+        '--model_path',
+        './output/object',
+        '--img_path',
+        './dataset/object/samples/dog.jpg'
+    ]
+    args = init_args()
+
+    img = cv2.imread(args.img_path)
+    print(img.shape)
+    assert img.shape == (576, 768, 3)
+
+
 if __name__ == "__main__":
     test_OcrRecDataSet()

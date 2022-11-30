@@ -35,9 +35,11 @@ def test_MLP():
 
 
 def test_build_model():
+    import sys
     from src.train import setup_args, setup_seed
     from model.ocr import build_model
     setup_seed()
+    sys.argv = ['',]
     opt = setup_args()
     model = build_model(opt)
     assert model
