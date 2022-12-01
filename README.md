@@ -85,6 +85,8 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
 ```
 3. Change directory into `cs222` under the directory where you run the command in the last step
 4. Start the application. You will see an interface that looks like this:
+ To run our Android APP successfully, please make sure to use the most updated version Android Studio - Dolphin.
+ To make sure the app run smoothly on the emulator, please use emulator version Pixel 3 API 28.
 
 <img src="https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/UI.jpeg" height="500" />
 
