@@ -65,3 +65,4 @@ public class OCRActivity extends AppCompatActivity {
         return new String[]{text, probability};
     }
 }
+
