@@ -104,6 +104,6 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
 - Yuanxi Li (yuanxi3), mainly worked on the implementation and deployment of machine learning modules, He is also responsible for the design of prediction APIs for server program.
 - Yang Duan (yangd4), mainly worked on the server program. He also worked with other team members on the communication part of Android client. 
 - Mike Cheng (minyuc2), mainly worked on the frontend logic and usr interface. He also deals with the deserialization and display of data received from backend. 
-- Ziyu Wang (ziyu4), mainly worked on the Android Mobile App.
+- Ziyu Wang (ziyu4), mainly worked on the Android Mobile App. She worked on the design of UI, enabled the functionality of camera/photo gallery, and draw constraint line for target. Also, worked some part of communication functionality with backend server.
 
 
