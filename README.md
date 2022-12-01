@@ -45,7 +45,10 @@ The server program includes several modules such as the network libraries, Docke
 - Yang Duan mainly worked on the server program.
 
 ### Frontend: Android
--
+- Android is the interfact and plays an important role on displaying the straightforward result.
+- Android allows users to interact with the backend server. It provides a platform for users to take potos, display their select picture and show the corresponding result.
+- The Android APP is written in Java. It uses Gradle to manage library dependencies. The libraries used here are expresso, commons-io, android-image-cropper and so on.
+- The frontend part are implemented by Ziyu Wang and Mike Cheng.
 
 ## Development
 -
@@ -87,6 +90,6 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
 - Yuanxi Li, 
 - Yang Duan (yangd4), mainly worked on the server program. He also worked with other team members on the communication part of Android client. 
 - Mike Cheng, 
-- Ziyu Wang,
+- Ziyu Wang (ziyu4), mainly worked on the Android Mobile App.
 
 
