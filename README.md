@@ -86,7 +86,17 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
      -p 1040"
 ```
 3. Change directory into `cs222` under the directory where you run the command in the last step
-4. Android: 
+4. Start the application. You will see an interface that looks like this:
+
+<img src="https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/UI.jpeg" height="500" />
+
+5. By clicking on the "Launch Image Recognize" button, you will see a window allowing you to select the image source, including taking photo through camera and selecting image from system files. 
+6. After getting an image of your choice, the application will display the image on the screen and enable "OCR Results" and "Detect Object" buttons. 
+
+<img src="https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/UI_with_Image.jpeg" height="500" />
+
+7. You may enter the address and port of a server into the text feilds near the bottom to "Connect" to the server. Default settings are provided. 
+8. After clicking on the "Connect" button, you can select either "OCR Result" or "Detect Object" based on your purpose. OCR results will be displayed in a new page, and the object detection results will be drawn on the image. 
 
 
 ## Group Information
