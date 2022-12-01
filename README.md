@@ -18,7 +18,7 @@ We only tested this project on Macbook laptops with Intel chips.
 - Implemented the function of  Optical Character Recognition (OCR) which is able to convert text images to machine-readable text format.
 - Implemented the function of Object Detection which uses YOLOv3 to detects objects from pictures from your phone.
 - Utilized Docker to easily share the server program and interact with other components conveniently.
-- Utilized TCP protocol to ensure reliability and security.
+- Utilized TCP network protocol to ensure reliability and security.
 -
 -
 
