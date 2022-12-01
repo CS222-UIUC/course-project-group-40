@@ -54,7 +54,7 @@ The server program includes several modules such as the network libraries, Docke
 ## Development
 -
 
--
+- There is one problem about the interaction between Machine Learning models and the server program. We previous planned to load pre-trained models and do the prediction purely on Java inside the server program. After testing several popular Machine Learning Java libraries, we found compatibility issues with PyTorch models that caused the server program to malfunction. We finally decided to let the server program create one subprocess to call the python programs with Numpy and PyTorch to implement this part of functionalities in our project. In this way, we can avoid unnecessary redundant work on Java and utilize the native environment of Python and PyTorch to do the prediction, which makes the computation incredibly efficient.
 
 
 
