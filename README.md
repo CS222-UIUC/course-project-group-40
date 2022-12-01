@@ -19,8 +19,8 @@ We only tested this project on Macbook laptops with Intel chips.
 - Implemented the function of Object Detection which uses YOLOv3 to detects objects from pictures from your phone.
 - Utilized Docker to easily share the server program and interact with other components conveniently.
 - Utilized TCP network protocol to ensure reliability and security.
--
--
+- Allow users to utilize cell phone camera to take photos or select target photo from photo gallery.
+- Users can crop image from select photo and rotate them.
 
 
 ## Technical Architecture
