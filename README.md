@@ -61,8 +61,9 @@ Assumption: docker is installed and running
 # Use curl (curl is installed in Mac OS by default)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/CS222-UIUC/course-project-group-40/main/backend/install.sh)"
 ```
+Or
 ```bash
-# Or use wget (wget needs to be installed beforehand)
+# Use wget (wget needs to be installed beforehand)
 sh -c "$(wget https://raw.githubusercontent.com/CS222-UIUC/course-project-group-40/main/backend/install.sh -O -)"
 ```
 
