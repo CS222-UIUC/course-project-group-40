@@ -15,9 +15,9 @@ We only tested this project on Macbook laptops with Intel chips.
 - There exist some applications or software that provide similar functionalities related to Optical Character Recognition (OCR) or Object Detection, but all of them only support one of these two techniques rather than both of them to the best of our knowledge. However, our project provides the functionalities with both of Optical Character Recognition (OCR) and Object Detection in one single application.
 
 ## Features
+- Implemented the function of  Optical Character Recognition (OCR) which is able to convert text images to machine-readable text format.
+- Implemented the function of Object Detection which uses YOLOv3 to detects objects from pictures from your phone.
 - 
--
--
 -
 -
 -
@@ -35,8 +35,12 @@ We only tested this project on Macbook laptops with Intel chips.
 - According to our project proposal, we devided our application architecture into three components: Machine Learning program, Server program, and Android client.
  
 ### Backend: Machine Learning
--
-
+Our application contains two core machine learning modules, Optical Character Recognition (OCR) and Object Detection (ObjDetect).
+- Optical Character Recognition (OCR) in this project is implemented based on the backbone of MoblieNet, and uses the pre-trained network architecture of CRNN.
+- Object Detection (ObjDetect) in this project is implemented based on the YOLOv3 framework, which is pre-trained on COCO dataset using a Darknet-53 backend on ImageNet.
+- Both of the Machine Learning module is implemented in Python and PyTorch and utilizes a plenty of libraries such as Numpy and OpenCV. Although we support freely training with customized training parameters and modifying the ML model structure, the finetuned models have been directly encapsulated in this project and supports direct calls from the server script to make OCR or ObjDetect predictions.
+- Yuanxi Li mainly worked on Machine Learning Modules.
+ 
 ### Backend: Server
 The server program includes several modules such as the network libraries, Docker service, Java main server program, Image libraries, System IO and File System.
 - The server program plays an important role in the application. It encapsulates and handles most of tasks in this application without disturbing users.
@@ -83,7 +87,7 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
 
 
 ## Group Information
-- Yuanxi Li, 
+- Yuanxi Li (yuanxi3), mainly worked on the implementation and deployment of machine learning modules, He is also responsible for the design of prediction APIs for server program.
 - Yang Duan (yangd4), mainly worked on the server program. He also worked with other team members on the communication part of Android client. 
 - Mike Cheng, 
 - Ziyu Wang,
