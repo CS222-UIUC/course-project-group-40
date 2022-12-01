@@ -37,7 +37,6 @@ import java.util.concurrent.FutureTask;
 public class MainActivity extends AppCompatActivity{
 
     private Button button, connectButton, OCRButton, objectButton;
-    private Socket socket;
     private String results;
 
     @Override
@@ -133,7 +132,14 @@ public class MainActivity extends AppCompatActivity{
         // Button "Detect object"
         objectButton.setOnClickListener(view -> {
             // TODO: Draw boxes on the image currently displayed
+            ImageView imageView = findViewById(R.id.cropImageView);
+            imageView.setDrawingCacheEnabled(true);
+            Bitmap bitmap = imageView.getDrawingCache();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
             Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
+            displayResult.putExtra("image", byteArray);
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
                 // Example string

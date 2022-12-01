@@ -2,35 +2,35 @@ package com.company.android_frontend;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
 public class DrawView extends View {
-    Paint paint = new Paint();
+    private Paint currentPaint;
+    public boolean drawRect = false;
+    public float left;
+    public float top;
+    public float right;
+    public float bottom;
 
-    private void init() {
-        paint.setColor(Color.BLACK);
+    public DrawView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        currentPaint = new Paint();
+        currentPaint.setDither(true);
+        currentPaint.setColor(0xFF00CC00);  // alpha.r.g.b
+        currentPaint.setStyle(Paint.Style.STROKE);
+        currentPaint.setStrokeJoin(Paint.Join.ROUND);
+        currentPaint.setStrokeCap(Paint.Cap.ROUND);
+        currentPaint.setStrokeWidth(2);
     }
 
-    public DrawView(Context context) {
-        super(context);
-        init();
-    }
-
-    public DrawView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public DrawView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init();
-    }
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawRect(0, 0, 0, 0, paint);
-        canvas.drawRect(0, 0, 0, 0, paint);
+        super.onDraw(canvas);
+        if (drawRect) {
+            canvas.drawRect(left, top, right, bottom, currentPaint);
+        }
     }
 }
