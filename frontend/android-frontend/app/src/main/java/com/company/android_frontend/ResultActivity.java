@@ -16,7 +16,7 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
 
-        TextView resultView = findViewById(R.id.resultRecognized);
+        TextView resultView = findViewById(R.id.textRecognized);
         resultView.setText(value);
         resultView.setMovementMethod(new ScrollingMovementMethod());
 

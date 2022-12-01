@@ -101,18 +101,16 @@ public class MainActivity extends AppCompatActivity {
 
                     Thread thread = new Thread(task);
                     thread.start();
-                    Toast.makeText(MainActivity.this, "Image Array length:" + String.valueOf(array.length) + " bytes", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "Image Array length:" + String.valueOf(array.length) + " bytes", Toast.LENGTH_SHORT).show();
 
                     thread.join();
                     // Print out
                     if (task.isDone()) {
                         results = task.get();
-                        Toast.makeText(MainActivity.this, "Result: " + task.get(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                     }
 //                    thread.interrupt();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -123,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
                 // Example string
-                results = "OCR:[[('福', [0.3109253])]]\tObject:[[110.346924, -4.8393164, " +
+                results = "OCR:[[('test中文', [0.31053, 0.96216, 0.96236, 0.98462, " +
+                        "0.84231, 0.89765])]]\tObject:[[110.346924, -4.8393164, " +
                         "575.0284, 350.96216, 'bicycle'], [128.24925, 117.09711, 315.7695, " +
                         "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
@@ -137,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
                 // Example string
-                results = "OCR:[[('福', [0.3109253])]]\tObject:[[110.346924, -4.8393164, " +
+                results = "OCR:[[('test中文', [0.31053, 0.96216, 0.96236, 0.98462, " +
+                        "0.84231, 0.89765])]]\tObject:[[110.346924, -4.8393164, " +
                         "575.0284, 350.96216, 'bicycle'], [128.24925, 117.09711, 315.7695, " +
                         "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
@@ -212,8 +212,6 @@ public class MainActivity extends AppCompatActivity {
                 s.shutdownInput();
 
                 s.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
