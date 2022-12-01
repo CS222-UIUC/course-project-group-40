@@ -35,7 +35,7 @@ We only tested this project on Macbook laptops with Intel chips.
 - According to our project proposal, we devided our application architecture into three components: Machine Learning program, Server program, and Android client.
  
 ### Backend: Machine Learning
-Our application contains two core machine learning modules, Optical Character Recognition (OCR) and Object Detection (ObjDetect). They are used to provide the feedback to users based on their input images with computations.
+Our application contains two core machine learning modules, Optical Character Recognition (OCR) and Object Detection (ObjDetect). They are used to provide the feedback to users based on their input images after computations.
 - Optical Character Recognition (OCR) in this project is implemented based on the backbone of MoblieNet, and uses the pre-trained network architecture of CRNN.
 - Object Detection (ObjDetect) in this project is implemented based on the YOLOv3 framework, which is pre-trained on COCO dataset using a Darknet-53 backend on ImageNet.
 - Both of the Machine Learning module is implemented in Python and PyTorch and utilizes a plenty of libraries such as Numpy and OpenCV. 
