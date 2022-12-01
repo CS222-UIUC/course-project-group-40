@@ -60,6 +60,8 @@ The server program includes several modules such as the network libraries, Docke
 
 ## Installation and Usage
 ### Installation
+Note: You need to install Android Studo and Docker.    
+ 
 Assumption: docker is installed and running
 ```bash
 # Use curl (curl is installed in Mac OS by default)
