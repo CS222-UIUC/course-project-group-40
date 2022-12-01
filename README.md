@@ -26,11 +26,6 @@ We only tested this project on Macbook laptops with Intel chips.
 ## Technical Architecture
 - Diagram of Application Architecture:  
 ![Diagram of Application Architecture](https://github.com/CS222-UIUC/course-project-group-40/blob/main/extra_files/architecture.jpeg)
-- For each component, explains:
--   (b) Role in the application
--   (c) Interactions with other components 
--   (d) Languages/libraries used to build it 
--   (e) Who worked on it
 
 - According to our project proposal, we devided our application architecture into three components: Machine Learning program, Server program, and Android client.
  
