@@ -52,10 +52,9 @@ The server program includes several modules such as the network libraries, Docke
 - The frontend part are implemented by Ziyu Wang and Mike Cheng.
 
 ## Development
--
-
 - There is one problem about the interaction between Machine Learning models and the server program. We previous planned to load pre-trained models and do the prediction purely on Java inside the server program. After testing several popular Machine Learning Java libraries, we found compatibility issues with PyTorch models that caused the server program to malfunction. We finally decided to let the server program create one subprocess to call the python programs with Numpy and PyTorch to implement this part of functionalities in our project. In this way, we can avoid unnecessary redundant work on Java and utilize the native environment of Python and PyTorch to do the prediction, which makes the computation incredibly efficient.
 
+- During the early stage of the development, a group member faced difficulties setting up Github in Android Studio. When he tried to pull from or push to the remote repository, errors that he didn't understand occured. His initial approach was to search on the internet and try various solutions online, but none of those solutions work, and the problem went worse due to his improper operation without enough knowledge. Later, he turned to his teammates who have richer experience and knowledge about Git. After several conversations and Zoom sessions, he was able to spot the issue with his teammates, and he learned a lot from this experience. This not only includes the Git knowledge but also includes the importance of working as a team. When working as a team, teammates can share their knowledge and experience with each other, making progress and learning new things more effectively.
 
 
 ## Installation and Usage
@@ -104,7 +103,7 @@ java -jar target/UniversalRecognition-1.0-SNAPSHOT-jar-with-dependencies.jar \
 ## Group Information
 - Yuanxi Li (yuanxi3), mainly worked on the implementation and deployment of machine learning modules, He is also responsible for the design of prediction APIs for server program.
 - Yang Duan (yangd4), mainly worked on the server program. He also worked with other team members on the communication part of Android client. 
-- Mike Cheng, 
+- Mike Cheng (minyuc2), mainly worked on the frontend logic and usr interface. He also deals with the deserialization and display of data received from backend. 
 - Ziyu Wang (ziyu4), mainly worked on the Android Mobile App.
 
 
