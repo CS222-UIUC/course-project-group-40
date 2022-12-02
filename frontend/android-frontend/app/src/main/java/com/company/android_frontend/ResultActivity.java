@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -23,13 +24,15 @@ import java.lang.ref.WeakReference;
 public class ResultActivity extends AppCompatActivity{
     public static ResultActivity ResultActivity;
     String path;
-    DrawView drawView;
+    String value;
+    Bitmap bitmap;
+    TextView resultView;
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acticity_object_result);
-        drawView = (DrawView) findViewById(R.id.imageview_bitmap);
-        ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
+        img = findViewById(R.id.imageview_bitmap);
 
 
         ResultActivity = this;
@@ -39,9 +42,8 @@ public class ResultActivity extends AppCompatActivity{
             public void run() {
                 Intent intent = getIntent();
                 // Obtain x y coordinates
-                String value = intent.getStringExtra("textRecognized");
-                TextView resultView = findViewById(R.id.resultRecognized);
-                resultView.setText(value);
+                value = intent.getStringExtra("textRecognized");
+                resultView = findViewById(R.id.resultRecognized);
                 resultView.setMovementMethod(new ScrollingMovementMethod());
 
                 // Obtain the cropped image
@@ -51,93 +53,45 @@ public class ResultActivity extends AppCompatActivity{
 
                 // Process the obtained image
                 ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
-                Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+                bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
 
-                // Set the image with colored boxes
-//                img.setImageBitmap(bitmap);
+                // Draw lines
+                String[] arrOfStr = value.split(",", 6);
+                float left, top, right, bottom;
+                String lefts, tops, rights, bottoms, tag;
+                lefts = arrOfStr[0];
+                tops = arrOfStr[1];
+                rights = arrOfStr[2];
+                bottoms = arrOfStr[3];
+
+                left = Float.parseFloat(lefts.substring(9));
+                top = Float.parseFloat(tops);
+                right = Float.parseFloat(rights);
+                bottom = Float.parseFloat(bottoms);
+
+                resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 3));
+
+                Bitmap workingBitmap = Bitmap.createBitmap(bitmap);
+                Bitmap mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true);
+                Canvas canvas = new Canvas(mutableBitmap);
+
+                Paint paint = new Paint();
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setColor(Color.BLUE);
+                paint.setStrokeWidth(3);
+                canvas.drawRect(left, top, right, bottom, paint);
+                img.setImageBitmap(mutableBitmap);
+
             }
         });
 
 
-//        String[] arrOfStr = value.split(",", 6);
-//        float left, top, right, bottom;
-//        String lefts, tops, rights, bottoms;
-//        lefts = arrOfStr[0];
-//        tops = arrOfStr[1];
-//        rights = arrOfStr[2];
-//        bottoms = arrOfStr[3];
-//
-//        left = Float.parseFloat(lefts.substring(9));
-//        top = Float.parseFloat(tops);
-//        right = Float.parseFloat(rights);
-//        bottom = Float.parseFloat(bottoms);
-
-        //Bundle extras = getIntent().getExtras();
-        //byte[] byteArray = extras.getByteArray("image");
-        //Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        //ImageView imageview_bitmap = findViewById(R.id.imageview_bitmap);
-        //imageview_bitmap.setImageBitmap(bmp);
-//        Bitmap workingBitmap = Bitmap.createBitmap(bmp);
-//        Bitmap mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true);
-//        Canvas canvas = new Canvas(mutableBitmap);
-//        Paint paint = new Paint(R.id.imageview_bitmap);
-//        canvas.drawRect(left, top, right, bottom, paint);
 
 
-//        resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 2));
-
-//
-//        TextView resultView = findViewById(R.id.resultRecognized);
-//
-//        Canvas canvas = new Canvas();
-//        Paint paint = new Paint(R.id.imageview_bitmap);
-//        canvas.drawRect(left, top, right, bottom, paint);
-//
-//
-//        resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 2));
-//        resultView.setMovementMethod(new ScrollingMovementMethod());
 
 
     }
 
 
 
-
-//    private void loadImageFromStorage() {
-//
-//        try {
-//            Intent intent = getIntent();
-//            path = intent.getStringExtra("path_image");
-//            File f = new File(path);
-//            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-//            ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
-//            img.setImageBitmap(b);
-//            img.invalidate();
-//            img.forceLayout();
-//            img.requestLayout();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//    }
-////
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        finish();
-//    }
-
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
-//        img.setImageBitmap(null);
-//    }
 }
