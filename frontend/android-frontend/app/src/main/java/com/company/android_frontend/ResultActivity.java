@@ -23,10 +23,14 @@ import java.lang.ref.WeakReference;
 public class ResultActivity extends AppCompatActivity{
     public static ResultActivity ResultActivity;
     String path;
+    DrawView drawView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acticity_object_result);
+        drawView = (DrawView) findViewById(R.id.imageview_bitmap);
+        ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
+
 
         ResultActivity = this;
 
@@ -82,8 +86,20 @@ public class ResultActivity extends AppCompatActivity{
 
 //        resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 2));
 
+//
+//        TextView resultView = findViewById(R.id.resultRecognized);
+//
+//        Canvas canvas = new Canvas();
+//        Paint paint = new Paint(R.id.imageview_bitmap);
+//        canvas.drawRect(left, top, right, bottom, paint);
+//
+//
+//        resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 2));
+//        resultView.setMovementMethod(new ScrollingMovementMethod());
+
 
     }
+
 
 
 
@@ -117,4 +133,11 @@ public class ResultActivity extends AppCompatActivity{
 //        finish();
 //    }
 
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
+//        img.setImageBitmap(null);
+//    }
 }
