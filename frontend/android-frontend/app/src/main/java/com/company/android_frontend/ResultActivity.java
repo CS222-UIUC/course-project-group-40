@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class ResultActivity extends AppCompatActivity{
+    String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class ResultActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
-        String path = intent.getStringExtra("path_image");
+        path = intent.getStringExtra("path_image");
         loadImageFromStorage(path);
 
 //        String[] arrOfStr = value.split(",", 6);
@@ -68,6 +69,19 @@ public class ResultActivity extends AppCompatActivity{
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
+        img.setImageBitmap(null);
+        try {
+            File f = new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            img.setImageBitmap(b);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
