@@ -1,0 +1,98 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cropImageView"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/button"
+            android:textSize="18sp"
+            android:id="@+id/click_button">
+        </Button>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="OCR Results"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:id="@+id/result_button">
+            </Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Detect Object"
+                android:layout_marginStart="10dp"
+                android:textSize="18sp"
+                android:id="@+id/object_detect_button">
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/serverIP"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:drawableStart="@drawable/ic_baseline_link_24"
+                    android:drawablePadding="10dp"
+                    android:hint="Server IP"
+                    android:padding="15dp"
+                    android:text="@string/default_ip_address" />
+
+                <EditText
+                    android:id="@+id/port"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:drawableStart="@drawable/ic_baseline_link_24"
+                    android:drawablePadding="10dp"
+                    android:hint="Port"
+                    android:padding="15dp"
+                    android:text="@string/default_port_number" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Connect"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:id="@+id/ip_button">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
