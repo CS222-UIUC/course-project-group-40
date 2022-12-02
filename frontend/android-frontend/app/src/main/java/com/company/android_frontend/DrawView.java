@@ -35,6 +35,11 @@ public class DrawView extends androidx.appcompat.widget.AppCompatImageView {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        currentPaint.setColor(Color.BLUE);  // alpha.r.g.b
+        currentPaint.setStyle(Paint.Style.STROKE);
+        currentPaint.setStrokeJoin(Paint.Join.ROUND);
+        currentPaint.setStrokeCap(Paint.Cap.ROUND);
+        currentPaint.setStrokeWidth(2);
 
         if (drawRect) {
             canvas.drawRect(left, top, right, bottom, currentPaint);

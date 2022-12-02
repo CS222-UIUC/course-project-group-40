@@ -113,15 +113,12 @@ public class MainActivity extends AppCompatActivity{
 
                     Thread thread = new Thread(task);
                     thread.start();
-//                    Toast.makeText(MainActivity.this, "Image Array length:" + String.valueOf(array.length) + " bytes", Toast.LENGTH_SHORT).show();
-
                     thread.join();
                     // Print out
                     if (task.isDone()) {
                         results = task.get();
                         Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                     }
-//                    thread.interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -147,7 +144,6 @@ public class MainActivity extends AppCompatActivity{
             ImageView imageView = findViewById(R.id.cropImageView);
             imageView.setDrawingCacheEnabled(true);
             Bitmap bitmap = imageView.getDrawingCache();
-//            String path = saveToInternalStorage(bitmap);
             Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
 
             // putExtra to pass the result

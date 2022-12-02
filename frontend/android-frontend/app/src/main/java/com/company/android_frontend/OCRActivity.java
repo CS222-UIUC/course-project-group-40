@@ -11,15 +11,17 @@ public class OCRActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_ocr_result);
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
 
         TextView resultView = findViewById(R.id.textRecognized);
         TextView probView = findViewById(R.id.probabilities);
+        // display results and probabilities
         resultView.setText(parseResults(value)[0]);
         probView.setText(parseResults(value)[1]);
+        // set text fields as scrollable
         resultView.setMovementMethod(new ScrollingMovementMethod());
         probView.setMovementMethod(new ScrollingMovementMethod());
     }
@@ -65,4 +67,3 @@ public class OCRActivity extends AppCompatActivity {
         return new String[]{text, probability};
     }
 }
-
