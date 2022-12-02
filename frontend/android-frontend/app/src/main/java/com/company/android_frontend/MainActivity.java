@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
 
     private Button button, connectButton, OCRButton, objectButton;
     private String results;
-
+    private android.net.Uri path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +87,10 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 try {
+                    if(ResultActivity.ResultActivity != null){
+                        ResultActivity.ResultActivity.finish();
+                    }
+
                     ImageView imageView = (ImageView) findViewById(R.id.cropImageView);
                     Bitmap bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
@@ -142,7 +147,7 @@ public class MainActivity extends AppCompatActivity{
             ImageView imageView = findViewById(R.id.cropImageView);
             imageView.setDrawingCacheEnabled(true);
             Bitmap bitmap = imageView.getDrawingCache();
-            String path = saveToInternalStorage(bitmap);
+//            String path = saveToInternalStorage(bitmap);
             Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
 
             // putExtra to pass the result
@@ -154,21 +159,24 @@ public class MainActivity extends AppCompatActivity{
                         "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
             displayResult.putExtra("textRecognized", results.split("\t")[1]);
-            displayResult.putExtra("path_image", path);
+            displayResult.putExtra("path_image", path.toString());
             startActivity(displayResult);
         });
     }
 
+    @Deprecated
     private String saveToInternalStorage(Bitmap bitmapImage) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        long timeStamp = System.currentTimeMillis();
+        String time = String.valueOf(timeStamp);
+        File mypath = new File(directory,"profile_" + time + ".jpg");
 
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream(mypath);
+            fos = new FileOutputStream(mypath,false);
             // Use the compress method on the BitMap object to write image to the OutputStream
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
         } catch (Exception e) {
@@ -180,7 +188,7 @@ public class MainActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
         }
-        return directory.getAbsolutePath();
+        return mypath.getAbsolutePath();
     }
 
 
@@ -271,6 +279,8 @@ public class MainActivity extends AppCompatActivity{
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 ((ImageView) findViewById(R.id.cropImageView)).setImageURI(result.getUri());
+                path = result.getUri();
+
                 // enable SEE RESULT button
                 OCRButton.setEnabled(true);
                 objectButton.setEnabled(true);
