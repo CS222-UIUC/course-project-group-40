@@ -12,6 +12,10 @@ import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class ResultActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,9 @@ public class ResultActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         String value = intent.getStringExtra("textRecognized");
+        String path = intent.getStringExtra("path_image");
+        loadImageFromStorage(path);
+
 //        String[] arrOfStr = value.split(",", 6);
 //        float left, top, right, bottom;
 //        String lefts, tops, rights, bottoms;
@@ -34,11 +41,11 @@ public class ResultActivity extends AppCompatActivity{
 //        bottom = Float.parseFloat(bottoms);
 
         TextView resultView = findViewById(R.id.resultRecognized);
-        Bundle extras = getIntent().getExtras();
-        byte[] byteArray = extras.getByteArray("image");
-        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        ImageView imageview_bitmap = findViewById(R.id.imageview_bitmap);
-        imageview_bitmap.setImageBitmap(bmp);
+        //Bundle extras = getIntent().getExtras();
+        //byte[] byteArray = extras.getByteArray("image");
+        //Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        //ImageView imageview_bitmap = findViewById(R.id.imageview_bitmap);
+        //imageview_bitmap.setImageBitmap(bmp);
 //        Bitmap workingBitmap = Bitmap.createBitmap(bmp);
 //        Bitmap mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true);
 //        Canvas canvas = new Canvas(mutableBitmap);
@@ -48,6 +55,19 @@ public class ResultActivity extends AppCompatActivity{
 
 //        resultView.setText(arrOfStr[4].substring(2, arrOfStr[4].length() - 2));
         resultView.setMovementMethod(new ScrollingMovementMethod());
+
+    }
+
+    private void loadImageFromStorage(String path) {
+
+        try {
+            File f = new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            ImageView img = (ImageView) findViewById(R.id.imageview_bitmap);
+            img.setImageBitmap(b);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 }

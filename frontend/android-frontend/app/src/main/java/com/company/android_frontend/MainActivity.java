@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +26,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -135,11 +142,9 @@ public class MainActivity extends AppCompatActivity{
             ImageView imageView = findViewById(R.id.cropImageView);
             imageView.setDrawingCacheEnabled(true);
             Bitmap bitmap = imageView.getDrawingCache();
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            byte[] byteArray = stream.toByteArray();
+            String path = saveToInternalStorage(bitmap);
             Intent displayResult = new Intent(MainActivity.this, ResultActivity.class);
-            displayResult.putExtra("image", byteArray);
+
             // putExtra to pass the result
             if (results == null || results.isEmpty()) {
                 // Example string
@@ -149,9 +154,35 @@ public class MainActivity extends AppCompatActivity{
                         "414.1681, 'dog'], [459.9653, 4.7818418, 619.201, 50.484783, 'car']]";
             }
             displayResult.putExtra("textRecognized", results.split("\t")[1]);
+            displayResult.putExtra("path_image", path);
             startActivity(displayResult);
         });
     }
+
+    private String saveToInternalStorage(Bitmap bitmapImage) {
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
 
     private void PickImage() {
         CropImage
